@@ -40,6 +40,8 @@ public class GenLayerTriassicRiverBorder extends GenLayer
     public  int TRIASSIC_DESERT_ROCKY_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_ROCKY);
     public  Biome TRIASSIC_DESERT_SANDY = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_sandy"));
     public  int TRIASSIC_DESERT_SANDY_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_SANDY);
+    public  Biome TRIASSIC_DESERT_PLEUROMEIA = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_pleuromeia_beds"));
+    public  int TRIASSIC_DESERT_PLEUROMEIA_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_PLEUROMEIA);
     public  Biome TRIASSIC_WARM_LAKELAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_lakeland"));
     public  int TRIASSIC_WARM_LAKELAND_ID =  Biome.getIdForBiome(TRIASSIC_WARM_LAKELAND);
     public  Biome TRIASSIC_WARM_VOLCANIC_HILLS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills"));
@@ -192,7 +194,8 @@ public class GenLayerTriassicRiverBorder extends GenLayer
             || biomeID == TRIASSIC_DESERT_PLATEAU_BROKEN_ID
             || biomeID == TRIASSIC_DESERT_PLATEAU_CANYONS_ID
             || biomeID == TRIASSIC_DESERT_ROCKY_ID
-            || biomeID == TRIASSIC_DESERT_SANDY_ID) {
+            || biomeID == TRIASSIC_DESERT_SANDY_ID
+            || biomeID == TRIASSIC_DESERT_PLEUROMEIA_ID) {
             return true;
         }
         return false;
@@ -253,6 +256,7 @@ public class GenLayerTriassicRiverBorder extends GenLayer
             || biomeID == TRIASSIC_DESERT_PLATEAU_CANYONS_ID
             || biomeID == TRIASSIC_DESERT_ROCKY_ID
             || biomeID == TRIASSIC_DESERT_SANDY_ID
+            || biomeID == TRIASSIC_DESERT_PLEUROMEIA_ID
             || biomeID == TRIASSIC_WARM_LAKELAND_ID
             || biomeID == TRIASSIC_WARM_VOLCANIC_HILLS_ID
             || biomeID == TRIASSIC_XERIC_FOREST_ID

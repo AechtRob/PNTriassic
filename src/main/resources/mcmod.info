@@ -3,16 +3,16 @@
     "modid": "pntriassic",
     "name": "Prehistoric Nature Triassic",
     "description": "Adds the Prehistoric Nature Triassic dimension",
-    "version": "1.0",
+    "version": "1.01",
     "mcversion": "1.12.2",
     "url": "",
     "updateUrl": "",
     "authorList": ["Aecht_Rob"],
     "credits": "Prehistoric Nature",
-    "dependencies": ["lepidodendron@[52.0,)"],
+    "dependencies": ["lepidodendron@[53.0,)"],
     "logoFile": "",
     "screenshots": [],
-    "dependencies": ["lepidodendron@[52.0,)"],
+    "dependencies": ["lepidodendron@[53.0,)"],
     "useDependencyInformation": "true"
   }
 ]

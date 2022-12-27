@@ -393,7 +393,12 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                             iblockstate = AIR;
                             iblockstate1 = STONE;
                             //} else if (j1 >= i - 4 && j1 <= i + 1) {
-                        } else if (j1 <= i + 1 && biome != BiomeTriassicVolcanicIslands.biome) {
+                        }
+                        else if (j1 <= i + 2 && j1 >= i - 1 && Math.random() > 0.25
+                                && (biome == BiomeTriassicCreekDesert.biome || biome == BiomeTriassicCreekXeric.biome)) {
+                            iblockstate = BlockDriedMud.block.getDefaultState();
+                        }
+                        else if (j1 <= i + 1 && biome != BiomeTriassicVolcanicIslands.biome) {
                             iblockstate = biome.topBlock;
                             //iblockstate1 = biome.fillerBlock;
                             if (biome == BiomeTriassicFloodedForest.biome) {

@@ -66,6 +66,7 @@ public class BiomeTriassicGondwananForestClearing extends ElementsLepidodendronM
 		protected static final WorldGenDicroidium DICROIDIUM = new WorldGenDicroidium(false);
 		protected static final WorldGenGinkgoitesTree GINKGO_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA = new WorldGenSphenobaieraTree(false);
+		protected static final WorldGenDicroidiumHTree DICROIDIUM_H_TREE = new WorldGenDicroidiumHTree(false);
 
 		protected static final WorldGenTreeLog DICROIDIUM_LOG_GENERATOR = new WorldGenTreeLog(BlockDicroidiumFLog.block);
 		protected static final WorldGenTreeLog GINKGO_LOG_GENERATOR = new WorldGenTreeLog(BlockGinkgoitesLog.block);
@@ -133,6 +134,9 @@ public class BiomeTriassicGondwananForestClearing extends ElementsLepidodendronM
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 		{
+			if (Math.random() > 0.5) {
+				return DICROIDIUM_H_TREE;
+			}
 			if (Math.random() > 0.5) {
 				return DICROIDIUM_F_TREE;
 			}
