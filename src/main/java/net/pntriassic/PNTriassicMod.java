@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
-@Mod(modid = PNTriassicMod.MODID, name = PNTriassicMod.NAME, version = PNTriassicMod.VERSION, dependencies = "required-after:lepidodendron@[52.0,)")
+@Mod(modid = PNTriassicMod.MODID, name = PNTriassicMod.NAME, version = PNTriassicMod.VERSION, dependencies = "required-after:lepidodendron@[54.0,)")
 public class PNTriassicMod {
     public static final String MODID = "pntriassic";
     public static final String NAME = "Prehistoric Nature Triassic Dimension";
