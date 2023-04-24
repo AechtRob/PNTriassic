@@ -140,7 +140,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 (new WorldGenCausticMudLake(BlockToxicMud.block)).generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(4) == 0 && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertRocky.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateau.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateauBroken.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateauCanyons.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertSandy.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicOceanShore.biome)
+        if (this.random.nextInt(4) == 0 && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPleuromeiaBeds.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertRocky.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateau.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateauBroken.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateauCanyons.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertSandy.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicOceanShore.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
@@ -531,6 +531,32 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         if (iblockstate == BlockPrehistoricGroundLush.block.getDefaultState()
                                 && (biome == BiomeTriassicFloodedForest.biome || biome == BiomeTriassicFloodedForestDense.biome) && rand.nextInt(5) == 0) {
                             iblockstate = BlockLeafLitter.block.getDefaultState();
+                        }
+
+                        //Do the blocks for the Woodland:
+                        if (biome == BiomeTriassicWoodland.biome || biome == BiomeTriassicWoodlandField.biome
+                            || biome == BiomeTriassicWoodlandPolje.biome || biome == BiomeTriassicWoodlandPoljeEdge.biome) {
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                            else if (rand.nextInt(12) == 0) {
+                                iblockstate = Blocks.GRAVEL.getDefaultState();
+                            }
+                            else if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockCoarseSandyDirt.block.getDefaultState();
+                            }
+                            else if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                            }
+                            else if (rand.nextInt(6) == 0) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                            }
+                            else if (rand.nextInt(10) == 0 && biome == BiomeTriassicWoodland.biome) {
+                                iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                            }
+                            else if (rand.nextInt(8) == 0 && biome == BiomeTriassicWoodlandField.biome) {
+                                iblockstate = Blocks.STONE.getStateFromMeta(0);
+                            }
                         }
 
                         j = k;

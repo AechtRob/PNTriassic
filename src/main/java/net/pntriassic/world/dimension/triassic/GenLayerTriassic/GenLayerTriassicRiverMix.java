@@ -36,6 +36,8 @@ public class GenLayerTriassicRiverMix extends GenLayer
     public int TRIASSIC_CREEK_LAKELAND_ID = Biome.getIdForBiome(TRIASSIC_CREEK_LAKELAND);
     public Biome TRIASSIC_CREEK_XERIC = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_xeric"));
     public int TRIASSIC_CREEK_XERIC_ID = Biome.getIdForBiome(TRIASSIC_CREEK_XERIC);
+    public Biome TRIASSIC_CREEK_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_woodland"));
+    public int TRIASSIC_CREEK_WOODLAND_ID = Biome.getIdForBiome(TRIASSIC_CREEK_WOODLAND);
 
     //Biomes to exclude for rivers:
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
@@ -50,6 +52,10 @@ public class GenLayerTriassicRiverMix extends GenLayer
     public int TRIASSIC_VOLCANIC_ISLANDS_ID = Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
     public Biome TRIASSIC_VOLCANIC_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
     public int TRIASSIC_VOLCANIC_BEACH_ID = Biome.getIdForBiome(TRIASSIC_VOLCANIC_BEACH);
+    public Biome TRIASSIC_POLJE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje"));
+    public int TRIASSIC_POLJE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE);
+    public Biome TRIASSIC_POLJE_EDGE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje_edge"));
+    public int TRIASSIC_POLJE_EDGE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE_EDGE);
 
     public GenLayerTriassicRiverMix(long p_i2129_1_, GenLayer p_i2129_3_, GenLayer p_i2129_4_)
     {
@@ -82,6 +88,8 @@ public class GenLayerTriassicRiverMix extends GenLayer
                         || aint[i] == TRIASSIC_MOUNTAINS_ID
                         || aint[i] == TRIASSIC_VOLCANIC_ISLANDS_ID
                         || aint[i] == TRIASSIC_VOLCANIC_BEACH_ID
+                        || aint[i] == TRIASSIC_POLJE_ID
+                        || aint[i] == TRIASSIC_POLJE_EDGE_ID
                 )
                 {
                     aint2[i] = aint[i];
@@ -113,6 +121,9 @@ public class GenLayerTriassicRiverMix extends GenLayer
                         }
                         else if (biomeTriassic.getBiomeType() == EnumBiomeTypeTriassic.Ocean) {
                             aint2[i] = TRIASSIC_CREEK_COASTAL_ID;
+                        }
+                        else if (biomeTriassic.getBiomeType() == EnumBiomeTypeTriassic.Woodland) {
+                            aint2[i] = TRIASSIC_CREEK_WOODLAND_ID;
                         }
                         else {
                             aint2[i] = TRIASSIC_RIVER_ID;

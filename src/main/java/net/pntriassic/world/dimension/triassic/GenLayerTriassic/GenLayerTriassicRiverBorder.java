@@ -71,6 +71,15 @@ public class GenLayerTriassicRiverBorder extends GenLayer
     public Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
     public int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
 
+    public Biome TRIASSIC_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland"));
+    public int TRIASSIC_WOODLAND_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND);
+    public Biome TRIASSIC_WOODLAND_FIELDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_field"));
+    public int TRIASSIC_WOODLAND_FIELDS_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND_FIELDS);
+    public Biome TRIASSIC_POLJE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje"));
+    public int TRIASSIC_POLJE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE);
+    public Biome TRIASSIC_POLJE_EDGE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje_edge"));
+    public int TRIASSIC_POLJE_EDGE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE_EDGE);
+
     public GenLayerTriassicRiverBorder(long seed, GenLayer genLayer)
     {
         super(seed);
@@ -120,6 +129,26 @@ public class GenLayerTriassicRiverBorder extends GenLayer
                             || (!isMossMeadow(k2) && !isOceanOrBeach(k2) && !isExemptforMoss(k2))
                             || (!isMossMeadow(j3) && !isOceanOrBeach(j3) && !isExemptforMoss(j3))
                             || (!isMossMeadow(i4) && !isOceanOrBeach(i4) && !isExemptforMoss(i4))
+                    )
+                    {
+                        aint1[j + i * areaWidth] = TRIASSIC_RIVER_ID;
+                    }
+                    else
+                    {
+                        aint1[j + i * areaWidth] = k;
+                    }
+                }
+                else if (isWoodland(k))
+                {
+                    int l1 = aint[j + 1 + (i + 1 - 1) * (areaWidth + 2)];
+                    int k2 = aint[j + 1 + 1 + (i + 1) * (areaWidth + 2)];
+                    int j3 = aint[j + 1 - 1 + (i + 1) * (areaWidth + 2)];
+                    int i4 = aint[j + 1 + (i + 1 + 1) * (areaWidth + 2)];
+
+                    if ((!isMossMeadow(l1) && !isOceanOrBeach(l1) && !isExemptforWoodland(l1))
+                            || (!isMossMeadow(k2) && !isOceanOrBeach(k2) && !isExemptforWoodland(k2))
+                            || (!isMossMeadow(j3) && !isOceanOrBeach(j3) && !isExemptforWoodland(j3))
+                            || (!isMossMeadow(i4) && !isOceanOrBeach(i4) && !isExemptforWoodland(i4))
                     )
                     {
                         aint1[j + i * areaWidth] = TRIASSIC_RIVER_ID;
@@ -215,8 +244,33 @@ public class GenLayerTriassicRiverBorder extends GenLayer
         return false;
     }
 
+    private boolean isWoodland(int biomeID) {
+        if (biomeID == TRIASSIC_WOODLAND_ID || biomeID == TRIASSIC_WOODLAND_FIELDS_ID
+            || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID) {
+            return true;
+        }
+        return false;
+    }
+
     private boolean isLakelands(int biomeID) {
         if (biomeID == TRIASSIC_WARM_LAKELAND_ID) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isExemptforWoodland(int biomeID) {
+        if (biomeID == TRIASSIC_MOSS_ID
+            || biomeID == TRIASSIC_FOREST_ID
+            || biomeID == TRIASSIC_FOREST_CLEARING_ID
+            || biomeID == TRIASSIC_FOREST_CRAGS_ID
+            || biomeID == TRIASSIC_FOREST_HILLS_ID
+            || biomeID == TRIASSIC_WARM_LAKELAND_ID
+            || biomeID == TRIASSIC_WARM_VOLCANIC_HILLS_ID
+            || biomeID == TRIASSIC_MOUNTAINS_ID
+            || biomeID == TRIASSIC_WOODLAND_ID
+            || biomeID == TRIASSIC_WOODLAND_FIELDS_ID
+            || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID) {
             return true;
         }
         return false;
@@ -232,7 +286,10 @@ public class GenLayerTriassicRiverBorder extends GenLayer
             || biomeID == TRIASSIC_WARM_VOLCANIC_HILLS_ID
             || biomeID == TRIASSIC_FLOODED_FOREST_ID
             || biomeID == TRIASSIC_FLOODED_FOREST_DENSE_ID
-            || biomeID == TRIASSIC_MOUNTAINS_ID) {
+            || biomeID == TRIASSIC_MOUNTAINS_ID
+            || biomeID == TRIASSIC_WOODLAND_ID
+            || biomeID == TRIASSIC_WOODLAND_FIELDS_ID
+            || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID) {
             return true;
         }
         return false;
@@ -244,7 +301,8 @@ public class GenLayerTriassicRiverBorder extends GenLayer
             || biomeID == TRIASSIC_MOSS_ID
             || biomeID == TRIASSIC_MOUNTAINS_ID
             || biomeID == TRIASSIC_FLOODED_FOREST_ID
-            || biomeID == TRIASSIC_FLOODED_FOREST_DENSE_ID) {
+            || biomeID == TRIASSIC_FLOODED_FOREST_DENSE_ID
+            || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID) {
             return true;
         }
         return false;
@@ -272,7 +330,8 @@ public class GenLayerTriassicRiverBorder extends GenLayer
             || biomeID == TRIASSIC_FLOODED_FOREST_DENSE_ID
             || biomeID == TRIASSIC_MOSS_ID
             || biomeID == TRIASSIC_MOUNTAINS_ID
-            || biomeID == TRIASSIC_XERIC_FOREST_ID) {
+            || biomeID == TRIASSIC_XERIC_FOREST_ID
+            || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID) {
             return true;
         }
         return false;

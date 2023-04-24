@@ -35,6 +35,10 @@ public class GenLayerDiversifyTriassic extends GenLayer {
     public int TRIASSIC_FLOODED_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_FLOODED_FOREST);
     public Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
     public int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
+    public Biome TRIASSIC_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland"));
+    public int TRIASSIC_WOODLAND_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND);
+    public Biome TRIASSIC_WOODLAND_FIELDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_field"));
+    public int TRIASSIC_WOODLAND_FIELDS_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND_FIELDS);
 
     private final int CoolBiomes[] = new int[] {
         TRIASSIC_GONDWANAN_FOREST_ID,
@@ -53,17 +57,23 @@ public class GenLayerDiversifyTriassic extends GenLayer {
         TRIASSIC_DESERT_PLATEAU_ID,
         TRIASSIC_DESERT_PLATEAU_ID
     };
+
     private final int XericBiomes[] = new int[] {
         TRIASSIC_XERIC_FOREST_ID,
         TRIASSIC_XERIC_FOREST_ID,
         TRIASSIC_XERIC_SCRUBLAND_ID
-        //TRIASSIC_ARID_LANDS_LUSH_ID
     };
+
     private final int WarmBiomes[] = new int[] {
         TRIASSIC_WARM_LAKELAND_ID,
         TRIASSIC_WARM_LAKELAND_ID,
         TRIASSIC_WARM_VOLCANIC_HILLS_ID
-        //TRIASSIC_GLOSSOPTERIS_WET_ID
+    };
+
+    private final int WoodlandBiomes[] = new int[] {
+            TRIASSIC_WOODLAND_ID,
+            TRIASSIC_WOODLAND_ID,
+            TRIASSIC_WOODLAND_FIELDS_ID
     };
 
     private final int SwampBiomes[] = new int[] {
@@ -106,6 +116,8 @@ public class GenLayerDiversifyTriassic extends GenLayer {
                         output[i] = WarmBiomes[nextInt(WarmBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicFloodedForest.biome)
                         output[i] = SwampBiomes[nextInt(SwampBiomes.length)];
+                    else if (Biome.getBiome(center) == BiomeTriassicWoodland.biome)
+                        output[i] = WoodlandBiomes[nextInt(WoodlandBiomes.length)];
                     else output[i] = center;
                 } else output[i] = center;
             }

@@ -19,27 +19,25 @@ public class GenLayerTriassicBiomes extends GenLayer {
     public int TRIASSIC_WARM_LAKELAND_ID =  Biome.getIdForBiome(TRIASSIC_WARM_LAKELAND);
     public Biome TRIASSIC_FLOODED_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest"));
     public int TRIASSIC_FLOODED_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_FLOODED_FOREST);
+    public Biome TRIASSIC_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland"));
+    public int TRIASSIC_WOODLAND_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND);
 
 
-    private final int PermianBiomes[] = new int[] {
-        TRIASSIC_GONDWANAN_FOREST_ID,
+    private final int TriassicBiomes[] = new int[] {
         TRIASSIC_GONDWANAN_FOREST_ID,
 
         TRIASSIC_DESERT_ID,
-        TRIASSIC_DESERT_ID,
 
-        TRIASSIC_XERIC_FOREST_ID,
         TRIASSIC_XERIC_FOREST_ID,
 
         TRIASSIC_WARM_LAKELAND_ID,
-        TRIASSIC_WARM_LAKELAND_ID,
 
-        TRIASSIC_OCEAN_SHORE_ID,
         TRIASSIC_OCEAN_SHORE_ID,
         TRIASSIC_OCEAN_SHORE_ID,
 
         TRIASSIC_FLOODED_FOREST_ID,
-        TRIASSIC_FLOODED_FOREST_ID
+
+        TRIASSIC_WOODLAND_ID
     };
 
     public GenLayerTriassicBiomes(long seed) {
@@ -52,7 +50,7 @@ public class GenLayerTriassicBiomes extends GenLayer {
         for (int dz = 0; dz < height; dz++) {
             for (int dx = 0; dx < width; dx++) {
                 initChunkSeed(dx + x, dz + z);
-                dest[dx + dz * width] = PermianBiomes[nextInt(PermianBiomes.length)];
+                dest[dx + dz * width] = TriassicBiomes[nextInt(TriassicBiomes.length)];
             }
         }
         return dest;

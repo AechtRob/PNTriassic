@@ -46,7 +46,7 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 			super(new BiomeProperties("Triassic Cool Temperate Forest").setTemperature(0.25F).setRainfall(0.8F).setBaseHeight(0.128F).setHeightVariation(0.05F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_gondwanan_forest");
 			topBlock = BlockLeafLitter.block.getDefaultState();
-			fillerBlock = BlockCoarseSandyDirtRed.block.getDefaultState();
+			fillerBlock = BlockPeat.block.getDefaultState();
 			decorator.treesPerChunk = 32;
 			decorator.flowersPerChunk = 0;
 			decorator.grassPerChunk = 0;
