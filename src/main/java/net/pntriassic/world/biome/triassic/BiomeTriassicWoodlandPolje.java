@@ -65,7 +65,7 @@ public class BiomeTriassicWoodlandPolje extends ElementsLepidodendronMod.ModElem
 		//protected static final WorldGenGinkgoitesTree GINKGOITES_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA_TREE = new WorldGenSphenobaieraTree(false);
 		protected static final WorldGenMacrotaeniopteris MACROTAENIOPTERIS_GENERATOR = new WorldGenMacrotaeniopteris();
-		protected static final WorldGenPagiophyllum PAGIOPHYLLUM_GENERATOR = new WorldGenPagiophyllum();
+		protected static final WorldGenIrania IRANIA_GENERATOR = new WorldGenIrania();
 		protected static final WorldGenTreeLogWater ELATOCLADUS_LOG_WATER_GENERATOR = new WorldGenTreeLogWater(BlockElatocladusLog.block);
 		protected static final WorldGenTreeLogWater TELEMACHUS_LOG_WATER_GENERATOR = new WorldGenTreeLogWater(BlockTelemachusLog.block);
 
@@ -296,7 +296,7 @@ public class BiomeTriassicWoodlandPolje extends ElementsLepidodendronMod.ModElem
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PAGIOPHYLLUM_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+					IRANIA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
 
 //			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
