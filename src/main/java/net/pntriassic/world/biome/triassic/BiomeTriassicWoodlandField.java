@@ -64,7 +64,7 @@ public class BiomeTriassicWoodlandField extends ElementsLepidodendronMod.ModElem
 		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
 		protected static final WorldGenElatocladusTree ELATOCLADUS_TREE = new WorldGenElatocladusTree(false);
 		protected static final WorldGenAlpiaTree ALPIA_TREE = new WorldGenAlpiaTree(false);
-		//protected static final WorldGenGinkgoitesTree GINKGOITES_TREE = new WorldGenGinkgoitesTree(false);
+		protected static final WorldGenPagiophyllumTree PAGIOPHYLLUM_TREE = new WorldGenPagiophyllumTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA_TREE = new WorldGenSphenobaieraTree(false);
 
 		protected static final net.minecraft.world.gen.feature.WorldGenDeadBush DEAD_BUSH_GENERATOR = new net.minecraft.world.gen.feature.WorldGenDeadBush();
@@ -138,6 +138,9 @@ public class BiomeTriassicWoodlandField extends ElementsLepidodendronMod.ModElem
 			}
 			if (rand.nextInt(10) == 0) {
 				return SPHENOBAIERA_TREE;
+			}
+			if (rand.nextInt(8) == 0) {
+				return PAGIOPHYLLUM_TREE;
 			}
 			if (rand.nextInt(8) == 0) {
 				return ALPIA_TREE;

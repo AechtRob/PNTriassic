@@ -63,7 +63,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 
 		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
 		protected static final WorldGenElatocladusTree ELATOCLADUS_TREE = new WorldGenElatocladusTree(false);
-		//protected static final WorldGenGinkgoTree GINKGO_TREE = new WorldGenGinkgoTree(false);
+		protected static final WorldGenPagiophyllumTree PAGIOPHYLLUM_TREE = new WorldGenPagiophyllumTree(false);
 		//protected static final WorldGenGinkgoitesTree GINKGOITES_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA_TREE = new WorldGenSphenobaieraTree(false);
 
@@ -133,6 +133,9 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 		{
 			if (rand.nextInt(4) == 0) {
 				return NULL_TREE;
+			}
+			if (rand.nextInt(12) == 0) {
+				return PAGIOPHYLLUM_TREE;
 			}
 			if (rand.nextInt(10) == 0) {
 				return SPHENOBAIERA_TREE;

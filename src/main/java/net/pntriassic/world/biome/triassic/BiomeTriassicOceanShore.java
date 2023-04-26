@@ -87,7 +87,7 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 			return -15424749;
 		}
 
-		protected static final WorldGenCordaites CORDAITES = new WorldGenCordaites(false);
+		protected static final WorldGenHirmeriellaTree HIRMERIELLA_TREE = new WorldGenHirmeriellaTree(false);
 		protected static final WorldGenPolyspermophyllum POLYSPERMOPHYLLUM_GENERATOR = new WorldGenPolyspermophyllum();
 		protected static final WorldGenAridHorsetail ARID_HORSETAIL_GENERATOR = new WorldGenAridHorsetail();
 		protected static final WorldGenPrehistoricGroundCoverSandy SANDY_GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverSandy();
@@ -98,7 +98,7 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 	    {
-	    	return CORDAITES;
+	    	return HIRMERIELLA_TREE;
 	    }
 
 		//public Biome.TempCategory getTempCategory()
