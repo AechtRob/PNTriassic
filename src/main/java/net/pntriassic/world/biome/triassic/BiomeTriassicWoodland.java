@@ -131,7 +131,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 		{
-			if (rand.nextInt(4) == 0) {
+			if (rand.nextInt(3) == 0) {
 				return NULL_TREE;
 			}
 			if (rand.nextInt(12) == 0) {
