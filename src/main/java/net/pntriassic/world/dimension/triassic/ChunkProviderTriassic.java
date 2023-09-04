@@ -131,7 +131,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
         net.minecraftforge.event.ForgeEventFactory.onChunkPopulate(true, this, this.world, this.random, x, z, false);
 
 
-        if (this.random.nextInt(3) == 0 && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) == BiomeTriassicWarmVolcanicHills.biome)
+        if (this.random.nextInt(3) == 0 && biome == BiomeTriassicWarmVolcanicHills.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
@@ -140,7 +140,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 (new WorldGenCausticMudLake(BlockToxicMud.block)).generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(4) == 0 && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPleuromeiaBeds.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertRocky.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateau.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateauBroken.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertPlateauCanyons.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicDesertSandy.biome && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) != BiomeTriassicOceanShore.biome)
+        if (this.random.nextInt(4) == 0 && biome != BiomeTriassicDesertPleuromeiaBeds.biome && biome != BiomeTriassicDesertRocky.biome && biome != BiomeTriassicDesertPlateau.biome && biome != BiomeTriassicDesertPlateauBroken.biome && biome != BiomeTriassicDesertPlateauCanyons.biome && biome != BiomeTriassicDesertSandy.biome && biome != BiomeTriassicOceanShore.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
@@ -149,7 +149,18 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 (new WorldGenTriassicLakes(FLUID.getBlock())).generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(6) == 0 && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) == BiomeTriassicDesertRocky.biome)
+        if (biome == BiomeTriassicDesertPleuromeiaBeds.biome)
+            if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
+                    net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
+                for (int lake = 0; lake < 8; ++lake) {
+                    int i1 = this.random.nextInt(16) + 8;
+                    int j1 = this.random.nextInt(256);
+                    int k1 = this.random.nextInt(16) + 8;
+                    (new WorldGenTriassicLakes(FLUID.getBlock())).generate(this.world, this.random, blockpos.add(i1, j1, k1));
+                }
+            }
+
+        if (this.random.nextInt(6) == 0 && biome == BiomeTriassicDesertRocky.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
@@ -158,7 +169,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 (new WorldGenPangaeanDryLakes(FLUID.getBlock())).generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(224) == 0 && world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) == BiomeTriassicWarmVolcanicHills.biome)
+        if (this.random.nextInt(224) == 0 && biome == BiomeTriassicWarmVolcanicHills.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
@@ -167,7 +178,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 new WorldGenTriassicVolcanos().generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(80) == 0 && (world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) == BiomeTriassicVolcanicIslands.biome || world.getBiome(new BlockPos(i, world.getSeaLevel(), j)) == BiomeTriassicBlackBeach.biome))
+        if (this.random.nextInt(80) == 0 && (biome == BiomeTriassicVolcanicIslands.biome || biome == BiomeTriassicBlackBeach.biome))
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
