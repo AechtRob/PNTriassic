@@ -77,7 +77,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 		public static final PropertyEnum<BlockDoublePlant.EnumPlantType> VARIANT = PropertyEnum.<BlockDoublePlant.EnumPlantType>create("variant", BlockDoublePlant.EnumPlantType.class);
 		protected static final WorldGenClaytosmunda CLAYTOSMUNDA_GENERATOR = new WorldGenClaytosmunda();
 		protected static final WorldGenEoginkgoites EOGINKGOITES_GENERATOR = new WorldGenEoginkgoites();
-		//protected static final WorldGenCinnamon CINNAMON_GENERATOR = new WorldGenCinnamon();
+		//protected static final WorldGenPtilozamites PTILOZAMITES_GENERATOR = new WorldGenPtilozamites();
 		protected static final WorldGenWaterHorsetail WATER_HORSETAIL_GENERATOR = new WorldGenWaterHorsetail();
 
 		//protected static final WorldGenPachypteris WEICHSELIA_GENERATOR = new WorldGenPachypteris(); //Is Jurassic!
@@ -97,7 +97,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 		protected static final WorldGenSpaciinodum SPACIINODUM_GENERATOR = new WorldGenSpaciinodum();
 
 		protected static final WorldGenCtenis CTENIS_GENERATOR = new WorldGenCtenis();
-		protected static final WorldGenTodites TODITES_GENERATOR = new WorldGenTodites();
+		protected static final WorldGenGordonopteris GORDONOPTERIS_GENERATOR = new WorldGenGordonopteris();
 
 		protected static final WorldGenTreeLog ELATOCLADUS_LOG_GENERATOR = new WorldGenTreeLog(BlockElatocladusLog.block);
 		protected static final WorldGenTreeLog SPHENOBAIERA_LOG_GENERATOR = new WorldGenTreeLog(BlockSphenobaieraLog.block);
@@ -335,7 +335,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					TODITES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+					GORDONOPTERIS_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -575,12 +575,12 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 //				}
 
 //			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-//				for (int i = 0; i < 36; ++i)
+//				for (int i = 0; i < 12; ++i)
 //				{
 //					int j = rand.nextInt(16) + 8;
 //					int k = rand.nextInt(16) + 8;
 //					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-//					CINNAMON_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
+//					PTILOZAMITES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
 //				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))

@@ -94,7 +94,7 @@ public class BiomeTriassicCreekWoodland extends ElementsLepidodendronMod.ModElem
 		protected static final WorldGenDicroidiumE DICROIDIUM_GENERATOR = new WorldGenDicroidiumE();
 
 		protected static final WorldGenCtenis CTENIS_GENERATOR = new WorldGenCtenis();
-		protected static final WorldGenTodites TODITES_GENERATOR = new WorldGenTodites();
+		protected static final WorldGenGordonopteris GORDONOPTERIS_GENERATOR = new WorldGenGordonopteris();
 
 		protected static final WorldGenTreeLog ELATOCLADUS_LOG_GENERATOR = new WorldGenTreeLog(BlockElatocladusLog.block);
 		protected static final WorldGenTreeLog SPHENOBAIERA_LOG_GENERATOR = new WorldGenTreeLog(BlockSphenobaieraLog.block);
@@ -314,7 +314,7 @@ public class BiomeTriassicCreekWoodland extends ElementsLepidodendronMod.ModElem
 //					int j = rand.nextInt(16) + 8;
 //					int k = rand.nextInt(16) + 8;
 //					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-//					TODITES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+//					GORDONOPTERIS_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 //				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
