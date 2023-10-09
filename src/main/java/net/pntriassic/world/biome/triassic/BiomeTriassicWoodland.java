@@ -98,6 +98,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 
 		protected static final WorldGenCtenis CTENIS_GENERATOR = new WorldGenCtenis();
 		protected static final WorldGenGordonopteris GORDONOPTERIS_GENERATOR = new WorldGenGordonopteris();
+		protected static final WorldGenPseudoctenis PSEUDOCTENIS_GENERATOR = new WorldGenPseudoctenis();
 
 		protected static final WorldGenTreeLog ELATOCLADUS_LOG_GENERATOR = new WorldGenTreeLog(BlockElatocladusLog.block);
 		protected static final WorldGenTreeLog SPHENOBAIERA_LOG_GENERATOR = new WorldGenTreeLog(BlockSphenobaieraLog.block);
@@ -330,12 +331,21 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 12; ++i)
+				for (int i = 0; i < 10; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					GORDONOPTERIS_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 64; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					PSEUDOCTENIS_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
