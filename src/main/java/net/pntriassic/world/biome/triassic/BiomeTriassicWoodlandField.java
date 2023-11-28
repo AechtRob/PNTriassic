@@ -42,7 +42,7 @@ public class BiomeTriassicWoodlandField extends ElementsLepidodendronMod.ModElem
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
 			//was height 0.001
-			super(new BiomeProperties("Triassic Sphenopteris Uplands").setBaseHeight(1.410F).setHeightVariation(0.0035F).setTemperature(0.7F).setRainfall(0.9F));
+			super(new BiomeProperties("Triassic Sphenopteris Heath").setBaseHeight(1.410F).setHeightVariation(0.0035F).setTemperature(0.7F).setRainfall(0.9F));
 			setRegistryName("lepidodendron:triassic_woodland_field");
 			topBlock = BlockPrehistoricGroundBasic.block.getDefaultState();
 			fillerBlock = Blocks.STONE.getStateFromMeta(0);
