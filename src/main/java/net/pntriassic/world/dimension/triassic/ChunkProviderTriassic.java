@@ -358,6 +358,14 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                     double d2 = this.limitRegMin[i] / (double) 512;
                     double d3 = this.limitRegMax[i] / (double) 512;
                     double d4 = (this.noiseRegMain[i] / 10.0D + 1.0D) / 2.0D;
+
+                    if (biome == BiomeTriassicGondwananPlainFlat.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
                     double d5 = MathHelper.clampedLerp(d2, d3, d4) - d1;
                     if (l1 > 29) {
                         double d6 = (double) ((float) (l1 - 29) / 3.0F);
@@ -501,7 +509,8 @@ public class ChunkProviderTriassic implements IChunkGenerator {
 
                         //Break up the top layer of Mossy biomes
                         if (iblockstate == BlockPrehistoricGroundMossy.block.getDefaultState()
-                                && biome == BiomeTriassicGondwananPlain.biome && rand.nextInt(6) == 0) {
+                                && (biome == BiomeTriassicGondwananPlain.biome || biome == BiomeTriassicGondwananPlainFlat.biome)
+                                && rand.nextInt(6) == 0) {
                             iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
                         }
                         //As you go above sea level sometimes place this block too:

@@ -47,6 +47,7 @@ public class GenLayerTriassic {
         biomes = new GenLayerSmooth(703L, biomes);
 
         biomes = new GenLayerTriassicPolje(703L, biomes);
+        biomes = new GenLayerTriassicMoss(1975L, biomes);
 
         biomes = new GenLayerFuzzyZoom(1000L, biomes);
         biomes = new GenLayerTriassicBeach(1050L, biomes);
