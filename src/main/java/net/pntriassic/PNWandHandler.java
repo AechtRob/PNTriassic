@@ -1,5 +1,6 @@
 package net.pntriassic;
 
+import net.lepidodendron.LepidodendronConfig;
 import net.lepidodendron.enchantments.Enchantments;
 import net.lepidodendron.item.ItemBoneWand;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,7 +50,9 @@ public class PNWandHandler {
                 return;
             }
             if (world.isAirBlock(pos1)) {
-
+                if (world.provider.getDimension() == LepidodendronConfig.dimTriassic) {
+                    return;
+                }
                 boolean portalSpawnTriassic = WorldTriassic.portal.portalSpawn(world, pos1);
 
                 if (portalSpawnTriassic) {
