@@ -1037,6 +1037,7 @@ public class WorldTriassic extends ElementsLepidodendronMod.ModElement {
 					(double) (bph.getFrontTopLeft().getY() - bph.getHeight()));
 			return new TeleporterDimensionMod(entity.getServer().getWorld(dimid), new Vec3d(d1, d2, 0), bph.getForwards());
 		}
+
 		public static class Size {
 			private final World world;
 			private final EnumFacing.Axis axis;
