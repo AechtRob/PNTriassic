@@ -140,7 +140,12 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 				return NULL_TREE;
 			}
 			if (rand.nextInt(12) == 0) {
-				return PAGIOPHYLLUM_TREE;
+				if (Math.random() > 0.75) {
+					return PAGIOPHYLLUM_TREE;
+				}
+				else {
+					return ELATOCLADUS_TREE;
+				}
 			}
 			if (rand.nextInt(10) == 0) {
 				return SPHENOBAIERA_TREE;
