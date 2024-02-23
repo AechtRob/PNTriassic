@@ -468,7 +468,6 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                             }
                         }
 
-
                         //For the Dicroidium Hills biome, make hills a bit  craggy:
                         if (biome == BiomeTriassicGondwananForestCrags.biome
                         ) {

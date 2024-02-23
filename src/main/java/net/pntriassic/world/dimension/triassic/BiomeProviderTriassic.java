@@ -13,6 +13,7 @@ import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraft.world.storage.WorldInfo;
+import net.pntriassic.world.biome.triassic.BiomeTriassicOceanShore;
 import net.pntriassic.world.dimension.triassic.GenLayerTriassic.GenLayerTriassic;
 
 import javax.annotation.Nullable;
@@ -21,13 +22,46 @@ import java.util.Random;
 
 public class BiomeProviderTriassic extends BiomeProvider {
     public static List<Biome> allowedBiomes = Lists.newArrayList(
-        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean")),
-        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore")),
         Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_coastal")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_desert")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_flooded_forest")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_gondwanan_forest")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_warm_lakeland")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_woodland")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_xeric")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_broken")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_canyons")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_pleuromeia_beds")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_rocky")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_sandy")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest_dense")),
         Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest")),
-        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_hills")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_clearing")),
         Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_crags")),
-        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plains"))
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_hills")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plains")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plain_flat")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_river")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_riverbank")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_riverbank_forest")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_lakeland")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_field")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje_edge")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_xeric_forest")),
+        Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_xeric_scrubland"))
     );
     public GenLayer genBiomes;
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
@@ -60,7 +94,7 @@ public class BiomeProviderTriassic extends BiomeProvider {
 
     @Override
     public Biome getBiome(BlockPos pos, Biome defaultBiome) {
-        return this.biomeCache.getBiome(pos.getX(), pos.getZ(), defaultBiome);
+        return this.biomeCache.getBiome(pos.getX(), pos.getZ(), BiomeTriassicOceanShore.biome);
     }
 
     @Override
@@ -79,7 +113,7 @@ public class BiomeProviderTriassic extends BiomeProvider {
         {
             for (int i = 0; i < width * height; ++i)
             {
-                biomes[i] = Biome.getBiome(aint[i], Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean")));
+                biomes[i] = Biome.getBiome(aint[i], Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore")));
             }
 
             return biomes;
@@ -119,7 +153,7 @@ public class BiomeProviderTriassic extends BiomeProvider {
 
             for (int i = 0; i < width * length; ++i)
             {
-                listToReuse[i] = Biome.getBiome(aint[i], Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean")));
+                listToReuse[i] = Biome.getBiome(aint[i], Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore")));
             }
 
             return listToReuse;
