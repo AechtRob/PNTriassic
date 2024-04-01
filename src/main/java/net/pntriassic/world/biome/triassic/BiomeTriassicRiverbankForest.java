@@ -120,6 +120,7 @@ public class BiomeTriassicRiverbankForest extends ElementsLepidodendronMod.ModEl
 		public static final PropertyEnum<BlockDoublePlant.EnumPlantType> VARIANT = PropertyEnum.<BlockDoublePlant.EnumPlantType>create("variant", BlockDoublePlant.EnumPlantType.class);
 		protected static final WorldGenAnomozamites ANOMOZAMITES_GENERATOR = new WorldGenAnomozamites();
 		protected static final WorldGenPtilophyllum PTILOPHYLLUM_GENERATOR = new WorldGenPtilophyllum();
+		protected static final WorldGenAngiopteris ANGIOPTERIS_GENERATOR = new WorldGenAngiopteris();
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 	    {
@@ -378,6 +379,14 @@ public class BiomeTriassicRiverbankForest extends ElementsLepidodendronMod.ModEl
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					EQUISETITES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
+				}
+
+			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 1; ++i) {
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					ANGIOPTERIS_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
