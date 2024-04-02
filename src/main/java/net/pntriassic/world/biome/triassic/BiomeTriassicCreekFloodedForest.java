@@ -2,8 +2,7 @@
 package net.pntriassic.world.biome.triassic;
 
 import net.lepidodendron.ElementsLepidodendronMod;
-import net.lepidodendron.block.BlockPrehistoricGroundLush;
-import net.lepidodendron.block.BlockTelemachusLog;
+import net.lepidodendron.block.*;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.lepidodendron.world.gen.*;
@@ -105,20 +104,21 @@ public class BiomeTriassicCreekFloodedForest extends ElementsLepidodendronMod.Mo
 		protected static final WorldGenTreeLogWater TELEMACHUS_LOG_WATER_GENERATOR = new WorldGenTreeLogWater(BlockTelemachusLog.block);
 		protected static final WorldGenFern FERN_GENERATOR = new WorldGenFern();
 		public static final PropertyEnum<BlockDoublePlant.EnumPlantType> VARIANT = PropertyEnum.<BlockDoublePlant.EnumPlantType>create("variant", BlockDoublePlant.EnumPlantType.class);
-		protected static final WorldGenTongchuanophyllum TONGCHUANOPHYLLUM_GENERATOR = new WorldGenTongchuanophyllum();
+		//protected static final WorldGenTongchuanophyllum TONGCHUANOPHYLLUM_GENERATOR = new WorldGenTongchuanophyllum();
 		protected static final WorldGenTodites TODITES_GENERATOR = new WorldGenTodites();
 		protected static final WorldGenMacrotaeniopteris MACROTAENIOPTERIS_GENERATOR = new WorldGenMacrotaeniopteris();
 		protected static final WorldGenEquisetites EQUISETITES_GENERATOR = new WorldGenEquisetites();
-		protected static final WorldGenNeuropteridium NEUROPTERIDIUM_GENERATOR = new WorldGenNeuropteridium();
-		protected static final WorldGenLycopia LYCOPIA_GENERATOR = new WorldGenLycopia();
-		protected static final WorldGenWachtleria WACHTLERIA_GENERATOR = new WorldGenWachtleria();
+		//protected static final WorldGenNeuropteridium NEUROPTERIDIUM_GENERATOR = new WorldGenNeuropteridium();
+		//protected static final WorldGenLycopia LYCOPIA_GENERATOR = new WorldGenLycopia();
+		//protected static final WorldGenWachtleria WACHTLERIA_GENERATOR = new WorldGenWachtleria();
 		protected static final WorldGenSwampHorsetail SWAMP_HORSETAIL_GENERATOR = new WorldGenSwampHorsetail();
-		protected static final WorldGenWielandiella WIELANDIELLA_GENERATOR = new WorldGenWielandiella();
+		//protected static final WorldGenWielandiella WIELANDIELLA_GENERATOR = new WorldGenWielandiella();
 
 		protected static final WorldGenMud MUD_GENERATOR = new WorldGenMud();
 		protected static final WorldGenWatersideMud WATERSIDE_MUD_GENERATOR = new WorldGenWatersideMud();
 		protected static final WorldGenCzekanowskia CZEKANOWSKIA_GENERATOR = new WorldGenCzekanowskia();
 		protected static final WorldGenSlimyAlgae SLIMY_GENERATOR = new WorldGenSlimyAlgae();
+		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 	    {
@@ -240,7 +240,7 @@ public class BiomeTriassicCreekFloodedForest extends ElementsLepidodendronMod.Mo
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					TONGCHUANOPHYLLUM_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+					PLANT_GENERATOR.generate(BlockTongchuanophyllum.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -249,7 +249,7 @@ public class BiomeTriassicCreekFloodedForest extends ElementsLepidodendronMod.Mo
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					LYCOPIA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
+					PLANT_GENERATOR.generate(BlockLycopia.block.getDefaultState(), worldIn, rand, pos.add(j, l, k), 0, 255, true);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -258,7 +258,7 @@ public class BiomeTriassicCreekFloodedForest extends ElementsLepidodendronMod.Mo
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					WACHTLERIA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
+					PLANT_GENERATOR.generate(BlockWachtleria.block.getDefaultState(), worldIn, rand, pos.add(j, l, k), 0, 255, true);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -276,7 +276,7 @@ public class BiomeTriassicCreekFloodedForest extends ElementsLepidodendronMod.Mo
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					WIELANDIELLA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+					PLANT_GENERATOR.generate(BlockWielandiella.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -285,7 +285,7 @@ public class BiomeTriassicCreekFloodedForest extends ElementsLepidodendronMod.Mo
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					NEUROPTERIDIUM_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
+					PLANT_GENERATOR.generate(BlockNeuropteridium.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 	        if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))

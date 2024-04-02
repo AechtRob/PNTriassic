@@ -2,10 +2,7 @@
 package net.pntriassic.world.biome.triassic;
 
 import net.lepidodendron.ElementsLepidodendronMod;
-import net.lepidodendron.block.BlockBrachyphyllumLeaves;
-import net.lepidodendron.block.BlockBrachyphyllumLog;
-import net.lepidodendron.block.BlockBrachyphyllumSapling;
-import net.lepidodendron.block.BlockLavaRock;
+import net.lepidodendron.block.*;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.lepidodendron.world.gen.*;
@@ -69,11 +66,12 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 		protected static final WorldGenSelaginella SELAGINELLA_GENERATOR = new WorldGenSelaginella();
 		protected static final WorldGenAncientMoss ANCIENT_MOSS_GENERATOR = new WorldGenAncientMoss();
 		protected static final WorldGenLeafblock LEAFBLOCK_GENERATOR = new WorldGenLeafblock();
-		protected static final WorldGenTongchuanophyllum TONGCHUANOPHYLLUM_GENERATOR = new WorldGenTongchuanophyllum();
+		//protected static final WorldGenTongchuanophyllum TONGCHUANOPHYLLUM_GENERATOR = new WorldGenTongchuanophyllum();
 		protected static final WorldGenTodites TODITES_GENERATOR = new WorldGenTodites();
-		protected static final WorldGenLycopia LYCOPIA_GENERATOR = new WorldGenLycopia();
+		//protected static final WorldGenLycopia LYCOPIA_GENERATOR = new WorldGenLycopia();
 		protected static final WorldGenPrehistoricGroundCoverLush GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverLush();
-		protected static final WorldGenVoltzia VOLTZIA_GENERATOR = new WorldGenVoltzia();
+		//protected static final WorldGenVoltzia VOLTZIA_GENERATOR = new WorldGenVoltzia();
+		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
 
 
 		@Override
@@ -152,7 +150,7 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					TONGCHUANOPHYLLUM_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+					PLANT_GENERATOR.generate(BlockTongchuanophyllum.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -170,7 +168,7 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					LYCOPIA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
+					PLANT_GENERATOR.generate(BlockLycopia.block.getDefaultState(), worldIn, rand, pos.add(j, l, k), 0, 255, true);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -179,7 +177,7 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					VOLTZIA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), 60, 80);
+					PLANT_GENERATOR.generate(BlockVoltzia.block.getDefaultState(), worldIn, rand, pos.add(j, l, k), 60, 80, false, false, true);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
