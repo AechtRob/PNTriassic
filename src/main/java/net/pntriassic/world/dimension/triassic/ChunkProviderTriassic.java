@@ -426,7 +426,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         else if (j1 <= i + 1 && biome != BiomeTriassicVolcanicIslands.biome) {
                             iblockstate = biome.topBlock;
                             //iblockstate1 = biome.fillerBlock;
-                            if (biome == BiomeTriassicOceanReef.biome || biome == BiomeTriassicBlackBeach.biome) {
+                            if (biome == BiomeTriassicOceanReef.biome) {
                                 if (j1 > 35) {
                                     int lv = i - j1;
                                     if (worldIn.rand.nextInt(lv + 12) <= 4) {

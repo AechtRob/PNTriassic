@@ -43,7 +43,7 @@ public class BiomeTriassicOceanReef extends ElementsLepidodendronMod.ModElement 
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Reefs").setRainfall(0.5F).setBaseHeight(-1.3F).setHeightVariation(0.22F));
+			super(new BiomeProperties("Triassic Reefs").setRainfall(0.5F).setBaseHeight(-0.42F).setHeightVariation(0.32F));
 			setRegistryName("lepidodendron:triassic_ocean_reef");
 
 			topBlock = Blocks.GRAVEL.getDefaultState();
