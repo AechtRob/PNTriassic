@@ -9,15 +9,17 @@ public class GenLayerTriassicIslandSeparate extends GenLayer
 {
 
     public Biome TRIASSIC_OCEAN = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean"));
-    public  int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
-    public  Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
-    public  int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
-    public  Biome TRIASSIC_CLAM_BEDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
-    public  int TRIASSIC_CLAM_BEDS_ID =  Biome.getIdForBiome(TRIASSIC_CLAM_BEDS);
-    public  Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
-    public  int TRIASSIC_VOLCANIC_ISLANDS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
-    public  Biome TRIASSIC_BLACK_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
-    public  int TRIASSIC_BLACK_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BLACK_BEACH);
+    public int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
+    public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
+    public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
+    public Biome TRIASSIC_CLAM_BEDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
+    public int TRIASSIC_CLAM_BEDS_ID =  Biome.getIdForBiome(TRIASSIC_CLAM_BEDS);
+    public Biome TRIASSIC_OCEAN_REEF = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_reef"));
+    public int TRIASSIC_OCEAN_REEF_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_REEF);
+    public Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
+    public int TRIASSIC_VOLCANIC_ISLANDS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
+    public Biome TRIASSIC_BLACK_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
+    public int TRIASSIC_BLACK_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BLACK_BEACH);
 
     public GenLayerTriassicIslandSeparate(long seed, GenLayer genLayer)
     {
@@ -40,20 +42,20 @@ public class GenLayerTriassicIslandSeparate extends GenLayer
 
                 //if (!hasNoBeach(k))
                 //{
-                    if (isIsland(k))
+                    if (k == TRIASSIC_OCEAN_REEF_ID)
                     {
                         int l1 = aint[j + 1 + (i + 1 - 1) * (areaWidth + 2)];
                         int k2 = aint[j + 1 + 1 + (i + 1) * (areaWidth + 2)];
                         int j3 = aint[j + 1 - 1 + (i + 1) * (areaWidth + 2)];
                         int i4 = aint[j + 1 + (i + 1 + 1) * (areaWidth + 2)];
 
-                        if ((!isOcean(l1) && !isIsland(l1))
-                                || (!isOcean(k2) && !isIsland(k2))
-                                || (!isOcean(j3) && !isIsland(j3))
-                                || (!isOcean(i4) && !isIsland(i4))
+                        if ((!isJoinable(l1))
+                                || (!isJoinable(k2))
+                                || (!isJoinable(j3))
+                                || (!isJoinable(i4))
                         )
                         {
-                            aint1[j + i * areaWidth] = TRIASSIC_OCEAN_ID;
+                            aint1[j + i * areaWidth] = TRIASSIC_OCEAN_SHORE_ID;
                         }
                         else
                         {
@@ -70,17 +72,13 @@ public class GenLayerTriassicIslandSeparate extends GenLayer
         return aint1;
     }
 
-    private boolean isOcean(int biomeID) {
-        if (biomeID == TRIASSIC_OCEAN_ID || biomeID == TRIASSIC_OCEAN_SHORE_ID || biomeID == TRIASSIC_CLAM_BEDS_ID) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isIsland(int biomeID) {
-        if (biomeID == TRIASSIC_VOLCANIC_ISLANDS_ID
-            || biomeID == TRIASSIC_BLACK_BEACH_ID
-            ) {
+    private boolean isJoinable(int biomeID) {
+        if (biomeID == TRIASSIC_OCEAN_ID
+                || biomeID == TRIASSIC_OCEAN_SHORE_ID
+                || biomeID == TRIASSIC_CLAM_BEDS_ID
+                || biomeID == TRIASSIC_OCEAN_REEF_ID
+                || biomeID == TRIASSIC_VOLCANIC_ISLANDS_ID
+                || biomeID == TRIASSIC_BLACK_BEACH_ID) {
             return true;
         }
         return false;
