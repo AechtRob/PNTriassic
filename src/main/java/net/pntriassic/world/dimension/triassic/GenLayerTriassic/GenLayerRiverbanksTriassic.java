@@ -17,8 +17,10 @@ public class GenLayerRiverbanksTriassic extends GenLayer
     public int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
-    public  Biome TRIASSIC_CLAM_BEDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
-    public  int TRIASSIC_CLAM_BEDS_ID =  Biome.getIdForBiome(TRIASSIC_CLAM_BEDS);
+    public Biome TRIASSIC_CLAM_BEDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
+    public int TRIASSIC_CLAM_BEDS_ID =  Biome.getIdForBiome(TRIASSIC_CLAM_BEDS);
+    public Biome TRIASSIC_REEF = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_reef"));
+    public int TRIASSIC_REEF_ID =  Biome.getIdForBiome(TRIASSIC_REEF);
     public Biome TRIASSIC_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach"));
     public int TRIASSIC_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BEACH);
 
@@ -77,7 +79,11 @@ public class GenLayerRiverbanksTriassic extends GenLayer
     }
 
     private boolean isOcean(int biomeID) {
-        if (biomeID == TRIASSIC_OCEAN_ID || biomeID == TRIASSIC_OCEAN_SHORE_ID || biomeID == TRIASSIC_BEACH_ID || biomeID == TRIASSIC_CLAM_BEDS_ID) {
+        if (biomeID == TRIASSIC_OCEAN_ID
+                || biomeID == TRIASSIC_OCEAN_SHORE_ID
+                || biomeID == TRIASSIC_BEACH_ID
+                || biomeID == TRIASSIC_CLAM_BEDS_ID
+                || biomeID == TRIASSIC_REEF_ID) {
             return true;
         }
         return false;

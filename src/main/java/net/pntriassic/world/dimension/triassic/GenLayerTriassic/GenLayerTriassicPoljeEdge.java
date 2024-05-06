@@ -8,25 +8,27 @@ import net.minecraft.world.gen.layer.IntCache;
 public class GenLayerTriassicPoljeEdge extends GenLayer
 {
 
-    public  Biome TRIASSIC_RIVER = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_river"));
-    public  int TRIASSIC_RIVER_ID =  Biome.getIdForBiome(TRIASSIC_RIVER);
+    public Biome TRIASSIC_RIVER = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_river"));
+    public int TRIASSIC_RIVER_ID =  Biome.getIdForBiome(TRIASSIC_RIVER);
 
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
     public Biome TRIASSIC_OCEAN = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean"));
-    public  int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
-    public  Biome TRIASSIC_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach"));
-    public  int TRIASSIC_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BEACH);
-    public  Biome TRIASSIC_BEACH_BLACK = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
-    public  int TRIASSIC_BEACH_BLACK_ID =  Biome.getIdForBiome(TRIASSIC_BEACH_BLACK);
+    public int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
+    public Biome TRIASSIC_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach"));
+    public int TRIASSIC_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BEACH);
+    public Biome TRIASSIC_BEACH_BLACK = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
+    public int TRIASSIC_BEACH_BLACK_ID =  Biome.getIdForBiome(TRIASSIC_BEACH_BLACK);
 
     public Biome TRIASSIC_POLJE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje"));
     public int TRIASSIC_POLJE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE);
     public Biome TRIASSIC_POLJE_EDGE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje_edge"));
     public int TRIASSIC_POLJE_EDGE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE_EDGE);
 
-    public Biome JURASSIC_OCEAN_CLAM = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
-    public int JURASSIC_OCEAN_CLAM_ID =  Biome.getIdForBiome(JURASSIC_OCEAN_CLAM);
+    public Biome TRIASSIC_OCEAN_CLAM = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
+    public int TRIASSIC_OCEAN_CLAM_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_CLAM);
+    public Biome TRIASSIC_REEF = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_reef"));
+    public int TRIASSIC_REEF_ID =  Biome.getIdForBiome(TRIASSIC_REEF);
 
     public GenLayerTriassicPoljeEdge(long seed, GenLayer genLayer)
     {
@@ -76,7 +78,8 @@ public class GenLayerTriassicPoljeEdge extends GenLayer
         if (biomeID == TRIASSIC_OCEAN_ID || biomeID == TRIASSIC_OCEAN_SHORE_ID
                 || biomeID == TRIASSIC_BEACH_ID || biomeID == TRIASSIC_BEACH_BLACK_ID
                 || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID
-                || biomeID == TRIASSIC_RIVER_ID || biomeID == JURASSIC_OCEAN_CLAM_ID) {
+                || biomeID == TRIASSIC_RIVER_ID || biomeID == TRIASSIC_OCEAN_CLAM_ID
+                || biomeID == TRIASSIC_REEF_ID) {
             return true;
         }
         return false;

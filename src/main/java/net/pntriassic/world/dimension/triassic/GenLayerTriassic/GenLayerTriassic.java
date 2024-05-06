@@ -23,26 +23,28 @@ public class GenLayerTriassic {
         biomes = new GenLayerZoom(1000L, biomes);
         biomes = new GenLayerDiversifyTriassic2(1001L, biomes);
         biomes = new GenLayerSmooth(501L, biomes); //new
-        biomes = new GenLayerTriassicIslandsTrim(1100L, biomes);
+        //biomes = new GenLayerTriassicIslandsTrim(1100L, biomes);
         biomes = new GenLayerZoom(1001L, biomes);
         biomes = new GenLayerDiversifyTriassic2(1001L, biomes);
         biomes = new GenLayerSmooth(502L, biomes); //new
-        biomes = new GenLayerTriassicIslandsTrim(1110L, biomes);
+        //biomes = new GenLayerTriassicIslandsTrim(1110L, biomes);
         biomes = new GenLayerTriassicDeepOcean(1100L, biomes);
         biomes = new GenLayerTriassicShallowOcean(1300L, biomes);
         biomes = new GenLayerZoom(1003L, biomes);
+        biomes = new GenLayerTriassicVolcanicIslands(30L, biomes);
         biomes = new GenLayerSmooth(700L, biomes);
         biomes = new GenLayerDiversifyTriassic4(1975L, biomes);
         biomes = new GenLayerSmooth(701L, biomes);
-        biomes = new GenLayerTriassicIslandsTrim(1115L, biomes);
+        //biomes = new GenLayerTriassicIslandsTrim(1115L, biomes);
         biomes = new GenLayerDiversifyTriassicShallowOcean(1000L, biomes);
         biomes = new GenLayerDiversifyTriassic3(1975L, biomes);
-
+        biomes = new GenLayerTriassicVolcanicIslands(31L, biomes);
         biomes = new GenLayerDiversifyTriassicPleuromeia(1975L, biomes);
 
         biomes = new GenLayerZoom(1004L, biomes);
-        biomes = new GenLayerTriassicIslandsTrim(1116L, biomes);
-        biomes = new GenLayerTriassicIslandSeparate(1002L, biomes);
+        //biomes = new GenLayerTriassicIslandsTrim(1116L, biomes);
+        //biomes = new GenLayerTriassicIslandSeparate(1002L, biomes);
+        biomes = new GenLayerTriassicVolcanicIslands(32L, biomes);
         biomes = new GenLayerDiversifyTriassicShallowOcean(1001L, biomes);
         biomes = new GenLayerSmooth(703L, biomes);
 
@@ -51,8 +53,8 @@ public class GenLayerTriassic {
 
         biomes = new GenLayerFuzzyZoom(1000L, biomes);
         biomes = new GenLayerTriassicBeach(1050L, biomes);
-        biomes = new GenLayerTriassicIslandsTrim(1117L, biomes);
-        biomes = new GenLayerTriassicIslandSeparate(1003L, biomes);
+        //biomes = new GenLayerTriassicIslandsTrim(1117L, biomes);
+        //biomes = new GenLayerTriassicIslandSeparate(1003L, biomes);
         biomes = new GenLayerSmooth(705L, biomes);
 
         biomes = new GenLayerTriassicTryToJoinRiverToSea(1000L, biomes);
@@ -103,7 +105,7 @@ public class GenLayerTriassic {
 
         biomes = new GenLayerFuzzyZoom(1002L, biomes);
         biomes = new GenLayerTriassicBlackBeach(1025L, biomes);
-        biomes = new GenLayerTriassicIslandSeparate(1004L, biomes);
+        //biomes = new GenLayerTriassicIslandSeparate(1004L, biomes);
         biomes = new GenLayerTriassicRiverBorder(326L, biomes);
 
         biomes = new GenLayerSmooth(719L, biomes); //ADDED THIS
@@ -112,7 +114,7 @@ public class GenLayerTriassic {
         biomes = new GenLayerRiverbankWidenTriassic(1097L, biomes);
         biomes = new GenLayerDiversifyRiverbankTriassic(667, biomes);
         biomes = new GenLayerRiverbankRemoveCanyonsTriassic(1001L, biomes);
-        biomes = new GenLayerTriassicIslandSeparate(1005L, biomes);
+        //biomes = new GenLayerTriassicIslandSeparate(1005L, biomes);
         biomes = new GenLayerZoom(1006L, biomes);
 
         biomes = new GenLayerTriassicTryToJoinRiverToSea(1000L, biomes);

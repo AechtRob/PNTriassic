@@ -2,16 +2,20 @@
 package net.pntriassic.world.biome.triassic;
 
 import net.lepidodendron.ElementsLepidodendronMod;
+import net.lepidodendron.block.BlockAlgalReef;
+import net.lepidodendron.block.BlockCoral;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.lepidodendron.world.gen.WorldGenBlackSand;
 import net.lepidodendron.world.gen.WorldGenBrachyphyllumTree;
 import net.lepidodendron.world.gen.WorldGenNullTree;
+import net.lepidodendron.world.gen.WorldGenReef;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -90,6 +94,7 @@ public class BiomeTriassicBlackBeach extends ElementsLepidodendronMod.ModElement
 
 		protected static final WorldGenBlackSand DIRT_GENERATOR = new WorldGenBlackSand();
 
+		protected static final WorldGenReef REEF_GENERATOR = new WorldGenReef();
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 	    {
@@ -107,6 +112,54 @@ public class BiomeTriassicBlackBeach extends ElementsLepidodendronMod.ModElement
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					DIRT_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+				}
+
+			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.ROCK))
+				for (int i = 0; i < 4; ++i)
+				{
+					int radius = 4;
+					int j;
+					int k;
+					if (radius < 10) {
+						j = 16 + (int)Math.floor(rand.nextInt(16 - radius - 6)/2) - (int)Math.floor(rand.nextInt(16 - radius - 6)/2);
+						k = 16 + (int)Math.floor(rand.nextInt(16 - radius - 6)/2) - (int)Math.floor(rand.nextInt(16 - radius - 6)/2);
+					}
+					else {
+						radius = 10;
+						j = 16;
+						k = 16;
+					}
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					BlockPos pos1 = pos.add(j, l, k);
+					if (
+							(pos1.getY() < worldIn.getSeaLevel())
+					) {
+						REEF_GENERATOR.generate(worldIn, rand, pos1, radius, BlockAlgalReef.block.getDefaultState());
+					}
+				}
+
+			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.ROCK))
+				for (int i = 0; i < 8; ++i)
+				{
+					int radius = 6;
+					int j;
+					int k;
+					if (radius < 10) {
+						j = 16 + (int)Math.floor(rand.nextInt(16 - radius - 6)/2) - (int)Math.floor(rand.nextInt(16 - radius - 6)/2);
+						k = 16 + (int)Math.floor(rand.nextInt(16 - radius - 6)/2) - (int)Math.floor(rand.nextInt(16 - radius - 6)/2);
+					}
+					else {
+						radius = 10;
+						j = 16;
+						k = 16;
+					}
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					BlockPos pos1 = pos.add(j, l, k);
+					if (
+							(pos1.getY() < worldIn.getSeaLevel())
+					) {
+						REEF_GENERATOR.generate(worldIn, rand, pos1, radius, BlockCoral.block.getDefaultState());
+					}
 				}
 
 			super.decorate(worldIn, rand, pos);

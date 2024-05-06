@@ -426,7 +426,33 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         else if (j1 <= i + 1 && biome != BiomeTriassicVolcanicIslands.biome) {
                             iblockstate = biome.topBlock;
                             //iblockstate1 = biome.fillerBlock;
-                            if (biome == BiomeTriassicFloodedForest.biome) {
+                            if (biome == BiomeTriassicOceanReef.biome || biome == BiomeTriassicBlackBeach.biome) {
+                                if (j1 > 35) {
+                                    int lv = i - j1;
+                                    if (worldIn.rand.nextInt(lv + 12) <= 4) {
+                                        iblockstate1 = BlockCoral.block.getDefaultState();
+                                    }
+                                    if (worldIn.rand.nextInt(lv + 12) <= 4) {
+                                        iblockstate1 = BlockSpongeReef.block.getDefaultState();
+                                    }
+                                    if (worldIn.rand.nextInt(lv + 12) <= 2) {
+                                        iblockstate1 = BlockAlgalReef.block.getDefaultState();
+                                    }
+                                    if (worldIn.rand.nextInt(lv + 16) == 0) {
+                                        iblockstate1 = BlockBryozoanReef.block.getDefaultState();
+                                    }
+                                }
+                                else if (Math.random() > 0.85) {
+                                    if (Math.random() < 0.3) {
+                                        iblockstate1 = BlockSandBlack.block.getDefaultState();
+                                    } else {
+                                        iblockstate1 = Blocks.GRAVEL.getDefaultState();
+                                    }
+                                } else {
+                                    iblockstate1 = BlockSandBlackWavy.block.getDefaultState();
+                                }
+                            }
+                            else if (biome == BiomeTriassicFloodedForest.biome) {
                                 if (Math.random() > 0.85) {
                                     if (Math.random() > 0.3) {
                                         iblockstate1 = BlockCarboniferousMud.block.getDefaultState();
@@ -723,6 +749,41 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                             if (Math.random() > 0.6 && j1 >= i - 2) {
                                 chunkPrimerIn.setBlockState(i1, j1, l, BlockCoarseSandyDirtPangaean.block.getDefaultState());
                             }
+                            else if (biome == BiomeTriassicOceanReef.biome || biome == BiomeTriassicBlackBeach.biome) {
+                                if (Math.random() > 0.75) {
+                                    if (Math.random() < 0.3) {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockSandBlack.block.getDefaultState());
+                                    } else {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, Blocks.GRAVEL.getDefaultState());
+                                    }
+                                }
+                                else if (Math.random() > 0.333) {
+                                    if (Math.random() > 0.5) {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockSandWavy.block.getDefaultState());
+                                    }
+                                    else {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, Blocks.SAND.getDefaultState());
+                                    }
+                                }
+                                else {
+                                    chunkPrimerIn.setBlockState(i1, j1, l, BlockSandBlackWavy.block.getDefaultState());
+                                }
+                                if (j1 > 35 && worldIn.rand.nextInt(2) == 0) {
+                                    int lv = i - j1;
+                                    if (worldIn.rand.nextInt(lv + 22) <= 4) {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockCoral.block.getDefaultState());
+                                    }
+                                    if (worldIn.rand.nextInt(lv + 22) <= 4) {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockSpongeReef.block.getDefaultState());
+                                    }
+                                    if (worldIn.rand.nextInt(lv + 22) <= 2) {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockAlgalReef.block.getDefaultState());
+                                    }
+                                    if (worldIn.rand.nextInt(lv + 32) == 0) {
+                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockBryozoanReef.block.getDefaultState());
+                                    }
+                                }
+                            }
                             else {
                                 if (Math.random() > 0.95 || (j1 < i - 10 && Math.random() > 0.3)) {
                                     chunkPrimerIn.setBlockState(i1, j1, l, Blocks.SAND.getStateFromMeta(1));
@@ -750,6 +811,10 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         else if (j == 0 && (iblockstate1.getBlock() == Blocks.SAND.getStateFromMeta(1).getBlock() || iblockstate1.getBlock() == BlockSandRedWavy.block) && k > 1) {
                             j = rand.nextInt(4) + Math.max(0, j1 - 63);
                             iblockstate1 = Blocks.RED_SANDSTONE.getDefaultState();
+                        }
+                        else if (j == 0 && (iblockstate1.getBlock() == BlockSandBlack.block || iblockstate1.getBlock() == BlockSandBlackWavy.block) && k > 1) {
+                            j = rand.nextInt(4) + Math.max(0, j1 - 63);
+                            iblockstate1 = BlockSandstoneBlack.block.getDefaultState();
                         }
                     }
                 }

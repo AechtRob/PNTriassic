@@ -7,6 +7,8 @@ import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.lepidodendron.world.gen.*;
 import net.minecraft.block.BlockBush;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -21,11 +23,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 @ElementsLepidodendronMod.ModElement.Tag
-public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModElement {
-	@GameRegistry.ObjectHolder("lepidodendron:triassic_volcanic_islands")
+public class BiomeTriassicOceanReef extends ElementsLepidodendronMod.ModElement {
+	@GameRegistry.ObjectHolder("lepidodendron:triassic_ocean_reef")
 	public static final BiomeGenCustom biome = null;
-	public BiomeTriassicVolcanicIslands(ElementsLepidodendronMod instance) {
-		super(instance, 1589);
+	public BiomeTriassicOceanReef(ElementsLepidodendronMod instance) {
+		super(instance, 1591);
 	}
 
 	@Override
@@ -36,24 +38,26 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 	@Override
 	public void init(FMLInitializationEvent event) {
 		BiomeDictionary.addTypes(biome, BiomeDictionary.Type.OCEAN);
-		BiomeDictionary.addTypes(biome, BiomeDictionary.Type.LUSH);
+		BiomeDictionary.addTypes(biome, BiomeDictionary.Type.WATER);
 	}
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Volcanic Islands").setTemperature(2.8F).setRainfall(1.8F).setBaseHeight(-0.05F).setHeightVariation(0.042F).setWaterColor(13038245));
-			setRegistryName("lepidodendron:triassic_volcanic_islands");
-			topBlock = BlockLavaRock.block.getDefaultState();
-			fillerBlock = BlockLavaRock.block.getDefaultState();
-			decorator.treesPerChunk = 1;
+			super(new BiomeProperties("Triassic Reefs").setRainfall(0.5F).setBaseHeight(-0.8F).setHeightVariation(0.42F));
+			setRegistryName("lepidodendron:triassic_ocean_reef");
+
+			topBlock = Blocks.GRAVEL.getDefaultState();
+			fillerBlock = BlockSandBlack.block.getDefaultState();
+			decorator.treesPerChunk = -999;
 			decorator.flowersPerChunk = 0;
 			decorator.grassPerChunk = 0;
-			decorator.mushroomsPerChunk = 0;
+			decorator.mushroomsPerChunk = 20;
 			decorator.bigMushroomsPerChunk = 0;
 			decorator.reedsPerChunk = 0;
 			decorator.cactiPerChunk = 0;
 			decorator.sandPatchesPerChunk = 0;
 			decorator.gravelPatchesPerChunk = 0;
+			decorator.clayPerChunk = 0;
 			this.spawnableMonsterList.clear();
 			this.spawnableCreatureList.clear();
 			this.spawnableWaterCreatureList.clear();
@@ -212,9 +216,9 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 				}
 
 			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.ROCK))
-				for (int i = 0; i < 8; ++i)
+				for (int i = 0; i < 14; ++i)
 				{
-					int radius = 6;
+					int radius = 8;
 					int j;
 					int k;
 					if (radius < 10) {
@@ -235,15 +239,13 @@ public class BiomeTriassicVolcanicIslands extends ElementsLepidodendronMod.ModEl
 					}
 				}
 
-
 			super.decorate(worldIn, rand, pos);
 		}
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Island;
+			return EnumBiomeTypeTriassic.Ocean;
 		}
 
 	}
-
 }

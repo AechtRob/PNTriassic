@@ -43,11 +43,13 @@ public class GenLayerTriassicRiverMix extends GenLayer
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
     public Biome TRIASSIC_OCEAN = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean"));
-    public  int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
+    public int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
     public Biome TRIASSIC_CLAM = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
-    public  int TRIASSIC_CLAM_ID =  Biome.getIdForBiome(TRIASSIC_CLAM);
-    public  Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
-    public  int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
+    public int TRIASSIC_CLAM_ID =  Biome.getIdForBiome(TRIASSIC_CLAM);
+    public Biome TRIASSIC_REEF = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_reef"));
+    public int TRIASSIC_REEF_ID =  Biome.getIdForBiome(TRIASSIC_REEF);
+    public Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
+    public int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
     public Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
     public int TRIASSIC_VOLCANIC_ISLANDS_ID = Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
     public Biome TRIASSIC_VOLCANIC_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
@@ -85,6 +87,7 @@ public class GenLayerTriassicRiverMix extends GenLayer
                 if (aint[i] == TRIASSIC_OCEAN_SHORE_ID
                         || aint[i] == TRIASSIC_OCEAN_ID
                         || aint[i] == TRIASSIC_CLAM_ID
+                        || aint[i] == TRIASSIC_REEF_ID
                         || aint[i] == TRIASSIC_MOUNTAINS_ID
                         || aint[i] == TRIASSIC_VOLCANIC_ISLANDS_ID
                         || aint[i] == TRIASSIC_VOLCANIC_BEACH_ID
