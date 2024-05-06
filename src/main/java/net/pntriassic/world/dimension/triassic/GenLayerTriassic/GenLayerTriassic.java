@@ -63,6 +63,7 @@ public class GenLayerTriassic {
         biomes = new GenLayerTriassicTryToJoinRiverToSea(1008L, biomes);
 
         biomes = new GenLayerInitRiverDeltaTriassic(1085L, biomes);
+
         biomes = new GenLayerFuzzyZoom(1001L, biomes);
         biomes = new GenLayerTriassicIslandSeparate(1004L, biomes);
 
@@ -98,9 +99,10 @@ public class GenLayerTriassic {
         biomes = new GenLayerDiversifyRiverbankTriassic(666, biomes);
 
         biomes = new GenLayerTriassicPoljeEdge(666, biomes);
+        biomes = new GenLayerTriassicBlackBeach(1025L, biomes);
 
         biomes = new GenLayerFuzzyZoom(1002L, biomes);
-        biomes = new GenLayerTriassicBlackBeach(1025L, biomes);
+        //biomes = new GenLayerTriassicBlackBeach(1025L, biomes);
         biomes = new GenLayerTriassicRiverBorder(326L, biomes);
 
         biomes = new GenLayerSmooth(719L, biomes); //ADDED THIS
