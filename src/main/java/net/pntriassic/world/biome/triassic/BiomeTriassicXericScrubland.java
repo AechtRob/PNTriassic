@@ -62,7 +62,7 @@ public class BiomeTriassicXericScrubland extends ElementsLepidodendronMod.ModEle
 		}
 
 		protected static final WorldGenAraucarioxylonTree ARAUCARIOXYLON_TREE = new WorldGenAraucarioxylonTree(false);
-		protected static final WorldGenPodocarpTree PODOCARP_TREE = new WorldGenPodocarpTree(false);
+		protected static final WorldGenRissikiaTree PODOCARP_TREE = new WorldGenRissikiaTree(false);
 		protected static final WorldGenPodozamitesTree PODOZAMITES_TREE = new WorldGenPodozamitesTree(false);
 
 		//protected static final WorldGenAridHorsetail ARID_HORSETAIL_GENERATOR = new WorldGenAridHorsetail();
@@ -360,7 +360,7 @@ public class BiomeTriassicXericScrubland extends ElementsLepidodendronMod.ModEle
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					LEAFBLOCK_GENERATOR.generate((BlockBush) BlockPodocarpSapling.block, BlockPodocarpLeaves.block.getDefaultState(), BlockPodocarpLog.block.getDefaultState().withProperty(BlockPodocarpLog.BlockCustom.FACING, EnumFacing.NORTH), worldIn, rand, pos.add(j, l, k), 0, 75);
+					LEAFBLOCK_GENERATOR.generate((BlockBush) BlockPodocarpSapling.block, BlockRissikiaLeaves.block.getDefaultState(), BlockPodocarpLog.block.getDefaultState().withProperty(BlockPodocarpLog.BlockCustom.FACING, EnumFacing.NORTH), worldIn, rand, pos.add(j, l, k), 0, 75);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
