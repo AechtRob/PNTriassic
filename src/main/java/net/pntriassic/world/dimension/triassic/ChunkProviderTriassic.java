@@ -400,6 +400,9 @@ public class ChunkProviderTriassic implements IChunkGenerator {
         int i = SEALEVEL;
         IBlockState iblockstate = biome.topBlock;
         IBlockState iblockstate1 = biome.fillerBlock;
+        if (biome == BiomeTriassicOceanReef.biome) {
+            iblockstate = Blocks.GRAVEL.getDefaultState(); //Weird bug with Exotic birds means this goes here
+        }
         int j = -1;
         int k = (int) (noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
         int l = x & 15;
