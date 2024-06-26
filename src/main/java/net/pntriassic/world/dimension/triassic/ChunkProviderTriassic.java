@@ -757,7 +757,12 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                     if (Math.random() < 0.3) {
                                         chunkPrimerIn.setBlockState(i1, j1, l, BlockSandBlack.block.getDefaultState());
                                     } else {
-                                        chunkPrimerIn.setBlockState(i1, j1, l, Blocks.GRAVEL.getDefaultState());
+                                        if (Math.random() <= 0.15) {
+                                            chunkPrimerIn.setBlockState(i1, j1, l, BlockCoralBleached.block.getDefaultState());
+                                        }
+                                        else {
+                                            chunkPrimerIn.setBlockState(i1, j1, l, Blocks.GRAVEL.getDefaultState());
+                                        }
                                     }
                                 }
                                 else if (Math.random() > 0.333) {
