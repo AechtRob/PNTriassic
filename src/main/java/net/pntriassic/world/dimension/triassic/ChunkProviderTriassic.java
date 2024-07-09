@@ -537,7 +537,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
 
                         //Break up the top layer of Mossy biomes
                         if (iblockstate == BlockPrehistoricGroundMossy.block.getDefaultState()
-                                && (biome == BiomeTriassicGondwananPlain.biome || biome == BiomeTriassicGondwananPlainFlat.biome)
+                                && (biome == BiomeTriassicGondwananPlain.biome || biome == BiomeTriassicGondwananPlainFlat.biome || biome == BiomeTriassicCreekGondwananPlain.biome)
                                 && rand.nextInt(6) == 0) {
                             iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
                         }

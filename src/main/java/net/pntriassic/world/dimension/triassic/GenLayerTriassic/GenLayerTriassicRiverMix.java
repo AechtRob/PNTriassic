@@ -38,6 +38,13 @@ public class GenLayerTriassicRiverMix extends GenLayer
     public int TRIASSIC_CREEK_XERIC_ID = Biome.getIdForBiome(TRIASSIC_CREEK_XERIC);
     public Biome TRIASSIC_CREEK_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_woodland"));
     public int TRIASSIC_CREEK_WOODLAND_ID = Biome.getIdForBiome(TRIASSIC_CREEK_WOODLAND);
+    public Biome TRIASSIC_CREEK_GONDWANA_MOSSY = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_gondwanan_plain"));
+    public int TRIASSIC_CREEK_GONDWANA_MOSSY_ID = Biome.getIdForBiome(TRIASSIC_CREEK_GONDWANA_MOSSY);
+
+    public Biome TRIASSIC_MOSSY = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plain"));
+    public int TRIASSIC_MOSSY_ID = Biome.getIdForBiome(TRIASSIC_MOSSY);
+    public Biome TRIASSIC_MOSSY_FLAT = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plain_flat"));
+    public int TRIASSIC_MOSSY_FLAT_ID = Biome.getIdForBiome(TRIASSIC_MOSSY_FLAT);
 
     //Biomes to exclude for rivers:
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
@@ -109,7 +116,12 @@ public class GenLayerTriassicRiverMix extends GenLayer
                             aint2[i] = TRIASSIC_CREEK_DESERT_ID;
                         }
                         else if (biomeTriassic.getBiomeType() == EnumBiomeTypeTriassic.Cool) {
-                            aint2[i] = TRIASSIC_CREEK_GONDWANA_ID;
+                            if (aint[i] == TRIASSIC_MOSSY_ID || aint[i] == TRIASSIC_MOSSY_FLAT_ID) {
+                                aint2[i] = TRIASSIC_CREEK_GONDWANA_MOSSY_ID;
+                            }
+                            else {
+                                aint2[i] = TRIASSIC_CREEK_GONDWANA_ID;
+                            }
                         }
                         else if (biomeTriassic.getBiomeType() == EnumBiomeTypeTriassic.Warm) {
                             aint2[i] = TRIASSIC_CREEK_LAKELAND_ID;
