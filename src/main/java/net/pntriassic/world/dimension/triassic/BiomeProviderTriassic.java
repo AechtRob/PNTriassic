@@ -1,6 +1,8 @@
 package net.pntriassic.world.dimension.triassic;
 
 import com.google.common.collect.Lists;
+import net.lepidodendron.world.biome.devonian.BiomeDevonian;
+import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.ReportedException;
@@ -177,6 +179,9 @@ public class BiomeProviderTriassic extends BiomeProvider {
                 Biome biome = Biome.getBiome(aint[k1]);
 
                 if (!allowed.contains(biome)) {
+                    return false;
+                }
+                if (!(biome instanceof BiomeTriassic)) {
                     return false;
                 }
             }
