@@ -460,7 +460,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                     if (Math.random() > 0.3) {
                                         iblockstate1 = BlockCarboniferousMud.block.getDefaultState();
                                     } else {
-                                        iblockstate1 = BlockRedClay.block.getDefaultState();
+                                        iblockstate1 = BlockClayRed.block.getDefaultState();
                                     }
                                 } else {
                                     if (Math.random() > 0.3) {
