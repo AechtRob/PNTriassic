@@ -68,6 +68,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 		protected static final WorldGenGinkgoitesTree GINKGO_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA = new WorldGenSphenobaieraTree(false);
 		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
+		protected static final WorldGenAraucarioxylonTree ARAUCARIOXYLON_TREE = new WorldGenAraucarioxylonTree(false);
 
 		protected static final WorldGenTreeLog DEAD_LOG_GENERATOR = new WorldGenTreeLog(BlockDeadLog.block);
 		
@@ -155,7 +156,12 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					return GINKGO_TREE;
 				}
 				else {
-					return SPHENOBAIERA;
+					if (Math.random() > 0.5) {
+						return SPHENOBAIERA;
+					}
+					else {
+						return ARAUCARIOXYLON_TREE;
+					}
 				}
 			}
 		}
