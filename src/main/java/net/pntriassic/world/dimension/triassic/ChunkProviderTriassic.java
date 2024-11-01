@@ -366,6 +366,13 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         d3 = d4;
                     }
 
+                    if (biome == BiomeTriassicGondwananForestDryBayou.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
                     double d5 = MathHelper.clampedLerp(d2, d3, d4) - d1;
                     if (l1 > 29) {
                         double d6 = (double) ((float) (l1 - 29) / 3.0F);
@@ -505,7 +512,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                             int minHeight = 80;
                             if (j1 >= minHeight) {
                                 int j2 = Math.max(0, 120 - j1);
-                                double stoneFactor = 4 * (double) j2 / (120D - (double) minHeight);
+                                double stoneFactor = 3 * (double) j2 / (120D - (double) minHeight);
                                 if (Math.random() >= stoneFactor) {
                                     if (Math.random() > 0.22) {
                                         iblockstate = Blocks.STONE.getDefaultState();
@@ -526,6 +533,34 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                         iblockstate1 = Blocks.DIRT.getStateFromMeta(1);
                                     }
                                 }
+                                //More cobble:
+                                stoneFactor = 2 * (double) j2 / (120D - (double) minHeight);
+                                if (Math.random() >= stoneFactor) {
+                                    if (Math.random() > 0.33) {
+                                        iblockstate = Blocks.COBBLESTONE.getStateFromMeta(0);
+                                        if (rand.nextInt(8) != 0) {
+                                            iblockstate = Blocks.MOSSY_COBBLESTONE.getDefaultState();
+                                        }
+                                    }
+                                    if (Math.random() > 0.6) {
+                                        if (rand.nextInt(8) != 0) {
+                                            iblockstate = Blocks.DIRT.getStateFromMeta(1);
+                                        }
+                                    }
+                                }
+                                if (Math.random() >= stoneFactor) {
+                                    if (Math.random() > 0.33) {
+                                        iblockstate1 = Blocks.COBBLESTONE.getStateFromMeta(0);
+                                        if (rand.nextInt(8) != 0) {
+                                            iblockstate1 = Blocks.MOSSY_COBBLESTONE.getDefaultState();
+                                        }
+                                    }
+                                    if (Math.random() > 0.6) {
+                                        if (rand.nextInt(8) != 0) {
+                                            iblockstate1 = Blocks.DIRT.getStateFromMeta(1);
+                                        }
+                                    }
+                                }
                             }
                         }
 
@@ -541,11 +576,25 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                 && rand.nextInt(6) == 0) {
                             iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
                         }
+                        //More dirt in the Bayou
+                        if (biome == BiomeTriassicGondwananForestDryBayou.biome
+                                && rand.nextInt(2) == 0) {
+                            iblockstate = Blocks.DIRT.getStateFromMeta(1);
+                        }
+                        if (biome == BiomeTriassicGondwananForestDryBayou.biome
+                                && rand.nextInt(5) == 0) {
+                            iblockstate = BlockClayRed.block.getDefaultState();
+                        }
+                        if (biome == BiomeTriassicGondwananForestDryBayou.biome
+                                && rand.nextInt(8) == 0) {
+                            iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                        }
                         //As you go above sea level sometimes place this block too:
                         double s = ((double) Math.min(Math.max(j1, i) - i, 20)) / 20D;
                         if (Math.random() * s > 0.9) {
                             if (iblockstate == BlockPrehistoricGroundMossy.block.getDefaultState()
-                                    && biome == BiomeTriassicGondwananPlain.biome) {
+                                    && biome == BiomeTriassicGondwananPlain.biome
+                                    && biome == BiomeTriassicGondwananForestDryBayou.biome) {
                                 iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
                             }
                         }

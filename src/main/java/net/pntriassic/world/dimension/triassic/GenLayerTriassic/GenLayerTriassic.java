@@ -132,16 +132,59 @@ public class GenLayerTriassic {
         GenLayer genlayercreek6 = new GenLayerRiver(1L, genlayercreek5);
         GenLayer genlayercreek7 = new GenLayerSmooth(1000L, genlayercreek6);
         GenLayer genlayercreekfinal = new GenLayerTriassicRiverMix(100L, biomes, genlayercreek7);
+        
+        //Additional valleys in African mountains:
+        GenLayer genlayerbayou = new GenLayerRiverInit(120L, biomes);
+        genlayerbayou = new GenLayerRiverInit(140L, genlayerbayou);
+        GenLayer genlayerbayou2 = GenLayerZoom.magnify(1201L, genlayerbayou, 2);
+        GenLayer genlayerbayou3 = GenLayerZoom.magnify(1201L, genlayerbayou2, 1);
+        GenLayer genlayerbayou4 = GenLayerZoom.magnify(1001L, genlayerbayou3, 2);
+        GenLayer genlayerbayou5 = new GenLayerRiver(12L, genlayerbayou4);
+        GenLayer genlayerbayou6 = new GenLayerSmooth(1200L, genlayerbayou5);
+        genlayerbayou6 = new GenLayerZoom(1676L, genlayerbayou6);
+        genlayerbayou6 = new GenLayerZoom(1677L, genlayerbayou6);
+        genlayerbayou6 = new GenLayerZoom(1678L, genlayerbayou6);
+        genlayerbayou6 = new GenLayerZoom(1680L, genlayerbayou6);
+        genlayerbayou6 = new GenLayerSmooth(1681L, genlayerbayou6);
+        GenLayer genlayerbayoufinal = new GenLayerTriassicDryBayou(1200L, genlayercreekfinal, genlayerbayou6);
 
-        GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, genlayercreekfinal);
+        GenLayer genlayer2bayou = new GenLayerRiverInit(130L, biomes);
+        genlayer2bayou = new GenLayerRiverInit(150L, genlayer2bayou);
+        GenLayer genlayer2bayou2 = GenLayerZoom.magnify(1202L, genlayer2bayou, 2);
+        GenLayer genlayer2bayou3 = GenLayerZoom.magnify(1202L, genlayer2bayou2, 1);
+        GenLayer genlayer2bayou4 = GenLayerZoom.magnify(1002L, genlayer2bayou3, 2);
+        GenLayer genlayer2bayou5 = new GenLayerRiver(12L, genlayer2bayou4);
+        GenLayer genlayer2bayou6 = new GenLayerSmooth(1200L, genlayer2bayou5);
+        genlayer2bayou6 = new GenLayerZoom(1676L, genlayer2bayou6);
+        genlayer2bayou6 = new GenLayerZoom(1677L, genlayer2bayou6);
+        genlayer2bayou6 = new GenLayerZoom(1678L, genlayer2bayou6);
+        genlayer2bayou6 = new GenLayerZoom(1680L, genlayer2bayou6);
+        genlayer2bayou6 = new GenLayerSmooth(1681L, genlayer2bayou6);
+        GenLayer genlayer2bayoufinal = new GenLayerTriassicDryBayou(1201L, genlayerbayoufinal, genlayer2bayou6);
 
-        genlayercreekfinal.initWorldGenSeed(seed);
+        GenLayer genlayer3bayou = new GenLayerRiverInit(5430L, biomes);
+        genlayer3bayou = new GenLayerRiverInit(5431, genlayer3bayou);
+        GenLayer genlayer3bayou2 = GenLayerZoom.magnify(1203L, genlayer3bayou, 2);
+        GenLayer genlayer3bayou3 = GenLayerZoom.magnify(1203L, genlayer3bayou2, 1);
+        GenLayer genlayer3bayou4 = GenLayerZoom.magnify(1003L, genlayer3bayou3, 2);
+        GenLayer genlayer3bayou5 = new GenLayerRiver(12L, genlayer3bayou4);
+        GenLayer genlayer3bayou6 = new GenLayerSmooth(1200L, genlayer3bayou5);
+        genlayer3bayou6 = new GenLayerZoom(1676L, genlayer3bayou6);
+        genlayer3bayou6 = new GenLayerZoom(1677L, genlayer3bayou6);
+        genlayer3bayou6 = new GenLayerZoom(1678L, genlayer3bayou6);
+        genlayer3bayou6 = new GenLayerZoom(1680L, genlayer3bayou6);
+        genlayer3bayou6 = new GenLayerSmooth(1681L, genlayer3bayou6);
+        GenLayer genlayer3bayoufinal = new GenLayerTriassicDryBayou(1202L, genlayer2bayoufinal, genlayer3bayou6);
+
+        GenLayer genlayervoronoizoom = new GenLayerVoronoiZoom(10L, genlayer3bayoufinal);
+
+        genlayer3bayoufinal.initWorldGenSeed(seed);
         genlayervoronoizoom.initWorldGenSeed(seed);
         biomes.initWorldGenSeed(seed);
 
         biomes.initWorldGenSeed(seed);
         genlayervoronoizoom.initWorldGenSeed(seed);
-        return (new GenLayer[] { genlayercreekfinal, genlayervoronoizoom, genlayercreekfinal });
+        return (new GenLayer[] { genlayer3bayoufinal, genlayervoronoizoom, genlayer3bayoufinal });
     }
 
 }
