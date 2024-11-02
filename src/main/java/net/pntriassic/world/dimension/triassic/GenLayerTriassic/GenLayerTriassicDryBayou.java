@@ -57,9 +57,10 @@ public class GenLayerTriassicDryBayou extends GenLayer
                 if (aint[i] == COOL_FOREST_ID
                         || aint[i] == COOL_FOREST_HILLS_ID
                         || aint[i] == COOL_FOREST_MOUNTAINS_ID
-                        || aint[i] == COOL_PLAIN_ID
-                        || aint[i] == COOL_FOREST_CLEARING_ID
-                        || aint[i] == COOL_PLAIN_FLAT_ID) {
+                        //|| aint[i] == COOL_PLAIN_ID
+                        //|| aint[i] == COOL_FOREST_CLEARING_ID
+                        //|| aint[i] == COOL_PLAIN_FLAT_ID
+                 ) {
                     aint2[i] = DRY_BAYOU_ID;
                 }
                 else {
