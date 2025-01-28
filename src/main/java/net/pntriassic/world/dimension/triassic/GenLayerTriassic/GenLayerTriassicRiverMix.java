@@ -1,6 +1,5 @@
 package net.pntriassic.world.dimension.triassic.GenLayerTriassic;
 
-import net.lepidodendron.util.EnumBiomeTypeJurassic;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.minecraft.init.Biomes;
@@ -8,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import net.pntriassic.world.biome.triassic.BiomeTriassicBlackBeach;
 import net.pntriassic.world.biome.triassic.BiomeTriassicCreek;
 import net.pntriassic.world.biome.triassic.BiomeTriassicRiverbank;
 import net.pntriassic.world.biome.triassic.BiomeTriassicRiverbankForest;

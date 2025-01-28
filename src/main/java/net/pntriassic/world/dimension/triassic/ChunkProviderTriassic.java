@@ -2,7 +2,6 @@ package net.pntriassic.world.dimension.triassic;
 
 import net.lepidodendron.block.*;
 import net.lepidodendron.world.biome.ChunkGenSpawner;
-import net.lepidodendron.world.biome.triassic.*;
 import net.lepidodendron.world.gen.*;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -861,17 +860,25 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                     } else if (j > 0) {
                         --j;
                         chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1); //filler
-                        if (j == 0 && (iblockstate1.getBlock() == BlockSandPangaean.block || iblockstate1.getBlock() == BlockSandPangaeanWavy.block) && k > 1) {
+                        if (j == 0 && (iblockstate1 == Blocks.SAND.getStateFromMeta(0) || iblockstate1.getBlock() == BlockSandWavy.block) && k > 1) {
                             j = rand.nextInt(4) + Math.max(0, j1 - 63);
-                            iblockstate1 = BlockSandstonePangaean.block.getDefaultState();
+                            iblockstate1 = Blocks.SANDSTONE.getDefaultState();
                         }
-                        else if (j == 0 && (iblockstate1.getBlock() == Blocks.SAND.getStateFromMeta(1).getBlock() || iblockstate1.getBlock() == BlockSandRedWavy.block) && k > 1) {
+                        else if (j == 0 && (iblockstate1 == Blocks.SAND.getStateFromMeta(1) || iblockstate1.getBlock() == BlockSandRedWavy.block) && k > 1) {
                             j = rand.nextInt(4) + Math.max(0, j1 - 63);
                             iblockstate1 = Blocks.RED_SANDSTONE.getDefaultState();
                         }
                         else if (j == 0 && (iblockstate1.getBlock() == BlockSandBlack.block || iblockstate1.getBlock() == BlockSandBlackWavy.block) && k > 1) {
                             j = rand.nextInt(4) + Math.max(0, j1 - 63);
                             iblockstate1 = BlockSandstoneBlack.block.getDefaultState();
+                        }
+                        else if (j == 0 && (iblockstate1.getBlock() == BlockSandWhite.block || iblockstate1.getBlock() == BlockSandWhiteWavy.block) && k > 1) {
+                            j = rand.nextInt(4) + Math.max(0, j1 - 63);
+                            iblockstate1 = BlockSandstoneWhite.block.getDefaultState();
+                        }
+                        else if (j == 0 && (iblockstate1.getBlock() == BlockSandGrey.block || iblockstate1.getBlock() == BlockSandGreyWavy.block) && k > 1) {
+                            j = rand.nextInt(4) + Math.max(0, j1 - 63);
+                            iblockstate1 = BlockSandstoneGrey.block.getDefaultState();
                         }
                     }
                 }

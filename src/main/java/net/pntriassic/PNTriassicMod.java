@@ -28,7 +28,7 @@ import java.util.function.Supplier;
 public class PNTriassicMod {
     public static final String MODID = "pntriassic";
     public static final String NAME = "Prehistoric Nature Triassic Dimension";
-    public static final String VERSION = "3.03";
+    public static final String VERSION = "4.0";
 
     public static final SimpleNetworkWrapper PACKET_HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel("pntriassic:a");
     @SidedProxy(clientSide = "net.pntriassic.ClientProxyPNTriassicMod", serverSide = "net.pntriassic.ServerProxyPNTriassicMod")

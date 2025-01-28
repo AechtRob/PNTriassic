@@ -4,7 +4,6 @@ package net.pntriassic.world.biome.triassic;
 import net.lepidodendron.ElementsLepidodendronMod;
 import net.lepidodendron.block.BlockAridHorsetail;
 import net.lepidodendron.block.BlockDechellyia;
-import net.lepidodendron.block.BlockPolyspermophyllum;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.lepidodendron.world.gen.*;

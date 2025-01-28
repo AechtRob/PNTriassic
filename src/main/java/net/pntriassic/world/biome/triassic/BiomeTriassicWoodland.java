@@ -134,6 +134,7 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 		protected static final WorldGenDriedMud MUD_GENERATOR = new WorldGenDriedMud();
 		//protected static final WorldGenClubmoss CLUBMOSS_GENERATOR = new WorldGenClubmoss();
 		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
+		protected static final WorldGenLiverwort LIVERWORT_GENERATOR = new WorldGenLiverwort();
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 		{
@@ -327,6 +328,15 @@ public class BiomeTriassicWoodland extends ElementsLepidodendronMod.ModElement {
 //					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 //					CYCADEOIDEA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 //				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 6; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					LIVERWORT_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 6; ++i)

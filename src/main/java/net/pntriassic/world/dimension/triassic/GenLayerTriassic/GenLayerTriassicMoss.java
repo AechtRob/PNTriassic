@@ -5,7 +5,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.pntriassic.world.biome.triassic.BiomeTriassicGondwananPlainFlat;
-import net.pntriassic.world.biome.triassic.BiomeTriassicWoodlandField;
 
 public class GenLayerTriassicMoss extends GenLayer {
 

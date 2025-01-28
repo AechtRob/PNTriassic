@@ -1,7 +1,6 @@
 package net.pntriassic.world.dimension.triassic;
 
 import com.google.common.collect.Lists;
-import net.lepidodendron.world.biome.devonian.BiomeDevonian;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
