@@ -28,7 +28,6 @@ import net.minecraft.network.play.server.SPacketRespawn;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -326,7 +325,8 @@ public class WorldTriassic extends ElementsLepidodendronMod.ModElement {
 											: Blocks.AIR.getDefaultState());
 							if (flag) {
 								BlockPortalBlock.setPortalAsActive(world, new BlockPos(k9, k10+1, k11), true, 90);
-							}}
+							}
+						}
 					}
 				}
 			}
@@ -345,7 +345,8 @@ public class WorldTriassic extends ElementsLepidodendronMod.ModElement {
 						}
 						else { //trigger the portal animation:
 							BlockPortalBlock.setPortalAnimation(world, new BlockPos(l10, l11+1, k12), l6 == 0 ? false : true);
-						}}
+						}
+					}
 				}
 				for (int i9 = 0; i9 < 4; ++i9) {
 					for (int i10 = -1; i10 < 4; ++i10) {
