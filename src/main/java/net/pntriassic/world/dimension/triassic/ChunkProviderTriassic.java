@@ -18,6 +18,7 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.*;
 import net.pntriassic.world.biome.triassic.*;
 
+import java.sql.Driver;
 import java.util.List;
 import java.util.Random;
 
@@ -42,6 +43,8 @@ public class ChunkProviderTriassic implements IChunkGenerator {
     public final WorldType terrainType;
     public final MapGenBase caveGenerator;
     public final MapGenBase ravineGenerator;
+    public final MapGenBase ravineGenerator2;
+    public final MapGenBase ravineGenerator3;
     public Biome[] biomesForGeneration;
     public double[] heightMap;
     public double[] depthbuff = new double[256];
@@ -68,9 +71,10 @@ public class ChunkProviderTriassic implements IChunkGenerator {
             @Override
             protected void digBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop) {
                 Biome biome = world.getBiome(new BlockPos(x + chunkX * 16, 0, z + chunkZ * 16));
-                if (biome == BiomeTriassicBlackBeach.biome || biome == BiomeTriassicBeach.biome
+                if (biome == BiomeTriassicBeachWhite.biome || biome == BiomeTriassicBlackBeach.biome || biome == BiomeTriassicBeach.biome
                         || biome == BiomeTriassicCreek.biome || biome == BiomeTriassicRiverbank.biome
-                        || biome == BiomeTriassicRiverbankForest.biome || biome == BiomeTriassicRiver.biome) {return;}
+                        || biome == BiomeTriassicRiverbankForest.biome || biome == BiomeTriassicRiver.biome
+                        || biome == BiomeTriassicEstuary.biome) {return;}
                 IBlockState state = data.getBlockState(x, y, z);
                 if (state.getBlock() == STONE.getBlock() || state.getBlock() == biome.topBlock.getBlock()
                         || state.getBlock() == biome.fillerBlock.getBlock() || state.getBlock() == BlockLavaRock.block.getDefaultState().getBlock()
@@ -89,6 +93,151 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 }
             }
         };
+
+        ravineGenerator2 = new MapGenRavine() {
+            @Override
+            protected void recursiveGenerate(World worldIn, int chunkX, int chunkZ, int originalX, int originalZ, ChunkPrimer chunkPrimerIn)
+            {
+                if (this.rand.nextInt(2) == 0)
+                {
+                    double d0 = (double)(chunkX * 16 + this.rand.nextInt(16));
+                    double d1 = (double)(this.rand.nextInt(this.rand.nextInt(40) + 8) + 20);
+                    double d2 = (double)(chunkZ * 16 + this.rand.nextInt(16));
+                    int i = 1;
+
+                    for (int j = 0; j < 1; ++j)
+                    {
+                        float f = this.rand.nextFloat() * ((float)Math.PI * 2F);
+                        float f1 = (this.rand.nextFloat() - 0.5F) * 2.0F / 8.0F;
+                        float f2 = (this.rand.nextFloat() * 2.0F + this.rand.nextFloat()) * 2.0F;
+                        this.addTunnel(this.rand.nextLong(), originalX, originalZ, chunkPrimerIn, d0, d1, d2, f2, f, f1, 0, 0, 3.0D);
+                    }
+                }
+            }
+
+            @Override
+            public void generate(World worldIn, int p_186125_2_, int p_186125_3_, ChunkPrimer p_186125_4_) {
+                int lvt_5_1_ = this.range;
+                this.world = worldIn;
+                long seedRev = 0L;
+                if ((double)worldIn.getSeed() < 0) {
+                    seedRev = Long.sum(worldIn.getSeed(), 1L);
+                }
+                else {
+                    seedRev = Long.sum(worldIn.getSeed(), -1L);
+                }
+
+                this.rand.setSeed(seedRev);
+                long lvt_6_1_ = this.rand.nextLong();
+                long lvt_8_1_ = this.rand.nextLong();
+
+                for(int lvt_10_1_ = p_186125_2_ - lvt_5_1_; lvt_10_1_ <= p_186125_2_ + lvt_5_1_; ++lvt_10_1_) {
+                    for(int lvt_11_1_ = p_186125_3_ - lvt_5_1_; lvt_11_1_ <= p_186125_3_ + lvt_5_1_; ++lvt_11_1_) {
+                        long lvt_12_1_ = (long)lvt_10_1_ * lvt_6_1_;
+                        long lvt_14_1_ = (long)lvt_11_1_ * lvt_8_1_;
+                        this.rand.setSeed(lvt_12_1_ ^ lvt_14_1_ ^ seedRev);
+                        this.recursiveGenerate(worldIn, lvt_10_1_, lvt_11_1_, p_186125_2_, p_186125_3_, p_186125_4_);
+                    }
+                }
+            }
+
+            @Override
+            protected void digBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop) {
+                Biome biome = world.getBiome(new BlockPos(x + chunkX * 16, 0, z + chunkZ * 16));
+                if (biome != BiomeTriassicVolcanicIslands.biome) {
+                    return;
+                }
+                IBlockState state = data.getBlockState(x, y, z);
+                if (state.getBlock() == STONE.getBlock() || state.getBlock() == biome.topBlock.getBlock()
+                        || state.getBlock() == biome.fillerBlock.getBlock() || state.getBlock() == BlockLavaRock.block.getDefaultState().getBlock()
+                        || state.getMaterial() == Material.ROCK
+                        || state.getMaterial() == Material.SAND
+                        || state.getMaterial() == Material.GROUND) {
+                    if (y - 1 < 10) {
+                        data.setBlockState(x, y, z, FLOWING_LAVA);
+                    }
+                    else {
+                        data.setBlockState(x, y, z, AIR);
+                        if (foundTop && data.getBlockState(x, y - 1, z).getBlock() == biome.fillerBlock.getBlock()) {
+                            data.setBlockState(x, y - 1, z, biome.topBlock.getBlock().getDefaultState());
+                        }
+                    }
+                }
+            }
+        };
+
+        ravineGenerator3 = new MapGenRavine() {
+            @Override
+            protected void recursiveGenerate(World worldIn, int chunkX, int chunkZ, int originalX, int originalZ, ChunkPrimer chunkPrimerIn)
+            {
+                if (this.rand.nextInt(2) == 0)
+                {
+                    double d0 = (double)(chunkX * 16 + this.rand.nextInt(16));
+                    double d1 = (double)(this.rand.nextInt(this.rand.nextInt(40) + 8) + 20);
+                    double d2 = (double)(chunkZ * 16 + this.rand.nextInt(16));
+                    int i = 1;
+
+                    for (int j = 0; j < 1; ++j)
+                    {
+                        float f = this.rand.nextFloat() * ((float)Math.PI * 2F);
+                        float f1 = (this.rand.nextFloat() - 0.5F) * 2.0F / 8.0F;
+                        float f2 = (this.rand.nextFloat() * 2.0F + this.rand.nextFloat()) * 2.0F;
+                        this.addTunnel(this.rand.nextLong(), originalX, originalZ, chunkPrimerIn, d0, d1, d2, f2, f, f1, 0, 0, 3.0D);
+                    }
+                }
+            }
+
+            @Override
+            public void generate(World worldIn, int p_186125_2_, int p_186125_3_, ChunkPrimer p_186125_4_) {
+                int lvt_5_1_ = this.range;
+                this.world = worldIn;
+                long seedRev = 0L;
+                if ((double)worldIn.getSeed() < 0) {
+                    seedRev = Long.sum(worldIn.getSeed(), 1L);
+                }
+                else {
+                    seedRev = Long.sum(worldIn.getSeed(), -1L);
+                }
+
+                this.rand.setSeed(seedRev);
+                long lvt_6_1_ = this.rand.nextLong();
+                long lvt_8_1_ = this.rand.nextLong();
+
+                for(int lvt_10_1_ = p_186125_2_ - lvt_5_1_; lvt_10_1_ <= p_186125_2_ + lvt_5_1_; ++lvt_10_1_) {
+                    for(int lvt_11_1_ = p_186125_3_ - lvt_5_1_; lvt_11_1_ <= p_186125_3_ + lvt_5_1_; ++lvt_11_1_) {
+                        long lvt_12_1_ = (long)lvt_10_1_ * lvt_6_1_;
+                        long lvt_14_1_ = (long)lvt_11_1_ * lvt_8_1_;
+                        this.rand.setSeed(lvt_12_1_ ^ lvt_14_1_ ^ seedRev);
+                        this.recursiveGenerate(worldIn, lvt_10_1_, lvt_11_1_, p_186125_2_, p_186125_3_, p_186125_4_);
+                    }
+                }
+            }
+
+            @Override
+            protected void digBlock(ChunkPrimer data, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop) {
+                Biome biome = world.getBiome(new BlockPos(x + chunkX * 16, 0, z + chunkZ * 16));
+                if (biome != BiomeTriassicVolcanicIslands.biome) {
+                    return;
+                }
+                IBlockState state = data.getBlockState(x, y, z);
+                if (state.getBlock() == STONE.getBlock() || state.getBlock() == biome.topBlock.getBlock()
+                        || state.getBlock() == biome.fillerBlock.getBlock() || state.getBlock() == BlockLavaRock.block.getDefaultState().getBlock()
+                        || state.getMaterial() == Material.ROCK
+                        || state.getMaterial() == Material.SAND
+                        || state.getMaterial() == Material.GROUND) {
+                    if (y - 1 < 10) {
+                        data.setBlockState(x, y, z, FLOWING_LAVA);
+                    }
+                    else {
+                        data.setBlockState(x, y, z, AIR);
+                        if (foundTop && data.getBlockState(x, y - 1, z).getBlock() == biome.fillerBlock.getBlock()) {
+                            data.setBlockState(x, y - 1, z, biome.topBlock.getBlock().getDefaultState());
+                        }
+                    }
+                }
+            }
+        };
+
         this.world = worldIn;
         this.terrainType = worldIn.getWorldInfo().getTerrainType();
         this.random = new Random(seed);
@@ -114,6 +263,8 @@ public class ChunkProviderTriassic implements IChunkGenerator {
         this.replaceBiomeBlocks(x, z, chunkprimer, this.biomesForGeneration);
         this.caveGenerator.generate(this.world, x, z, chunkprimer);
         this.ravineGenerator.generate(this.world, x, z, chunkprimer);
+        this.ravineGenerator2.generate(this.world, x, z, chunkprimer);
+        this.ravineGenerator3.generate(this.world, x, z, chunkprimer);
         Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
         byte[] abyte = chunk.getBiomeArray();
         for (int i = 0; i < abyte.length; ++i)
@@ -165,6 +316,28 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 }
             }
 
+        if (biome == BiomeTriassicMadagascarFlats.biome)
+            if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
+                    net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
+                for (int lake = 0; lake < 4; ++lake) {
+                    int i1 = this.random.nextInt(16) + 8;
+                    int j1 = this.random.nextInt(256);
+                    int k1 = this.random.nextInt(16) + 8;
+                    (new WorldGenTriassicLakes(FLUID.getBlock())).generate(this.world, this.random, blockpos.add(i1, j1, k1));
+                }
+            }
+
+        if (biome == BiomeTriassicWarmVolcanicHillsValley.biome)
+            if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
+                    net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
+                for (int lake = 0; lake < 2; ++lake) {
+                    int i1 = this.random.nextInt(16) + 8;
+                    int j1 = this.random.nextInt(256);
+                    int k1 = this.random.nextInt(16) + 8;
+                    (new WorldGenTriassicLakes(FLUID.getBlock())).generate(this.world, this.random, blockpos.add(i1, j1, k1));
+                }
+            }
+
         if (this.random.nextInt(6) == 0 && biome == BiomeTriassicDesertRocky.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
@@ -183,7 +356,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 new WorldGenTriassicVolcanos().generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(80) == 0 && (biome == BiomeTriassicVolcanicIslands.biome || biome == BiomeTriassicBlackBeach.biome))
+        if (this.random.nextInt(150) == 0 && (biome == BiomeTriassicVolcanicIslands.biome || biome == BiomeTriassicBlackBeach.biome))
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;
@@ -365,7 +538,43 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         d3 = d4;
                     }
 
+                    if (biome == BiomeTriassicDeltaFlats.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
+                    if (biome == BiomeTriassicMadagascarFlats.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
+                    if (biome == BiomeTriassicKarooSwampOpen.biome
+                        || biome == BiomeTriassicKarooSwampCopse.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
+                    if (biome == BiomeTriassicFloodedForestDense.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
                     if (biome == BiomeTriassicGondwananForestDryBayou.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
+                    if (biome == BiomeTriassicEstuary.biome) {
                         //Flatten these out:
                         d4 = 0;
                         d2 = d4;
@@ -466,7 +675,7 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                     if (Math.random() > 0.3) {
                                         iblockstate1 = BlockCarboniferousMud.block.getDefaultState();
                                     } else {
-                                        iblockstate1 = BlockClayRed.block.getDefaultState();
+                                        iblockstate1 = BlockClayBrown.block.getDefaultState();
                                     }
                                 } else {
                                     if (Math.random() > 0.3) {
@@ -480,6 +689,30 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                         else {
                                             iblockstate1 = Blocks.SAND.getStateFromMeta(1);
                                         }
+                                    }
+                                }
+                            }
+                            else if (biome == BiomeTriassicChinaLakes.biome) {
+                                iblockstate1 = BlockSandWhite.block.getDefaultState();
+                            }
+                            else if (biome == BiomeTriassicOceanClamBeds.biome) {
+                                if (Math.random() > 0.65) {
+                                    if (Math.random() > 0.4) {
+                                        iblockstate = BlockSandWhite.block.getDefaultState();
+                                    } else if (Math.random() > 0.85) {
+                                        iblockstate = BlockPebblestone.block.getDefaultState();
+                                    } else if (Math.random() > 0.85) {
+                                        iblockstate = BlockCoralBleached.block.getDefaultState();
+                                    }
+                                    else {
+                                        iblockstate = BlockSandstoneWhite.block.getDefaultState();
+                                    }
+                                }
+                                if (Math.random() > 0.85) {
+                                    if (Math.random() > 0.3) {
+                                        iblockstate1 = BlockSandWhite.block.getDefaultState();
+                                    } else {
+                                        iblockstate1 = BlockSandstoneWhite.block.getDefaultState();
                                     }
                                 }
                             }
@@ -563,10 +796,508 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                             }
                         }
 
+                        //For the Chinese swamp:
+                        if ((biome == BiomeTriassicChinaSwamp.biome) && rand.nextInt(12) == 0) {
+                            iblockstate = BlockCoarseSandyDirtBlack.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicChinaSwamp.biome) && rand.nextInt(12) == 0) {
+                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicChinaSwamp.biome) && rand.nextInt(14) == 0) {
+                            iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicChinaSwamp.biome) && rand.nextInt(12) == 0) {
+                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                        }
+
+                        //For the Chinese trees:
+                        if ((biome == BiomeTriassicChinaTrees.biome) && rand.nextInt(5) == 0) {
+                            iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicChinaTrees.biome) && rand.nextInt(6) == 0) {
+                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicChinaTrees.biome) && rand.nextInt(6) == 0) {
+                            iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                        }
+
+                        //For the Chinese beach:
+                        if ((biome == BiomeTriassicBeachWhite.biome) && rand.nextInt(15) == 0) {
+                            iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicBeachWhite.biome) && rand.nextInt(6) != 0) {
+                            iblockstate = BlockSandyDirtWhite.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicBeachWhite.biome) && rand.nextInt(6) == 0) {
+                            iblockstate = Blocks.DIRT.getStateFromMeta(1);
+                        }
+                        if ((biome == BiomeTriassicBeachWhite.biome) && rand.nextInt(6) == 0) {
+                            iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
+                        }
+
+                        //For the Chinese Lakes  biome, make the sand hills proprly:
+                        if (biome == BiomeTriassicChinaLakes.biome
+                        ) {
+                            if (rand.nextInt(2) == 0) {
+                                iblockstate = Blocks.DIRT.getStateFromMeta(1);
+                            }
+                            //If it's over 54 blocks then start to fill in more as stone
+                            //up to 85
+                            int minHeight = 54;
+                            if (j1 >= minHeight) {
+                                int j2 = Math.max(0, 85 - j1);
+                                double stoneFactor = (double) j2 / (85D - (double) minHeight);
+                                if (Math.random() >= stoneFactor) {
+                                    if (Math.random() > 0.82) {
+                                        iblockstate = Blocks.STONE.getDefaultState();
+                                    } else {
+                                        iblockstate = BlockSandyDirtWhite.block.getDefaultState();
+                                        if (rand.nextInt(11) == 0) {
+                                            iblockstate = Blocks.COBBLESTONE.getDefaultState();
+                                        } else if (rand.nextInt(5) == 0) {
+                                            iblockstate = Blocks.DIRT.getStateFromMeta(1);
+                                        } else if (rand.nextInt(5) == 0) {
+                                            iblockstate = BlockCoarseSandyDirt.block.getDefaultState();
+                                        }
+                                    }
+                                }
+                                if (Math.random() >= stoneFactor) {
+                                    iblockstate1 = Blocks.STONE.getDefaultState();
+                                    if (rand.nextInt(8) == 0) {
+                                        iblockstate1 = Blocks.COBBLESTONE.getDefaultState();
+                                    } else if (rand.nextInt(8) == 0) {
+                                        iblockstate1 = Blocks.DIRT.getStateFromMeta(1);
+                                    } else if (rand.nextInt(6) == 0) {
+                                        iblockstate1 = BlockCoarseSandyDirt.block.getDefaultState();
+                                    } else if (rand.nextInt(3) == 0) {
+                                        iblockstate1 = Blocks.STONE.getStateFromMeta(3);
+                                    }
+                                }
+                            }
+                        }
+
+                        //Karoo
+                        if (biome == BiomeTriassicKarooForest.biome) {
+                            if (rand.nextInt(3) != 0) {
+                                iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                            }
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                            }
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                            }
+                            if (rand.nextInt(32) == 0) {
+                                iblockstate = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14);
+                            }
+                            if (rand.nextInt(32) == 0) {
+                                iblockstate = Blocks.HARDENED_CLAY.getDefaultState();
+                            }
+                        }
+                        if (biome == BiomeTriassicKarooPlains.biome) {
+                            if (rand.nextInt(3) != 0) {
+                                iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                            }
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
+                            }
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(14);
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = Blocks.HARDENED_CLAY.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = Blocks.SAND.getStateFromMeta(1);
+                            }
+                        }
+                        if (biome == BiomeTriassicKarooSwamp.biome
+                                || biome == BiomeTriassicCreekKarooSwamp.biome
+                                || biome == BiomeTriassicKarooSwampOpen.biome
+                                || biome == BiomeTriassicKarooSwampCopse.biome) {
+                            if (rand.nextInt(16) == 0) {
+                                iblockstate = BlockCarboniferousMud.block.getDefaultState();
+                            }
+                            if (rand.nextInt(16) == 0) {
+                                iblockstate = BlockPeat.block.getDefaultState();
+                            }
+                        }
+
+                        //Madagascar Coastal:
+                        if (biome == BiomeTriassicMadagascarFlats.biome) {
+                            if (rand.nextInt(3) == 0) {
+                                iblockstate = BlockSandyDirtRed.block.getDefaultState();
+                            }
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                        }
+
+                        //Estuary:
+                        if (biome == BiomeTriassicEstuary.biome
+                            || biome == BiomeTriassicCreekEstuary.biome) {
+                            if (j1 >= SEALEVEL) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                                if (rand.nextInt(10) == 0) {
+                                    iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtGrey.block.getDefaultState();
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtBlack.block.getDefaultState();
+                                }
+                                if (rand.nextInt(10) == 0) {
+                                    iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                                }
+                                if (rand.nextInt(16) == 0) {
+                                    iblockstate = BlockLeafLitter.block.getDefaultState();
+                                }
+                                if (rand.nextInt(17) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(25) == 0) {
+                                    iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                                }
+                            }
+                            else {
+                                if (rand.nextInt(10) == 0) {
+                                    iblockstate = BlockCoarseSiltyDirt.block.getDefaultState();
+                                }
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtGrey.block.getDefaultState();
+                                }
+                            }
+                        }
+
+                        //Lossiemouth:
+                        if (biome == BiomeTriassicLossiemouth.biome
+                            || biome == BiomeTriassicCreekLossiemouth.biome) {
+                            if (j1 <= SEALEVEL) {
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockDriedMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(3) == 0) {
+                                    if (rand.nextInt(3) != 0) {
+                                        iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                                    }
+                                    else if (rand.nextInt(2) != 0) {
+                                        iblockstate = BlockCarboniferousMud.block.getDefaultState();
+                                    }
+                                    else {
+                                        iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                                    }
+                                }
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                                }
+                            }
+                            else if (j1 <= SEALEVEL + 3) {
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate = BlockDriedMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    if (rand.nextInt(2) == 0) {
+                                        iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                                    }
+                                    else {
+                                        iblockstate = Blocks.DIRT.getStateFromMeta(1);
+                                    }
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate1 = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate1 = BlockDriedMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    if (rand.nextInt(2) == 0) {
+                                        iblockstate1 = Blocks.DIRT.getStateFromMeta(2);
+                                    }
+                                    else {
+                                        iblockstate1 = BlockSandPangaean.block.getDefaultState();
+                                    }
+                                }
+                                if (rand.nextInt(7) == 0) {
+                                    iblockstate1 = BlockPrehistoricGroundBasic.block.getDefaultState();
+                                }
+                            }
+                            else if (j1 <= SEALEVEL + 7) {
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate = BlockDriedMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate = BlockSandPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate1 = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate1 = BlockDriedMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate1 = BlockSandPangaean.block.getDefaultState();
+                                }
+                                if (rand.nextInt(12) == 0) {
+                                    iblockstate1 = BlockPrehistoricGroundBasic.block.getDefaultState();
+                                }
+                            }
+
+                            //If it's over 63 blocks then start to fill in more as stone
+                            //up to 90
+                            int minHeight = 68;
+                            if (j1 >= minHeight) {
+                                int j2 = Math.max(0, 80 - j1);
+                                double stoneFactor = 0.7 * (double) j2 / (80D - (double) minHeight);
+                                if (Math.random() >= stoneFactor) {
+                                    if (Math.random() > 0.80) {
+                                        iblockstate = Blocks.GRAVEL.getDefaultState();
+                                    } else {
+                                        iblockstate = BlockSandPangaeanWavy.block.getDefaultState();
+                                        if (rand.nextInt(3) != 0) {
+                                            iblockstate = BlockSandstonePangaean.block.getDefaultState();
+                                        }
+                                        if (rand.nextInt(3) == 0) {
+                                            iblockstate = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(4);
+                                        } else if (rand.nextInt(6) == 0) {
+                                            iblockstate = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(8);
+                                        } else if (rand.nextInt(6) == 0) {
+                                            iblockstate = BlockCoarseSandyDirtGrey.block.getDefaultState();
+                                        }
+                                    }
+                                }
+                                if (Math.random() >= stoneFactor) {
+                                    if (Math.random() > 0.80) {
+                                        iblockstate1 = Blocks.GRAVEL.getDefaultState();
+                                    } else {
+                                        iblockstate1 = BlockSandstonePangaean.block.getDefaultState();
+                                        if (rand.nextInt(3) == 0) {
+                                            iblockstate1 = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(4);
+                                        } else if (rand.nextInt(6) == 0) {
+                                            iblockstate1 = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(8);
+                                        } else if (rand.nextInt(6) == 0) {
+                                            iblockstate1 = BlockCoarseSandyDirtGrey.block.getDefaultState();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        //Pleuromeia
+                        if (biome == BiomeTriassicDesertPleuromeiaBeds.biome) {
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = BlockCoarseSandyDirtPangaean.block.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = BlockDriedMud.block.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = BlockSandPangaean.block.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = BlockCoarseSandyDirt.block.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = Blocks.STAINED_HARDENED_CLAY.getStateFromMeta(4);
+                            }
+
+                        }
+
+                        //Lakelands:
+                        if (biome == BiomeTriassicWarmLakeland.biome) {
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                            if (rand.nextInt(24) == 0) {
+                                iblockstate = BlockSandPangaean.block.getDefaultState();
+                            }
+                            if (rand.nextInt(21) == 0) {
+                                iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                            }
+                        }
+
+                        if (biome == BiomeTriassicWarmVolcanicHills.biome && j1 <= 80) {
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                            if (rand.nextInt(24) == 0) {
+                                iblockstate = BlockSandPangaean.block.getDefaultState();
+                            }
+                            if (rand.nextInt(21) == 0) {
+                                iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                            }
+                        }
+                        else if (biome == BiomeTriassicWarmVolcanicHills.biome) {
+                            if (rand.nextInt(16) == 0) {
+                                iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                            }
+                            if (rand.nextInt(18) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                            if (rand.nextInt(12) == 0) {
+                                iblockstate = Blocks.MOSSY_COBBLESTONE.getDefaultState();
+                            }
+                            if (rand.nextInt(21) == 0) {
+                                iblockstate = BlockPrehistoricGroundFern.block.getDefaultState();
+                            }
+                        }
+
+                        //Warm swamp Poland:
+                        if (biome == BiomeTriassicWarmVolcanicHillsValley.biome) {
+                            if (rand.nextInt(4) == 0) {
+                                iblockstate = BlockCarboniferousMud.block.getDefaultState();
+                            }
+                            if (rand.nextInt(6) == 0) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                            }
+                            if (rand.nextInt(7) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                            if (rand.nextInt(8) == 0) {
+                                iblockstate = BlockLeafLitter.block.getDefaultState();
+                            }
+                            if (rand.nextInt(9) == 0) {
+                                iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                            }
+                            if (rand.nextInt(7) == 0) {
+                                iblockstate = BlockPeat.block.getDefaultState();
+                            }
+                        }
+
+                        //Sediments in Chinle flats
+                        if (biome == BiomeTriassicChinleFlats.biome || biome == BiomeTriassicCreekChinleFlats.biome) {
+                            if (j1 <= SEALEVEL + 2) {
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
+                                }
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = Blocks.SAND.getStateFromMeta(1);
+                                }
+                                if (rand.nextInt(5) == 0) {
+                                    iblockstate = Blocks.GRAVEL.getDefaultState();
+                                }
+                            }
+                            else if (j1 <= SEALEVEL + 4) {
+                                if (rand.nextInt(6) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
+                                }
+                                if (rand.nextInt(6) == 0) {
+                                    iblockstate = Blocks.SAND.getStateFromMeta(1);
+                                }
+                            }
+                        }
+
+                        //Shattered Islands:
+                        if (biome == BiomeTriassicVolcanicIslands.biome) {
+                            if (rand.nextInt(1) == 0) {
+                                iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                            }
+                            if (rand.nextInt(3) == 0) {
+                                iblockstate = BlockScorchedEarth.block.getDefaultState();
+                            }
+                            if (rand.nextInt(16) == 0) {
+                                iblockstate = BlockLavaCobble.block.getDefaultState();
+                            }
+                            if (rand.nextInt(5) == 0) {
+                                iblockstate = BlockSandBlack.block.getDefaultState();
+                            }
+                            if (rand.nextInt(6) == 0) {
+                                iblockstate = Blocks.DIRT.getStateFromMeta(2);
+                            }
+                            if (rand.nextInt(6) == 0) {
+                                iblockstate = BlockPeat.block.getDefaultState();
+                            }
+                            if (rand.nextInt(6) == 0) {
+                                iblockstate = BlockCoarseSandyDirtBlack.block.getDefaultState();
+                            }
+                            if (rand.nextInt(6) == 0) {
+                                iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                            }
+                            if (rand.nextInt(9) == 0) {
+                                iblockstate = BlockPrehistoricGroundBasic.block.getDefaultState();
+                            }
+
+                        }
+
+                        //Sediments in Delta flats
+                        if (biome == BiomeTriassicDeltaFlats.biome || biome == BiomeTriassicCreekDeltaFlats.biome
+                                || biome == BiomeTriassicDeltaFlatsMound.biome) {
+                            if (j1 <= SEALEVEL + 2) {
+                                if (rand.nextInt(3) != 0) {
+                                    iblockstate = BlockCarboniferousMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtBlack.block.getDefaultState();
+                                }
+                                if (rand.nextInt(5) == 0) {
+                                    iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                                }
+                            }
+                            else if (j1 <= SEALEVEL + 4) {
+                                if (rand.nextInt(3) == 0) {
+                                    iblockstate = BlockCarboniferousMud.block.getDefaultState();
+                                }
+                                if (rand.nextInt(6) == 0) {
+                                    iblockstate = BlockCoarseSandyDirtBlack.block.getDefaultState();
+                                }
+                                if (rand.nextInt(10) == 0) {
+                                    iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                                }
+                            }
+                            else {
+                                if (rand.nextInt(8) == 0) {
+                                    iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                                }
+                                if (rand.nextInt(8) == 0) {
+                                    iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                                }
+                            }
+                        }
+
                         //Break up the top layer of Xeric biomes
                         if (iblockstate == Blocks.SAND.getStateFromMeta(1)
                                 && biome == BiomeTriassicXericForest.biome && rand.nextInt(4) == 0) {
                             iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
+                        }
+                        if (iblockstate == Blocks.SAND.getStateFromMeta(1)
+                                && biome == BiomeTriassicXericForest.biome && rand.nextInt(4) == 0) {
+                            iblockstate = BlockCoarseSandyDirtGrey.block.getDefaultState();
+                        }
+                        if (biome == BiomeTriassicXericForest.biome && rand.nextInt(8) == 0) {
+                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
                         }
 
                         //Break up the top layer of Mossy biomes
@@ -620,19 +1351,46 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                             iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
                         }
                         if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && biome == BiomeTriassicWarmVolcanicHills.biome && rand.nextInt(20) == 0) {
+                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                        }
+                        if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
                                 && (biome == BiomeTriassicRiverbank.biome  || biome == BiomeTriassicRiverbankForest.biome)
                                 && rand.nextInt(18) == 0) {
                             iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
                         }
 
                         //Do the blocks for the Flooded Forest:
-                        if (iblockstate == BlockPrehistoricGroundLush.block.getDefaultState()
-                                && (biome == BiomeTriassicFloodedForest.biome || biome == BiomeTriassicFloodedForestDense.biome) && rand.nextInt(2) == 0) {
-                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                        if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && (biome == BiomeTriassicFloodedForest.biome
+                                || biome == BiomeTriassicFloodedForestDense.biome
+                                || biome == BiomeTriassicCreekFloodedForest.biome
+                                ) && rand.nextInt(5) == 0) {
+                            iblockstate = BlockCoarseSandyDirtGrey.block.getDefaultState();
                         }
-                        if (iblockstate == BlockPrehistoricGroundLush.block.getDefaultState()
-                                && (biome == BiomeTriassicFloodedForest.biome || biome == BiomeTriassicFloodedForestDense.biome) && rand.nextInt(5) == 0) {
+                        if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && (biome == BiomeTriassicFloodedForest.biome || biome == BiomeTriassicFloodedForestDense.biome
+                                || biome == BiomeTriassicCreekFloodedForest.biome) && rand.nextInt(10) == 0) {
+                            iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                        }
+                        if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && (biome == BiomeTriassicFloodedForest.biome
+                                || biome == BiomeTriassicCreekFloodedForest.biome) && rand.nextInt(9) == 0) {
                             iblockstate = BlockLeafLitter.block.getDefaultState();
+                        }
+                        if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && (biome == BiomeTriassicFloodedForestDense.biome) && rand.nextInt(4) == 0) {
+                            iblockstate = BlockLeafLitter.block.getDefaultState();
+                        }
+                        if (iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && (biome == BiomeTriassicFloodedForest.biome || biome == BiomeTriassicFloodedForestDense.biome
+                                || biome == BiomeTriassicCreekFloodedForest.biome) && rand.nextInt(9) == 0) {
+                            iblockstate = BlockDriedMud.block.getDefaultState();
+                        }
+                        if (j1 < SEALEVEL && iblockstate == BlockPrehistoricGroundBasic.block.getDefaultState()
+                                && (biome == BiomeTriassicFloodedForest.biome || biome == BiomeTriassicFloodedForestDense.biome
+                                || biome == BiomeTriassicCreekFloodedForest.biome) && rand.nextInt(6) == 0) {
+                            iblockstate = BlockCarboniferousMud.block.getDefaultState();
                         }
 
                         //Do the blocks for the Woodland:

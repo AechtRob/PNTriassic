@@ -33,21 +33,22 @@ public class GenLayerDiversifyTriassic extends GenLayer {
     public int TRIASSIC_GONDWANAN_PLAIN_ID =  Biome.getIdForBiome(TRIASSIC_GONDWANAN_PLAIN);
     public Biome TRIASSIC_FLOODED_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest"));
     public int TRIASSIC_FLOODED_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_FLOODED_FOREST);
-    public Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
-    public int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
+    public Biome TRIASSIC_LOSSIEMOUTH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_lossiemouth"));
+    public int TRIASSIC_LOSSIEMOUTH_ID =  Biome.getIdForBiome(TRIASSIC_LOSSIEMOUTH);
     public Biome TRIASSIC_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland"));
     public int TRIASSIC_WOODLAND_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND);
     public Biome TRIASSIC_WOODLAND_FIELDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_field"));
     public int TRIASSIC_WOODLAND_FIELDS_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND_FIELDS);
 
-    private final int CoolBiomes[] = new int[] {
+    public Biome TRIASSIC_SOUTHERN_SWAMP = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_karoo_swamp"));
+    public int TRIASSIC_SOUTHERN_SWAMP_ID =  Biome.getIdForBiome(TRIASSIC_SOUTHERN_SWAMP);
+    public Biome TRIASSIC_SOUTHERN_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_karoo_forest"));
+    public int TRIASSIC_SOUTHERN_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_SOUTHERN_FOREST);
+
+    private final int GondwanaBiomes[] = new int[] {
         TRIASSIC_GONDWANAN_FOREST_ID,
-        TRIASSIC_GONDWANAN_FOREST_ID,
-        TRIASSIC_GONDWANAN_FOREST_HILLS_ID,
-        TRIASSIC_GONDWANAN_FOREST_HILLS_ID,
-        TRIASSIC_GONDWANAN_FOREST_CRAGS_ID,
         TRIASSIC_GONDWANAN_PLAIN_ID,
-        TRIASSIC_GONDWANAN_PLAIN_ID
+        TRIASSIC_FLOODED_FOREST_ID
     };
 
      private final int DesertBiomes[] = new int[] {
@@ -60,31 +61,31 @@ public class GenLayerDiversifyTriassic extends GenLayer {
 
     private final int XericBiomes[] = new int[] {
         TRIASSIC_XERIC_FOREST_ID,
-        TRIASSIC_XERIC_FOREST_ID,
-        TRIASSIC_XERIC_SCRUBLAND_ID
+        TRIASSIC_XERIC_SCRUBLAND_ID,
+        TRIASSIC_SOUTHERN_FOREST_ID,
+        TRIASSIC_SOUTHERN_FOREST_ID
     };
 
-    private final int WarmBiomes[] = new int[] {
+    private final int EurasiaBiomes[] = new int[] {
         TRIASSIC_WARM_LAKELAND_ID,
-        TRIASSIC_WARM_LAKELAND_ID,
-        TRIASSIC_WARM_VOLCANIC_HILLS_ID
+        TRIASSIC_LOSSIEMOUTH_ID
     };
 
     private final int WoodlandBiomes[] = new int[] {
-            TRIASSIC_WOODLAND_ID,
-            TRIASSIC_WOODLAND_ID,
-            TRIASSIC_WOODLAND_FIELDS_ID
+        TRIASSIC_WOODLAND_ID,
+        TRIASSIC_WOODLAND_ID,
+        TRIASSIC_WOODLAND_FIELDS_ID
     };
 
-    private final int SwampBiomes[] = new int[] {
-        TRIASSIC_FLOODED_FOREST_ID,
-        TRIASSIC_FLOODED_FOREST_ID,
-        TRIASSIC_FLOODED_FOREST_ID,
-        TRIASSIC_FLOODED_FOREST_ID,
-        TRIASSIC_MOUNTAINS_ID,
-        TRIASSIC_MOUNTAINS_ID,
-        TRIASSIC_MOUNTAINS_ID
-    };
+//    private final int SwampBiomes[] = new int[] {
+//        TRIASSIC_FLOODED_FOREST_ID,
+//        TRIASSIC_FLOODED_FOREST_ID,
+//        TRIASSIC_FLOODED_FOREST_ID,
+//        TRIASSIC_FLOODED_FOREST_ID,
+//        TRIASSIC_MOUNTAINS_ID,
+//        TRIASSIC_MOUNTAINS_ID,
+//        TRIASSIC_MOUNTAINS_ID
+//    };
 
     public GenLayerDiversifyTriassic(long seed, GenLayer genlayer) {
         super(seed);
@@ -107,15 +108,15 @@ public class GenLayerDiversifyTriassic extends GenLayer {
                 initChunkSeed(xOut + x, zOut + z);
                 if (nextInt(2) == 0) {
                     if (Biome.getBiome(center) == BiomeTriassicGondwananForest.biome)
-                        output[i] = CoolBiomes[nextInt(CoolBiomes.length)];
+                        output[i] = GondwanaBiomes[nextInt(GondwanaBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicDesertRocky.biome)
                         output[i] = DesertBiomes[nextInt(DesertBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicXericForest.biome)
                         output[i] = XericBiomes[nextInt(XericBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicWarmLakeland.biome)
-                        output[i] = WarmBiomes[nextInt(WarmBiomes.length)];
-                    else if (Biome.getBiome(center) == BiomeTriassicFloodedForest.biome)
-                        output[i] = SwampBiomes[nextInt(SwampBiomes.length)];
+                        output[i] = EurasiaBiomes[nextInt(EurasiaBiomes.length)];
+//                    else if (Biome.getBiome(center) == BiomeTriassicFloodedForest.biome)
+//                        output[i] = SwampBiomes[nextInt(SwampBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicWoodland.biome)
                         output[i] = WoodlandBiomes[nextInt(WoodlandBiomes.length)];
                     else output[i] = center;

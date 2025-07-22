@@ -41,9 +41,9 @@ public class BiomeTriassicDesertPleuromeiaBeds extends ElementsLepidodendronMod.
 			//super(new BiomeProperties("Permian Desert").setRainfall(0.0F).setBaseHeight(0.18F).setHeightVariation(0.17F).setTemperature(2.2F).setRainDisabled().setWaterColor(10990706));
 			super(new BiomeProperties("Triassic Desert Pleuromeia Beds").setRainfall(0.0F).setBaseHeight(-0.02F).setHeightVariation(0.000F).setTemperature(2.5F).setRainDisabled().setWaterColor(16767282));
 			setRegistryName("lepidodendron:triassic_desert_pleuromeia_beds");
-			topBlock = BlockSandRedWavy.block.getDefaultState();
-			fillerBlock = Blocks.SAND.getStateFromMeta(1);
-			decorator.treesPerChunk = 1;
+			topBlock = BlockSandPangaeanWavy.block.getDefaultState();
+			fillerBlock = BlockSandPangaean.block.getDefaultState();
+			decorator.treesPerChunk = -999;
 			decorator.flowersPerChunk = 0;
 			decorator.grassPerChunk = 0;
 			decorator.mushroomsPerChunk = 0;
@@ -58,7 +58,7 @@ public class BiomeTriassicDesertPleuromeiaBeds extends ElementsLepidodendronMod.
 			this.spawnableCaveCreatureList.clear();
 		}
 
-		protected static final WorldGenDicroidiumHTree DICROIDIUM_H_TREE = new WorldGenDicroidiumHTree(false);
+		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
 		protected static final WorldGenWaterSideDriedMud DRIED_MUD_GENERATOR = new WorldGenWaterSideDriedMud();
 
 		protected static final WorldGenWaterSideRedPrehistoricGround WATERSIDE_DIRT_GENERATOR = new WorldGenWaterSideRedPrehistoricGround();
@@ -67,7 +67,7 @@ public class BiomeTriassicDesertPleuromeiaBeds extends ElementsLepidodendronMod.
 		protected static final WorldGenDeadBush DEAD_BUSH_GENERATOR = new WorldGenDeadBush();
 		protected static final net.lepidodendron.world.gen.WorldGenDeadBush DEAD_BUSH_PF_GENERATOR = new net.lepidodendron.world.gen.WorldGenDeadBush();
 		protected static final WorldGenPrehistoricGroundCoverPangaean GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverPangaean();
-		protected static final WorldGenSchizoneura SCHIZONEURA_GENERATOR = new WorldGenSchizoneura();
+		//protected static final WorldGenSchizoneura SCHIZONEURA_GENERATOR = new WorldGenSchizoneura();
 		//protected static final WorldGenLepidopteris LEPIDOPTERIS_GENERATOR = new WorldGenLepidopteris();
 		protected static final WorldGenPleuromeia PLEUROMEIA_GENERATOR = new WorldGenPleuromeia();
 		protected static final WorldGenIsoetes ISOETES_GENERATOR = new WorldGenIsoetes();
@@ -80,7 +80,7 @@ public class BiomeTriassicDesertPleuromeiaBeds extends ElementsLepidodendronMod.
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 	    {
-			return DICROIDIUM_H_TREE;
+			return NULL_TREE;
 	    }
 
 		@Override
@@ -139,15 +139,6 @@ public class BiomeTriassicDesertPleuromeiaBeds extends ElementsLepidodendronMod.
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					PLANT_GENERATOR.generate(BlockAridHorsetail.block.getDefaultState(), worldIn, rand, pos.add(j, l, k), 0, 255, true);
-				}
-
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 12; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					SCHIZONEURA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -233,7 +224,7 @@ public class BiomeTriassicDesertPleuromeiaBeds extends ElementsLepidodendronMod.
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Desert;
+			return EnumBiomeTypeTriassic.Europe;
 		}
 
 	}

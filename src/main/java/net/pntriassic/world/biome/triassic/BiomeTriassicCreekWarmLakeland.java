@@ -63,7 +63,7 @@ public class BiomeTriassicCreekWarmLakeland extends ElementsLepidodendronMod.Mod
 		protected static final WorldGenGinkgoitesTree GINKGO_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenGlossophyllum GLOSSOPHYLLUM_TREE = new WorldGenGlossophyllum(false);
 
-		protected static final WorldGenTreeLog ALPIA_LOG_GENERATOR = new WorldGenTreeLog(BlockDicroidiumFLog.block);
+		protected static final WorldGenTreeLog ALPIA_LOG_GENERATOR = new WorldGenTreeLog(BlockAlpiaLog.block);
 
 		//protected static final WorldGenWoodHorsetail WOOD_HORSETAIL_GENERATOR = new WorldGenWoodHorsetail();
 		//protected static final WorldGenFieldHorsetail FIELD_HORSETAIL_GENERATOR = new WorldGenFieldHorsetail();
@@ -441,7 +441,7 @@ public class BiomeTriassicCreekWarmLakeland extends ElementsLepidodendronMod.Mod
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Warm;
+			return EnumBiomeTypeTriassic.Europe;
 		}
 
 	}

@@ -12,8 +12,6 @@ public class GenLayerTriassicDeepOcean extends GenLayer
     public  int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
     public  Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public  int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
-    public  Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
-    public  int TRIASSIC_VOLCANIC_ISLANDS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
     
     public GenLayerTriassicDeepOcean(long seed, GenLayer genLayer)
     {
@@ -50,10 +48,10 @@ public class GenLayerTriassicDeepOcean extends GenLayer
                     int k2 = aint[j1 + 1 + (i1 + 1 + 1) * k];
                     boolean flag = (
                         (
-                        (l1 == TRIASSIC_OCEAN_ID || l1 == TRIASSIC_OCEAN_SHORE_ID || l1 == TRIASSIC_VOLCANIC_ISLANDS_ID)
-                        && (i2 == TRIASSIC_OCEAN_ID || i2 == TRIASSIC_OCEAN_SHORE_ID || i2 == TRIASSIC_VOLCANIC_ISLANDS_ID)
-                        && (j2 == TRIASSIC_OCEAN_ID || j2 == TRIASSIC_OCEAN_SHORE_ID || j2 == TRIASSIC_VOLCANIC_ISLANDS_ID)
-                        && (k2 == TRIASSIC_OCEAN_ID || k2 == TRIASSIC_OCEAN_SHORE_ID || k2 == TRIASSIC_VOLCANIC_ISLANDS_ID)
+                        (l1 == TRIASSIC_OCEAN_ID || l1 == TRIASSIC_OCEAN_SHORE_ID)
+                        && (i2 == TRIASSIC_OCEAN_ID || i2 == TRIASSIC_OCEAN_SHORE_ID)
+                        && (j2 == TRIASSIC_OCEAN_ID || j2 == TRIASSIC_OCEAN_SHORE_ID)
+                        && (k2 == TRIASSIC_OCEAN_ID || k2 == TRIASSIC_OCEAN_SHORE_ID)
                         )
                         //|| (l1 == TRIASSIC_MOUNTAINS_ID
                         //    || i2 == TRIASSIC_MOUNTAINS_ID

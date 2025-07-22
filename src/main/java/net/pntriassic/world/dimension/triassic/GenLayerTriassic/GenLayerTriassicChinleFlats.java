@@ -5,23 +5,24 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
-public class GenLayerTriassicIslandSeparate extends GenLayer
+public class GenLayerTriassicChinleFlats extends GenLayer
 {
 
     public Biome TRIASSIC_OCEAN = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean"));
     public int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
-    public Biome TRIASSIC_CLAM_BEDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_clam_beds"));
-    public int TRIASSIC_CLAM_BEDS_ID =  Biome.getIdForBiome(TRIASSIC_CLAM_BEDS);
-    public Biome TRIASSIC_OCEAN_REEF = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_reef"));
-    public int TRIASSIC_OCEAN_REEF_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_REEF);
-    public Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
-    public int TRIASSIC_VOLCANIC_ISLANDS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
-    public Biome TRIASSIC_BLACK_BEACH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
-    public int TRIASSIC_BLACK_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BLACK_BEACH);
+    public Biome TRIASSIC_DESERT_PLATEAU = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau"));
+    public int TRIASSIC_DESERT_PLATEAU_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_PLATEAU);
+    public Biome TRIASSIC_DESERT_DELTA = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_broken"));
+    public int TRIASSIC_DESERT_DELTA_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_DELTA);
+    public Biome TRIASSIC_DESERT_CANYONS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_canyons"));
+    public int TRIASSIC_DESERT_CANYONS_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_CANYONS);
 
-    public GenLayerTriassicIslandSeparate(long seed, GenLayer genLayer)
+    public Biome TRIASSIC_DESERT_DELTA_FLATS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_chinle_flats"));
+    public int TRIASSIC_DESERT_DELTA_FLATS_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_DELTA_FLATS);
+
+    public GenLayerTriassicChinleFlats(long seed, GenLayer genLayer)
     {
         super(seed);
         this.parent = genLayer;
@@ -42,20 +43,16 @@ public class GenLayerTriassicIslandSeparate extends GenLayer
 
                 //if (!hasNoBeach(k))
                 //{
-                    if (k == TRIASSIC_OCEAN_REEF_ID)
+                    if (isOcean(k))
                     {
                         int l1 = aint[j + 1 + (i + 1 - 1) * (areaWidth + 2)];
                         int k2 = aint[j + 1 + 1 + (i + 1) * (areaWidth + 2)];
                         int j3 = aint[j + 1 - 1 + (i + 1) * (areaWidth + 2)];
                         int i4 = aint[j + 1 + (i + 1 + 1) * (areaWidth + 2)];
 
-                        if ((!isJoinable(l1))
-                                || (!isJoinable(k2))
-                                || (!isJoinable(j3))
-                                || (!isJoinable(i4))
-                        )
+                        if (isPlateau(l1) || isPlateau(k2) || isPlateau(j3) || isPlateau(i4))
                         {
-                            aint1[j + i * areaWidth] = TRIASSIC_OCEAN_SHORE_ID;
+                            aint1[j + i * areaWidth] = TRIASSIC_DESERT_DELTA_FLATS_ID;
                         }
                         else
                         {
@@ -66,19 +63,29 @@ public class GenLayerTriassicIslandSeparate extends GenLayer
                     {
                         aint1[j + i * areaWidth] = k;
                     }
+                //}
+                //else
+                //{
+                //    aint1[j + i * areaWidth] = k;
+                //}
             }
         }
 
         return aint1;
     }
 
-    private boolean isJoinable(int biomeID) {
-        if (biomeID == TRIASSIC_OCEAN_ID
-                || biomeID == TRIASSIC_OCEAN_SHORE_ID
-                || biomeID == TRIASSIC_CLAM_BEDS_ID
-                || biomeID == TRIASSIC_OCEAN_REEF_ID
-                || biomeID == TRIASSIC_VOLCANIC_ISLANDS_ID
-                || biomeID == TRIASSIC_BLACK_BEACH_ID) {
+    private boolean isOcean(int biomeID) {
+        if (biomeID == TRIASSIC_OCEAN_ID || biomeID == TRIASSIC_OCEAN_SHORE_ID) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isPlateau(int biomeID) {
+        if (biomeID == TRIASSIC_DESERT_CANYONS_ID
+                || biomeID == TRIASSIC_DESERT_PLATEAU_ID
+                || biomeID == TRIASSIC_DESERT_DELTA_ID
+            ) {
             return true;
         }
         return false;

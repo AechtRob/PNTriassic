@@ -40,12 +40,11 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 	@Override
 	public void init(FMLInitializationEvent event) {
 		BiomeDictionary.addTypes(biome, BiomeDictionary.Type.FOREST);
-		BiomeDictionary.addTypes(biome, BiomeDictionary.Type.COLD);
 	}
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Seasonal Bayou").setTemperature(0.75F).setRainfall(0.8F).setBaseHeight(-0.1F).setHeightVariation(0.00F).setWaterColor(-5317633));
+			super(new BiomeProperties("Triassic Southern Seasonal Bayou").setTemperature(0.75F).setRainfall(0.8F).setBaseHeight(-0.1F).setHeightVariation(0.00F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_gondwanan_forest_dry_bayou");
 			topBlock = Blocks.SAND.getStateFromMeta(1);
 			fillerBlock = Blocks.SANDSTONE.getStateFromMeta(1);
@@ -64,7 +63,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 			this.spawnableCaveCreatureList.clear();
 		}
 
-		protected static final WorldGenDicroidiumHTree DICROIDIUM_H_TREE = new WorldGenDicroidiumHTree(false);
+		protected static final WorldGenDicroidiumOTree DICROIDIUM_O_TREE = new WorldGenDicroidiumOTree(false);
 		protected static final WorldGenGinkgoitesTree GINKGO_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA = new WorldGenSphenobaieraTree(false);
 		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
@@ -102,6 +101,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 		protected static final WorldGenMud MUD_GENERATOR = new WorldGenMud();
 		protected static final WorldGenDicroidiumE DICROIDIUM_E_GENERATOR = new WorldGenDicroidiumE();
 		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
+		protected static final WorldGenPleuromeia PLEUROMEIA_GENERATOR = new WorldGenPleuromeia();
 
 		@Override
 		public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
@@ -148,8 +148,8 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 		{
 			if (rand.nextInt(8) != 0) {return NULL_TREE;}
 
-			if (Math.random() > 0.1) {
-				return DICROIDIUM_H_TREE;
+			if (Math.random() > 0.8) {
+				return DICROIDIUM_O_TREE;
 			}
 			else {
 				if (Math.random() > 0.5) {
@@ -318,7 +318,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					LEAFBLOCK_GENERATOR.generate((BlockBush) BlockDicroidiumFSapling.block, BlockDicroidiumFLeaves.block.getDefaultState(), BlockDicroidiumFLog.block.getDefaultState().withProperty(BlockDicroidiumFLog.BlockCustom.FACING, EnumFacing.NORTH), worldIn, rand, pos.add(j, l, k), 0, 75);
+					LEAFBLOCK_GENERATOR.generate((BlockBush) BlockDicroidiumOSapling.block, BlockDicroidiumOLeaves.block.getDefaultState(), BlockDicroidiumOLog.block.getDefaultState().withProperty(BlockDicroidiumOLog.BlockCustom.FACING, EnumFacing.NORTH), worldIn, rand, pos.add(j, l, k), 0, 75);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -328,6 +328,15 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					DICROIDIUM_E_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), 60, 255);
+				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 38; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					PLEUROMEIA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -376,14 +385,14 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					PLANT_GENERATOR.generate(BlockFieldHorsetail.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 2; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockPetriellales.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 2; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					PLANT_GENERATOR.generate(BlockPetriellales.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+//				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 30; ++i)
@@ -394,14 +403,14 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					PLANT_GENERATOR.generate(BlockDictyophyllum.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 8; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockChiropteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 8; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					PLANT_GENERATOR.generate(BlockChiropteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+//				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 24; ++i)
@@ -411,6 +420,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					GROUNDCOVER_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
+
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 24; ++i)
 				{
@@ -419,6 +429,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					GROUNDCOVER_LUSH_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
+
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 12; ++i)
 				{
@@ -427,6 +438,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					ANCIENT_MOSS_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
+
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 36; ++i)
 				{
@@ -435,6 +447,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					ANCIENT_MOSS_GROUND_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
+
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 12; ++i)
 				{
@@ -444,14 +457,14 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					SELAGINELLA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 48; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 48; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+//				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 32; ++i)
@@ -480,14 +493,14 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					PLANT_GENERATOR.generate(BlockLepidopteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 4; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockClaytosmunda.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 4; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					PLANT_GENERATOR.generate(BlockClaytosmunda.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+//				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 6; ++i)
@@ -495,16 +508,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockClathropteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
-				}
-
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 4; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockNilssoniopteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+					PLANT_GENERATOR.generate(BlockCladophlebis.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 			super.decorate(worldIn, rand, pos);
@@ -512,7 +516,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Cool;
+			return EnumBiomeTypeTriassic.SouthAmericaAusAnt;
 		}
 
 	}

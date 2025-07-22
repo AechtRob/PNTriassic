@@ -45,7 +45,7 @@ public class BiomeTriassicGondwananForestCrags extends ElementsLepidodendronMod.
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Cool Temperate Forest Crags").setTemperature(0.20F).setRainfall(0.8F).setBaseHeight(1.294F).setHeightVariation(0.55F).setWaterColor(-5317633));
+			super(new BiomeProperties("Triassic Polar Forest Crags").setTemperature(0.20F).setRainfall(0.8F).setBaseHeight(1.294F).setHeightVariation(0.55F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_gondwanan_forest_crags");
 			topBlock = BlockLeafLitter.block.getDefaultState();
 			fillerBlock = BlockCoarseSandyDirtRed.block.getDefaultState();
@@ -328,14 +328,14 @@ public class BiomeTriassicGondwananForestCrags extends ElementsLepidodendronMod.
 					PLANT_GENERATOR.generate(BlockAntarcticycas.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
-	        if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-			for (int i = 0; i < 48; ++i)
-			{
-				int j = rand.nextInt(16) + 8;
-				int k = rand.nextInt(16) + 8;
-				int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-				ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
-			}
+//	        if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//			for (int i = 0; i < 48; ++i)
+//			{
+//				int j = rand.nextInt(16) + 8;
+//				int k = rand.nextInt(16) + 8;
+//				int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//				ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+//			}
 
 	        if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 			for (int i = 0; i < 32; ++i)
@@ -364,21 +364,21 @@ public class BiomeTriassicGondwananForestCrags extends ElementsLepidodendronMod.
 				PLANT_GENERATOR.generate(BlockClaytosmunda.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 			}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 24; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockNilssoniopteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 24; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					PLANT_GENERATOR.generate(BlockNilssoniopteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+//				}
 
 	        super.decorate(worldIn, rand, pos);
 	    }
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Cool;
+			return EnumBiomeTypeTriassic.SouthAmericaAusAnt;
 		}
 
 	}

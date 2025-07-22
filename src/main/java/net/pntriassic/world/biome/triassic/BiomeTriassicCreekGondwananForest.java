@@ -43,7 +43,7 @@ public class BiomeTriassicCreekGondwananForest extends ElementsLepidodendronMod.
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Cool Temperate Creek").setTemperature(0.25F).setRainfall(0.8F).setBaseHeight(-0.525F).setHeightVariation(0.0F).setWaterColor(-5317633));
+			super(new BiomeProperties("Triassic Polar Forest Creek").setTemperature(0.25F).setRainfall(0.8F).setBaseHeight(-0.525F).setHeightVariation(0.0F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_creek_gondwanan_forest");
 			topBlock = BlockLeafLitter.block.getDefaultState();
 			fillerBlock = BlockCoarseSandyDirtRed.block.getDefaultState();
@@ -441,7 +441,7 @@ public class BiomeTriassicCreekGondwananForest extends ElementsLepidodendronMod.
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Cool;
+			return EnumBiomeTypeTriassic.SouthAmericaAusAnt;
 		}
 
 	}

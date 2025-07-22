@@ -43,7 +43,7 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Cool Temperate Forest").setTemperature(0.25F).setRainfall(0.8F).setBaseHeight(0.128F).setHeightVariation(0.05F).setWaterColor(-5317633));
+			super(new BiomeProperties("Triassic Polar Forest").setTemperature(0.25F).setRainfall(0.8F).setBaseHeight(0.128F).setHeightVariation(0.05F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_gondwanan_forest");
 			topBlock = BlockLeafLitter.block.getDefaultState();
 			fillerBlock = BlockPeat.block.getDefaultState();
@@ -66,6 +66,8 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 		protected static final WorldGenDicroidium DICROIDIUM = new WorldGenDicroidium(false);
 		protected static final WorldGenGinkgoitesTree GINKGO_TREE = new WorldGenGinkgoitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA = new WorldGenSphenobaieraTree(false);
+		protected static final WorldGenRissikiaTree RISSIKIA_TREE = new WorldGenRissikiaTree(false);
+		protected static final WorldGenPodozamitesTree PODOZAMITES_TREE = new WorldGenPodozamitesTree(false);
 
 		protected static final WorldGenTreeLog DICROIDIUM_LOG_GENERATOR = new WorldGenTreeLog(BlockDicroidiumFLog.block);
 		protected static final WorldGenTreeLog GINKGO_LOG_GENERATOR = new WorldGenTreeLog(BlockGinkgoitesLog.block);
@@ -142,7 +144,16 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 				if (Math.random() > 0.5) {
 					return GINKGO_TREE;
 				} else {
-					return SPHENOBAIERA;
+					if (Math.random() > 0.6) {
+						if (Math.random() > 0.5) {
+							return PODOZAMITES_TREE;
+						} else {
+							return RISSIKIA_TREE;
+						}
+					}
+					else  {
+						return SPHENOBAIERA;
+					}
 				}
 			}
 
@@ -332,7 +343,7 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 24; ++i)
+				for (int i = 0; i < 92; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -375,7 +386,7 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 18; ++i)
+				for (int i = 0; i < 28; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -383,14 +394,14 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 					PLANT_GENERATOR.generate(BlockAntarcticycas.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 48; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 48; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+//				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 32; ++i)
@@ -411,7 +422,7 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 48; ++i)
+				for (int i = 0; i < 64; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -428,21 +439,21 @@ public class BiomeTriassicGondwananForest extends ElementsLepidodendronMod.ModEl
 					PLANT_GENERATOR.generate(BlockCladophlebis.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 24; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockNilssoniopteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
-				}
+//			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+//				for (int i = 0; i < 24; ++i)
+//				{
+//					int j = rand.nextInt(16) + 8;
+//					int k = rand.nextInt(16) + 8;
+//					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+//					PLANT_GENERATOR.generate(BlockNilssoniopteris.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+//				}
 
 			super.decorate(worldIn, rand, pos);
 		}
 
 		@Override
 		public EnumBiomeTypeTriassic getBiomeType() {
-			return EnumBiomeTypeTriassic.Cool;
+			return EnumBiomeTypeTriassic.SouthAmericaAusAnt;
 		}
 
 	}

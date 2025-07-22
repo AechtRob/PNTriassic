@@ -9,15 +9,15 @@ public class GenLayerTriassicDelta extends GenLayer
 {
 
     public Biome TRIASSIC_OCEAN = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean"));
-    public  int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
-    public  Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
-    public  int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
-    public  Biome TRIASSIC_DESERT_PLATEAU = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau"));
-    public  int TRIASSIC_DESERT_PLATEAU_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_PLATEAU);
-    public  Biome TRIASSIC_DESERT_DELTA = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_broken"));
-    public  int TRIASSIC_DESERT_DELTA_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_DELTA);
-    public  Biome TRIASSIC_DESERT_CANYONS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_canyons"));
-    public  int TRIASSIC_DESERT_CANYONS_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_CANYONS);
+    public int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
+    public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
+    public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
+    public Biome TRIASSIC_DESERT_PLATEAU = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau"));
+    public int TRIASSIC_DESERT_PLATEAU_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_PLATEAU);
+    public Biome TRIASSIC_DESERT_DELTA = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_broken"));
+    public int TRIASSIC_DESERT_DELTA_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_DELTA);
+    public Biome TRIASSIC_DESERT_CANYONS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_canyons"));
+    public int TRIASSIC_DESERT_CANYONS_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_CANYONS);
 
     public GenLayerTriassicDelta(long seed, GenLayer genLayer)
     {
@@ -81,9 +81,6 @@ public class GenLayerTriassicDelta extends GenLayer
     private boolean isPlateau(int biomeID) {
         if (biomeID == TRIASSIC_DESERT_CANYONS_ID
             || biomeID == TRIASSIC_DESERT_PLATEAU_ID
-        //    || biomeID == TRIASSIC_WETLANDS_UNWOODED_ID
-        //    || biomeID == TRIASSIC_MOUNTAINS_ID
-        //    || biomeID == TRIASSIC_FLOODBASALT_ID
             ) {
             return true;
         }

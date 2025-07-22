@@ -19,6 +19,8 @@ public class GenLayerTriassicPoljeEdge extends GenLayer
     public int TRIASSIC_BEACH_ID =  Biome.getIdForBiome(TRIASSIC_BEACH);
     public Biome TRIASSIC_BEACH_BLACK = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_black"));
     public int TRIASSIC_BEACH_BLACK_ID =  Biome.getIdForBiome(TRIASSIC_BEACH_BLACK);
+    public Biome TRIASSIC_BEACH_WHITE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_beach_white"));
+    public int TRIASSIC_BEACH_WHITE_ID =  Biome.getIdForBiome(TRIASSIC_BEACH_WHITE);
 
     public Biome TRIASSIC_POLJE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland_polje"));
     public int TRIASSIC_POLJE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE);
@@ -79,7 +81,7 @@ public class GenLayerTriassicPoljeEdge extends GenLayer
                 || biomeID == TRIASSIC_BEACH_ID || biomeID == TRIASSIC_BEACH_BLACK_ID
                 || biomeID == TRIASSIC_POLJE_ID || biomeID == TRIASSIC_POLJE_EDGE_ID
                 || biomeID == TRIASSIC_RIVER_ID || biomeID == TRIASSIC_OCEAN_CLAM_ID
-                || biomeID == TRIASSIC_REEF_ID) {
+                || biomeID == TRIASSIC_REEF_ID || biomeID == TRIASSIC_BEACH_WHITE_ID) {
             return true;
         }
         return false;

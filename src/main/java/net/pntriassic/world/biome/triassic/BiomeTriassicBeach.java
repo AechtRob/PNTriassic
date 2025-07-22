@@ -87,10 +87,7 @@ public class BiomeTriassicBeach extends ElementsLepidodendronMod.ModElement {
 			return -15424749;
 		}
 
-		protected static final WorldGenHirmeriellaTree HIRMERIELLA_TREE = new WorldGenHirmeriellaTree(false);
 		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
-		//protected static final WorldGenAntarcticycas ANTARCTICYCAS_GENERATOR = new WorldGenAntarcticycas();
-		//protected static final WorldGenAridHorsetail ARID_HORSETAIL_GENERATOR = new WorldGenAridHorsetail();
 		protected static final WorldGenPrehistoricGroundCoverSandy SANDY_GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverSandy();
 		protected static final WorldGenPrehistoricGroundCoverPangaean PANGAEAN_GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverPangaean();
 		protected static final WorldGenPodzol PODZOL_GENERATOR = new WorldGenPodzol();
@@ -100,12 +97,9 @@ public class BiomeTriassicBeach extends ElementsLepidodendronMod.ModElement {
 
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
-	    {
-	    	if (rand.nextInt(10) == 0) {
-				return HIRMERIELLA_TREE;
-			}
-	    	return NULL_TREE;
-	    }
+		{
+			return NULL_TREE;
+		}
 
 		@Override
 		public void decorate(World worldIn, Random rand, BlockPos pos)
@@ -136,15 +130,6 @@ public class BiomeTriassicBeach extends ElementsLepidodendronMod.ModElement {
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					PLANT_GENERATOR.generate(BlockAridHorsetail.block.getDefaultState(), worldIn, rand, pos.add(j, l, k), 0, 255, true);
-				}
-
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 2; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockAntarcticycas.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))

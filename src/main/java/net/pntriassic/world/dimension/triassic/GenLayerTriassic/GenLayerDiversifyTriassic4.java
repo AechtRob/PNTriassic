@@ -12,7 +12,7 @@ public class GenLayerDiversifyTriassic4 extends GenLayer {
     public Biome TRIASSIC_GONDWANAN_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest"));
     public int TRIASSIC_GONDWANAN_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_GONDWANAN_FOREST);
 
-    public Biome TRIASSIC_GONDWANAN_FOREST_CLEARING = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_clearing"));
+    public Biome TRIASSIC_GONDWANAN_FOREST_CLEARING = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_clearing_lake"));
     public int TRIASSIC_GONDWANAN_FOREST_CLEARING_ID =  Biome.getIdForBiome(TRIASSIC_GONDWANAN_FOREST_CLEARING);
 
 
@@ -21,7 +21,7 @@ public class GenLayerDiversifyTriassic4 extends GenLayer {
             TRIASSIC_GONDWANAN_FOREST_ID,
             TRIASSIC_GONDWANAN_FOREST_ID,
             TRIASSIC_GONDWANAN_FOREST_ID,
-            //TRIASSIC_GONDWANAN_FOREST_ID,
+            TRIASSIC_GONDWANAN_FOREST_CLEARING_ID,
             TRIASSIC_GONDWANAN_FOREST_CLEARING_ID,
             TRIASSIC_GONDWANAN_FOREST_CLEARING_ID
     };

@@ -17,13 +17,12 @@ public class GenLayerTriassicBiomes extends GenLayer {
     public int TRIASSIC_XERIC_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_XERIC_FOREST);
     public Biome TRIASSIC_WARM_LAKELAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_lakeland"));
     public int TRIASSIC_WARM_LAKELAND_ID =  Biome.getIdForBiome(TRIASSIC_WARM_LAKELAND);
-    public Biome TRIASSIC_FLOODED_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest"));
-    public int TRIASSIC_FLOODED_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_FLOODED_FOREST);
     public Biome TRIASSIC_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_woodland"));
     public int TRIASSIC_WOODLAND_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND);
 
 
     private final int TriassicBiomes[] = new int[] {
+        //Gondwana placeholder:
         TRIASSIC_GONDWANAN_FOREST_ID,
 
         TRIASSIC_DESERT_ID,
@@ -34,8 +33,7 @@ public class GenLayerTriassicBiomes extends GenLayer {
 
         TRIASSIC_OCEAN_SHORE_ID,
         TRIASSIC_OCEAN_SHORE_ID,
-
-        TRIASSIC_FLOODED_FOREST_ID,
+        TRIASSIC_OCEAN_SHORE_ID,
 
         TRIASSIC_WOODLAND_ID
     };

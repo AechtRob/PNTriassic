@@ -24,6 +24,11 @@ public class GenLayerTriassicDryBayou extends GenLayer
     public Biome COOL_FOREST_CLEARING = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_clearing"));
     public int COOL_FOREST_CLEARING_ID = Biome.getIdForBiome(COOL_FOREST_CLEARING);
 
+    public Biome FLOODED = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest"));
+    public int FLOODED_ID = Biome.getIdForBiome(FLOODED);
+    public Biome FLOODED_DENSE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest_dense"));
+    public int FLOODED_DENSE_ID = Biome.getIdForBiome(FLOODED_DENSE);
+
     public Biome DRY_BAYOU = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_forest_dry_bayou"));
     public int DRY_BAYOU_ID = Biome.getIdForBiome(DRY_BAYOU);
 
@@ -57,9 +62,8 @@ public class GenLayerTriassicDryBayou extends GenLayer
                 if (aint[i] == COOL_FOREST_ID
                         || aint[i] == COOL_FOREST_HILLS_ID
                         || aint[i] == COOL_FOREST_MOUNTAINS_ID
-                        //|| aint[i] == COOL_PLAIN_ID
-                        //|| aint[i] == COOL_FOREST_CLEARING_ID
-                        //|| aint[i] == COOL_PLAIN_FLAT_ID
+                        || aint[i] == FLOODED_ID
+                        || aint[i] == FLOODED_DENSE_ID
                  ) {
                     aint2[i] = DRY_BAYOU_ID;
                 }

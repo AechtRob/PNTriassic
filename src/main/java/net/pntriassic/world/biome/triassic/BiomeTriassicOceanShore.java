@@ -2,14 +2,14 @@
 package net.pntriassic.world.biome.triassic;
 
 import net.lepidodendron.ElementsLepidodendronMod;
-import net.lepidodendron.block.BlockAridHorsetail;
-import net.lepidodendron.block.BlockCoral;
-import net.lepidodendron.block.BlockDechellyia;
+import net.lepidodendron.block.*;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
 import net.lepidodendron.world.gen.*;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
@@ -89,32 +89,26 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 			return -15424749;
 		}
 
-		protected static final WorldGenHirmeriellaTree HIRMERIELLA_TREE = new WorldGenHirmeriellaTree(false);
-		//protected static final WorldGenPolyspermophyllum POLYSPERMOPHYLLUM_GENERATOR = new WorldGenPolyspermophyllum();
-		//protected static final WorldGenAridHorsetail ARID_HORSETAIL_GENERATOR = new WorldGenAridHorsetail();
+		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
 		protected static final WorldGenPrehistoricGroundCoverSandy SANDY_GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverSandy();
 		protected static final WorldGenPrehistoricGroundCoverPangaean PANGAEAN_GROUNDCOVER_GENERATOR = new WorldGenPrehistoricGroundCoverPangaean();
 		protected static final WorldGenPodzol PODZOL_GENERATOR = new WorldGenPodzol();
 		protected static final WorldGenPangeanDirt DIRT_GENERATOR = new WorldGenPangeanDirt();
-		protected static final WorldGenReef REEF_GENERATOR = new WorldGenReef();
+		protected static final WorldGenLeafblock LEAFBLOCK_GENERATOR = new WorldGenLeafblock();
 		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
 
-		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
-	    {
-	    	return HIRMERIELLA_TREE;
-	    }
 
-		//public Biome.TempCategory getTempCategory()
-	    //{
-	    //    return Biome.TempCategory.OCEAN;
-	   // }
+		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
+		{
+			return NULL_TREE;
+		}
 
 		@Override
 		public void decorate(World worldIn, Random rand, BlockPos pos)
 		{
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 12; ++i)
+				for (int i = 0; i < 2; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -123,7 +117,7 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 8; ++i)
+				for (int i = 0; i < 2; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -132,7 +126,7 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 12; ++i)
+				for (int i = 0; i < 48; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -141,16 +135,16 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 6; ++i)
+				for (int i = 0; i < 1; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					PLANT_GENERATOR.generate(BlockDechellyia.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+					LEAFBLOCK_GENERATOR.generate((BlockBush) BlockBrachyphyllumSapling.block, BlockBrachyphyllumLeaves.block.getDefaultState(), BlockBrachyphyllumLog.block.getDefaultState().withProperty(BlockBrachyphyllumLog.BlockCustom.FACING, EnumFacing.NORTH), worldIn, rand, pos.add(j, l, k), 0, 75);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 21; ++i)
+				for (int i = 0; i < 10; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -159,29 +153,12 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 21; ++i)
+				for (int i = 0; i < 10; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					SANDY_GROUNDCOVER_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
-				}
-
-			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.ROCK))
-				for (int i = 0; i < 8; ++i)
-				{
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					BlockPos pos1 = pos.add(j, l, k);
-					if (
-							(pos1.getY() < worldIn.getSeaLevel() - 5)
-									&& (worldIn.getBlockState(pos1).getMaterial() == Material.WATER)
-									&& (worldIn.getBlockState(pos1.up()).getMaterial() == Material.WATER)
-									&& (worldIn.getBlockState(pos1.up(2)).getMaterial() == Material.WATER)
-					) {
-						REEF_GENERATOR.generate(worldIn, rand, pos1, 3, BlockCoral.block.getDefaultState());
-					}
 				}
 
 
@@ -194,4 +171,5 @@ public class BiomeTriassicOceanShore extends ElementsLepidodendronMod.ModElement
 		}
 
 	}
+
 }

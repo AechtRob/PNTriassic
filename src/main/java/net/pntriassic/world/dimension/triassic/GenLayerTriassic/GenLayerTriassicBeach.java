@@ -21,12 +21,24 @@ public class GenLayerTriassicBeach extends GenLayer
     public Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
     public int TRIASSIC_VOLCANIC_ISLANDS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
 
+    public Biome TRIASSIC_FLATS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_madagascar_flats"));
+    public int TRIASSIC_FLATS_ID =  Biome.getIdForBiome(TRIASSIC_FLATS);
+    public Biome TRIASSIC_ESTUARY = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_estuary"));
+    public int TRIASSIC_ESTUARY_ID =  Biome.getIdForBiome(TRIASSIC_ESTUARY);
+
     public Biome TRIASSIC_DESERT_PLATEAU_BROKEN = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_desert_plateau_broken"));
     public int TRIASSIC_DESERT_PLATEAU_BROKEN_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_PLATEAU_BROKEN);
     public Biome TRIASSIC_CREEK = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek"));
     public int TRIASSIC_CREEK_ID =  Biome.getIdForBiome(TRIASSIC_CREEK);
     public Biome TRIASSIC_RIVERBANK = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_riverbank"));
     public int TRIASSIC_RIVERBANK_ID =  Biome.getIdForBiome(TRIASSIC_RIVERBANK);
+
+    public Biome TRIASSIC_CHINA_TREES = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_china_trees"));
+    public int TRIASSIC_CHINA_TREES_ID = Biome.getIdForBiome(TRIASSIC_CHINA_TREES);
+    public Biome TRIASSIC_CHINA_SWAMP = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_china_swamp"));
+    public int TRIASSIC_CHINA_SWAMP_ID = Biome.getIdForBiome(TRIASSIC_CHINA_SWAMP);
+    public Biome RIASSIC_CHINA_LAKES = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_china_lakes"));
+    public int TRIASSIC_CHINA_LAKES_ID = Biome.getIdForBiome(RIASSIC_CHINA_LAKES);
 
     public GenLayerTriassicBeach(long seed, GenLayer genLayer)
     {
@@ -94,11 +106,12 @@ public class GenLayerTriassicBeach extends GenLayer
             || biomeID == TRIASSIC_CREEK_ID
             || biomeID == TRIASSIC_RIVERBANK_ID
             || biomeID == TRIASSIC_VOLCANIC_ISLANDS_ID
-                || biomeID == TRIASSIC_REEF_ID
-        //    || biomeID == TRIASSIC_LOWLANDS_FLOODPLAIN_ID
-        //    || biomeID == TRIASSIC_WETLANDS_UNWOODED_ID
-        //    || biomeID == TRIASSIC_MOUNTAINS_ID
-        //    || biomeID == TRIASSIC_FLOODBASALT_ID
+            || biomeID == TRIASSIC_REEF_ID
+            || biomeID == TRIASSIC_FLATS_ID
+            || biomeID == TRIASSIC_ESTUARY_ID
+            || biomeID == TRIASSIC_CHINA_TREES_ID
+            || biomeID == TRIASSIC_CHINA_SWAMP_ID
+            || biomeID == TRIASSIC_CHINA_LAKES_ID
             ) {
             return true;
         }

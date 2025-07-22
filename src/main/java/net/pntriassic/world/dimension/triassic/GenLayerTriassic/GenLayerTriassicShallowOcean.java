@@ -12,8 +12,6 @@ public class GenLayerTriassicShallowOcean extends GenLayer
     public  int TRIASSIC_OCEAN_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN);
     public  Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public  int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
-    public  Biome TRIASSIC_VOLCANIC_ISLANDS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_volcanic_islands"));
-    public  int TRIASSIC_VOLCANIC_ISLANDS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_ISLANDS);
 
     public GenLayerTriassicShallowOcean(long seed, GenLayer genLayer)
     {
@@ -70,7 +68,7 @@ public class GenLayerTriassicShallowOcean extends GenLayer
     private boolean hasDeepSea(int biomeID) {
         if (
                 //biomeID == TRIASSIC_MOUNTAINS_ID ||
-                biomeID == TRIASSIC_OCEAN_ID || biomeID == TRIASSIC_OCEAN_SHORE_ID || biomeID == TRIASSIC_VOLCANIC_ISLANDS_ID) {
+                biomeID == TRIASSIC_OCEAN_ID || biomeID == TRIASSIC_OCEAN_SHORE_ID) {
             return true;
         }
         return false;
