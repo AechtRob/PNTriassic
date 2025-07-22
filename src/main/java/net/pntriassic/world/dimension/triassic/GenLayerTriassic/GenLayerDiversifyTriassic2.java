@@ -58,10 +58,10 @@ public class GenLayerDiversifyTriassic2 extends GenLayer {
 
     private final int XericBiomes[] = new int[] {
         TRIASSIC_XERIC_FOREST_ID,
-        TRIASSIC_XERIC_FOREST_ID,
         TRIASSIC_XERIC_SCRUBLAND_ID,
         TRIASSIC_MOUNTAINS_ID
     };
+
     private final int WarmBiomes[] = new int[] {
         TRIASSIC_WARM_LAKELAND_ID,
         TRIASSIC_WARM_LAKELAND_ID,

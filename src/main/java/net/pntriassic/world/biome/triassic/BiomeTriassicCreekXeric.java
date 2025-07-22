@@ -40,7 +40,7 @@ public class BiomeTriassicCreekXeric extends ElementsLepidodendronMod.ModElement
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
 			//super(new BiomeProperties("Permian Desert").setRainfall(0.0F).setBaseHeight(0.18F).setHeightVariation(0.17F).setTemperature(2.2F).setRainDisabled().setWaterColor(10990706));
-			super(new BiomeProperties("Triassic Southern Xeric Creek").setRainfall(0.0F).setBaseHeight(-0.325F).setHeightVariation(0.002F).setTemperature(1.5F).setRainDisabled());
+			super(new BiomeProperties("Triassic Southern Xeric Scrubby Forest Creek").setRainfall(0.0F).setBaseHeight(-0.325F).setHeightVariation(0.002F).setTemperature(1.5F).setRainDisabled());
 			setRegistryName("lepidodendron:triassic_creek_xeric");
 			topBlock = Blocks.SAND.getStateFromMeta(1);
 			fillerBlock = Blocks.SAND.getStateFromMeta(1);

@@ -23,8 +23,8 @@ public class GenLayerDiversifyTriassic extends GenLayer {
     public int TRIASSIC_DESERT_PLATEAU_ID =  Biome.getIdForBiome(TRIASSIC_DESERT_PLATEAU);
     public Biome TRIASSIC_XERIC_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_xeric_forest"));
     public int TRIASSIC_XERIC_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_XERIC_FOREST);
-    public Biome TRIASSIC_XERIC_SCRUBLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_xeric_scrubland"));
-    public int TRIASSIC_XERIC_SCRUBLAND_ID =  Biome.getIdForBiome(TRIASSIC_XERIC_SCRUBLAND);
+//    public Biome TRIASSIC_XERIC_SCRUBLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_xeric_scrubland"));
+//    public int TRIASSIC_XERIC_SCRUBLAND_ID =  Biome.getIdForBiome(TRIASSIC_XERIC_SCRUBLAND);
     public Biome TRIASSIC_WARM_LAKELAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_lakeland"));
     public int TRIASSIC_WARM_LAKELAND_ID =  Biome.getIdForBiome(TRIASSIC_WARM_LAKELAND);
     public Biome TRIASSIC_WARM_VOLCANIC_HILLS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills"));
@@ -48,7 +48,8 @@ public class GenLayerDiversifyTriassic extends GenLayer {
     private final int GondwanaBiomes[] = new int[] {
         TRIASSIC_GONDWANAN_FOREST_ID,
         TRIASSIC_GONDWANAN_PLAIN_ID,
-        TRIASSIC_FLOODED_FOREST_ID
+        TRIASSIC_FLOODED_FOREST_ID,
+            TRIASSIC_XERIC_FOREST_ID
     };
 
      private final int DesertBiomes[] = new int[] {
@@ -59,12 +60,12 @@ public class GenLayerDiversifyTriassic extends GenLayer {
         TRIASSIC_DESERT_PLATEAU_ID
     };
 
-    private final int XericBiomes[] = new int[] {
-        TRIASSIC_XERIC_FOREST_ID,
-        TRIASSIC_XERIC_SCRUBLAND_ID,
-        TRIASSIC_SOUTHERN_FOREST_ID,
-        TRIASSIC_SOUTHERN_FOREST_ID
-    };
+//    private final int XericBiomes[] = new int[] {
+//        TRIASSIC_XERIC_FOREST_ID,
+//        TRIASSIC_XERIC_SCRUBLAND_ID,
+//        TRIASSIC_SOUTHERN_FOREST_ID,
+//        TRIASSIC_SOUTHERN_FOREST_ID
+//    };
 
     private final int EurasiaBiomes[] = new int[] {
         TRIASSIC_WARM_LAKELAND_ID,
@@ -111,8 +112,8 @@ public class GenLayerDiversifyTriassic extends GenLayer {
                         output[i] = GondwanaBiomes[nextInt(GondwanaBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicDesertRocky.biome)
                         output[i] = DesertBiomes[nextInt(DesertBiomes.length)];
-                    else if (Biome.getBiome(center) == BiomeTriassicXericForest.biome)
-                        output[i] = XericBiomes[nextInt(XericBiomes.length)];
+//                    else if (Biome.getBiome(center) == BiomeTriassicXericForest.biome)
+//                        output[i] = XericBiomes[nextInt(XericBiomes.length)];
                     else if (Biome.getBiome(center) == BiomeTriassicWarmLakeland.biome)
                         output[i] = EurasiaBiomes[nextInt(EurasiaBiomes.length)];
 //                    else if (Biome.getBiome(center) == BiomeTriassicFloodedForest.biome)

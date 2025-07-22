@@ -41,7 +41,7 @@ public class BiomeTriassicXericScrubland extends ElementsLepidodendronMod.ModEle
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
 			//super(new BiomeProperties("Permian Desert").setRainfall(0.0F).setBaseHeight(0.18F).setHeightVariation(0.17F).setTemperature(2.2F).setRainDisabled().setWaterColor(10990706));
-			super(new BiomeProperties("Triassic Southern Xeric Scrubland").setRainfall(0.0F).setBaseHeight(0.24F).setHeightVariation(0.14F).setTemperature(1.5F).setRainDisabled());
+			super(new BiomeProperties("Triassic Southern Xeric Scrubby Forest").setRainfall(0.0F).setBaseHeight(0.24F).setHeightVariation(0.14F).setTemperature(1.5F).setRainDisabled());
 			setRegistryName("lepidodendron:triassic_xeric_scrubland");
 			topBlock = Blocks.SAND.getStateFromMeta(1);
 			fillerBlock = Blocks.SAND.getStateFromMeta(1);
