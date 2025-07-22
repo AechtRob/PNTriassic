@@ -49,6 +49,7 @@ public class GenLayerDiversifyTriassic extends GenLayer {
         TRIASSIC_GONDWANAN_FOREST_ID,
         TRIASSIC_GONDWANAN_PLAIN_ID,
         TRIASSIC_FLOODED_FOREST_ID,
+            TRIASSIC_SOUTHERN_FOREST_ID,
             TRIASSIC_XERIC_FOREST_ID
     };
 
