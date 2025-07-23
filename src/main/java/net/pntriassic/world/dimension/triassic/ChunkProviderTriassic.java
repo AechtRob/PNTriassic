@@ -316,6 +316,17 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 }
             }
 
+        if (biome == BiomeTriassicHorsetails.biome)
+            if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
+                    net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
+                for (int lake = 0; lake < 6; ++lake) {
+                    int i1 = this.random.nextInt(16) + 8;
+                    int j1 = this.random.nextInt(256);
+                    int k1 = this.random.nextInt(16) + 8;
+                    (new WorldGenTriassicLakes(FLUID.getBlock())).generate(this.world, this.random, blockpos.add(i1, j1, k1));
+                }
+            }
+
         if (biome == BiomeTriassicMadagascarFlats.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
@@ -532,6 +543,13 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                     double d4 = (this.noiseRegMain[i] / 10.0D + 1.0D) / 2.0D;
 
                     if (biome == BiomeTriassicGondwananPlainFlat.biome) {
+                        //Flatten these out:
+                        d4 = 0;
+                        d2 = d4;
+                        d3 = d4;
+                    }
+
+                    if (biome == BiomeTriassicHorsetails.biome) {
                         //Flatten these out:
                         d4 = 0;
                         d2 = d4;
@@ -794,6 +812,17 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                     }
                                 }
                             }
+                        }
+
+                        //For the Horsetails:
+                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(16) == 0) {
+                            iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(19) == 0) {
+                            iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(24) == 0) {
+                            iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
                         }
 
                         //For the Chinese swamp:

@@ -57,6 +57,9 @@ public class GenLayerTriassicRiverMix extends GenLayer
     public Biome TRIASSIC_LOSSIEMOUTH = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_lossiemouth"));
     public int TRIASSIC_LOSSIEMOUTH_ID = Biome.getIdForBiome(TRIASSIC_LOSSIEMOUTH);
 
+    public Biome TRIASSIC_CREEK_HORSETAILS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_horsetails"));
+    public int TRIASSIC_CREEK_HORSETAILS_ID = Biome.getIdForBiome(TRIASSIC_CREEK_HORSETAILS);
+
     public Biome TRIASSIC_MOSSY = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plain"));
     public int TRIASSIC_MOSSY_ID = Biome.getIdForBiome(TRIASSIC_MOSSY);
     public Biome TRIASSIC_MOSSY_FLAT = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_gondwanan_plain_flat"));
@@ -163,16 +166,19 @@ public class GenLayerTriassicRiverMix extends GenLayer
                             if (biome == BiomeTriassicWarmVolcanicHills.biome) {
                                 aint2[i] = TRIASSIC_CREEK_LAKELAND_HILLS_ID;
                             }
-                            if (biome == BiomeTriassicWarmVolcanicHillsValley.biome) {
+                            else if (biome == BiomeTriassicWarmVolcanicHillsValley.biome) {
                                 aint2[i] = TRIASSIC_CREEK_LAKELAND_SWAMP_ID;
                             }
-                            if (biome == BiomeTriassicLossiemouth.biome) {
+                            else if (biome == BiomeTriassicLossiemouth.biome) {
                                 aint2[i] = TRIASSIC_LOSSIEMOUTH_ID;
                             }
-                            if (biome == BiomeTriassicDeltaFlats.biome) {
+                            else if (biome == BiomeTriassicHorsetails.biome) {
+                                aint2[i] = TRIASSIC_CREEK_HORSETAILS_ID;
+                            }
+                            else if (biome == BiomeTriassicDeltaFlats.biome) {
                                 aint2[i] = TRIASSIC_CREEK_DELTA_FLATS_ID;
                             }
-                            if (biome == BiomeTriassicEstuary.biome) {
+                            else if (biome == BiomeTriassicEstuary.biome) {
                                 aint2[i] = TRIASSIC_CREEK_ESTUARY_ID;
                             }
                             else {
@@ -205,7 +211,7 @@ public class GenLayerTriassicRiverMix extends GenLayer
                             if (biome == BiomeTriassicKarooPlains.biome) {
                                 aint2[i] = TRIASSIC_CREEK_SOUTHERN_PLAINS_ID;
                             }
-                            if (biome == BiomeTriassicKarooForest.biome) {
+                            else if (biome == BiomeTriassicKarooForest.biome) {
                                 aint2[i] = TRIASSIC_CREEK_SOUTHERN_FOREST_ID;
                             }
                             else {

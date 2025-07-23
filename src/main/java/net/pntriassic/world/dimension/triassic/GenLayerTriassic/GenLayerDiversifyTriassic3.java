@@ -6,16 +6,20 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.pntriassic.world.biome.triassic.BiomeTriassicFloodedForest;
+import net.pntriassic.world.biome.triassic.BiomeTriassicWarmLakeland;
 
 public class GenLayerDiversifyTriassic3 extends GenLayer {
 
     public Biome TRIASSIC_FLOODED_FOREST = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest"));
     public int TRIASSIC_FLOODED_FOREST_ID =  Biome.getIdForBiome(TRIASSIC_FLOODED_FOREST);
 
-
     public Biome TRIASSIC_FLOODED_FOREST_DENSE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_flooded_forest_dense"));
     public int TRIASSIC_FLOODED_FOREST_DENSE_ID =  Biome.getIdForBiome(TRIASSIC_FLOODED_FOREST_DENSE);
 
+    public Biome TRIASSIC_WARM_LAKELAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_lakeland"));
+    public int TRIASSIC_WARM_LAKELAND_ID =  Biome.getIdForBiome(TRIASSIC_WARM_LAKELAND);
+    public Biome TRIASSIC_HORSETAILS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_horsetails"));
+    public int TRIASSIC_HORSETAILS_ID =  Biome.getIdForBiome(TRIASSIC_HORSETAILS);
 
 
     private final int SwampBiomes[] = new int[] {
@@ -26,6 +30,16 @@ public class GenLayerDiversifyTriassic3 extends GenLayer {
             TRIASSIC_FLOODED_FOREST_ID,
             TRIASSIC_FLOODED_FOREST_DENSE_ID,
             TRIASSIC_FLOODED_FOREST_DENSE_ID
+    };
+
+    private final int LakelandBiomes[] = new int[] {
+            TRIASSIC_WARM_LAKELAND_ID,
+            TRIASSIC_WARM_LAKELAND_ID,
+            TRIASSIC_WARM_LAKELAND_ID,
+            TRIASSIC_WARM_LAKELAND_ID,
+            TRIASSIC_WARM_LAKELAND_ID,
+            TRIASSIC_HORSETAILS_ID,
+            TRIASSIC_HORSETAILS_ID
     };
 
     public GenLayerDiversifyTriassic3(long seed, GenLayer genlayer) {
@@ -50,6 +64,8 @@ public class GenLayerDiversifyTriassic3 extends GenLayer {
                 if (nextInt(2) == 0) {
                     if (Biome.getBiome(center) == BiomeTriassicFloodedForest.biome)
                         output[i] = SwampBiomes[nextInt(SwampBiomes.length)];
+                    if (Biome.getBiome(center) == BiomeTriassicWarmLakeland.biome)
+                        output[i] = LakelandBiomes[nextInt(LakelandBiomes.length)];
 
                     else output[i] = center;
                 } else output[i] = center;
