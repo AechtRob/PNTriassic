@@ -68,15 +68,14 @@ public class BiomeTriassicChinaLakes extends ElementsLepidodendronMod.ModElement
 		protected static final WorldGenPodozamitesTree PODOZAMITES_TREE = new WorldGenPodozamitesTree(false);
 		protected static final WorldGenSphenobaieraTree SPHENOBAIERA_TREE = new WorldGenSphenobaieraTree(false);
 		protected static final WorldGenGlossophyllum GLOSSOPHYLLUM_TREE = new WorldGenGlossophyllum(false);
+		protected static final WorldGenStromatoliteReefCambrian REEF_GENERATOR_STROMATOLITE = new WorldGenStromatoliteReefCambrian();
 
 		protected static final net.minecraft.world.gen.feature.WorldGenDeadBush DEAD_BUSH_GENERATOR = new net.minecraft.world.gen.feature.WorldGenDeadBush();
 		protected static final WorldGenDeadBush DEAD_BUSH_PF_GENERATOR = new WorldGenDeadBush();
 
-		protected static final WorldGenIsoetes ISOETES_GENERATOR = new WorldGenIsoetes();
 		protected static final WorldGenFern FERN_GENERATOR = new WorldGenFern();
 		public static final PropertyEnum<BlockDoublePlant.EnumPlantType> VARIANT = PropertyEnum.<BlockDoublePlant.EnumPlantType>create("variant", BlockDoublePlant.EnumPlantType.class);
 
-		protected static final WorldGenWaterHorsetail WATER_HORSETAIL_GENERATOR = new WorldGenWaterHorsetail();
 		protected static final WorldGenLeafblock LEAVES_GENERATOR = new WorldGenLeafblock();
 		protected static final WorldGenEquisetites EQUISETITES_GENERATOR = new WorldGenEquisetites();
 		protected static final WorldGenAnomozamites ANOMOZAMITES_GENERATOR = new WorldGenAnomozamites();
@@ -88,6 +87,7 @@ public class BiomeTriassicChinaLakes extends ElementsLepidodendronMod.ModElement
 		protected static final WorldGenBjuvia BJUVIA_GENERATOR = new WorldGenBjuvia();
 		protected static final WorldGenCtenis CTENIS_GENERATOR = new WorldGenCtenis();
 		protected static final WorldGenPleuromeia PLEUROMEIA_GENERATOR = new WorldGenPleuromeia();
+		protected static final WorldGenCorallineAlgae CORALLINE_GENERATOR= new WorldGenCorallineAlgae();
 
 		protected static final WorldGenCzekanowskia CZEKANOWSKIA_GENERATOR = new WorldGenCzekanowskia();
 		protected static final WorldGenAncientMossGround MOSS_GENERATOR = new WorldGenAncientMossGround();
@@ -131,6 +131,30 @@ public class BiomeTriassicChinaLakes extends ElementsLepidodendronMod.ModElement
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					PUDDLES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
+
+			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.CLAY)) {
+				for (int i = 0; i < 4; ++i) {
+					int radius = 3;
+					int j;
+					int k;
+					if (radius < 10) {
+						j = 16 + (int)Math.floor(rand.nextInt(16 - radius - 6)/2) - (int)Math.floor(rand.nextInt(16 - radius - 6)/2);
+						k = 16 + (int)Math.floor(rand.nextInt(16 - radius - 6)/2) - (int)Math.floor(rand.nextInt(16 - radius - 6)/2);
+					}
+					else {
+						radius = 10;
+						j = 16;
+						k = 16;
+					}
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					BlockPos pos1 = pos.add(j, l, k);
+					if (
+							(pos1.getY() < worldIn.getSeaLevel())
+					) {
+						REEF_GENERATOR_STROMATOLITE.generate(worldIn, rand, pos1, radius);
+					}
+				}
+			}
 
 			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 3; ++i) {
@@ -213,22 +237,6 @@ public class BiomeTriassicChinaLakes extends ElementsLepidodendronMod.ModElement
 				}
 
 			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 48; ++i) {
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					ISOETES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
-				}
-
-			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 32; ++i) {
-					int j = rand.nextInt(16) + 8;
-					int k = rand.nextInt(16) + 8;
-					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					WATER_HORSETAIL_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
-				}
-
-			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
 				for (int i = 0; i < 18; ++i) {
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -296,6 +304,15 @@ public class BiomeTriassicChinaLakes extends ElementsLepidodendronMod.ModElement
 					}
 				}
 			}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 64; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					CORALLINE_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.ICE))
 				for (int i = 0; i < 92; ++i)
