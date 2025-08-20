@@ -818,11 +818,14 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                         if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(16) == 0) {
                             iblockstate = BlockPrehistoricGroundMossy.block.getDefaultState();
                         }
-                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(19) == 0) {
+                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(14) == 0) {
                             iblockstate = BlockPrehistoricGroundLush.block.getDefaultState();
                         }
-                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(24) == 0) {
+                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(22) == 0) {
                             iblockstate = BlockCoarseSandyDirtRed.block.getDefaultState();
+                        }
+                        if ((biome == BiomeTriassicHorsetails.biome) && rand.nextInt(8) == 0) {
+                            iblockstate = BlockCoarseSandyDirtBlack.block.getDefaultState();
                         }
 
                         //For the Chinese swamp:

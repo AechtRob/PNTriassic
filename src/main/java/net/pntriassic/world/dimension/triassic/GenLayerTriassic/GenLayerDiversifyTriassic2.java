@@ -31,6 +31,8 @@ public class GenLayerDiversifyTriassic2 extends GenLayer {
     public int TRIASSIC_WARM_VOLCANIC_HILLS_ID =  Biome.getIdForBiome(TRIASSIC_WARM_VOLCANIC_HILLS);
     public Biome TRIASSIC_OCEAN_SHORE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_ocean_shore"));
     public int TRIASSIC_OCEAN_SHORE_ID =  Biome.getIdForBiome(TRIASSIC_OCEAN_SHORE);
+    public Biome TRIASSIC_HORSETAILS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_horsetails"));
+    public int TRIASSIC_HORSETAILS_ID =  Biome.getIdForBiome(TRIASSIC_HORSETAILS);
 
     public Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
     public int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
@@ -65,7 +67,11 @@ public class GenLayerDiversifyTriassic2 extends GenLayer {
     private final int WarmBiomes[] = new int[] {
         TRIASSIC_WARM_LAKELAND_ID,
         TRIASSIC_WARM_LAKELAND_ID,
-        TRIASSIC_WARM_VOLCANIC_HILLS_ID
+        TRIASSIC_WARM_VOLCANIC_HILLS_ID,
+        TRIASSIC_WARM_LAKELAND_ID,
+        TRIASSIC_WARM_LAKELAND_ID,
+        TRIASSIC_WARM_VOLCANIC_HILLS_ID,
+        TRIASSIC_HORSETAILS_ID,
     };
 
     private final int OceanBiomes[] = new int[] {

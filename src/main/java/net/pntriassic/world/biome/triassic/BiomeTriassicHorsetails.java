@@ -48,8 +48,8 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 		public BiomeGenCustom() {
 			super(new BiomeProperties("Triassic Equisetites Lea").setTemperature(0.75F).setRainfall(0.8F).setBaseHeight(0.08F).setHeightVariation(0.25F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_horsetails");
-			topBlock = BlockPrehistoricGroundBasic.block.getDefaultState();
-			fillerBlock = BlockCoarseSandyDirtRed.block.getDefaultState();
+			topBlock = BlockPrehistoricGroundHorsetail.block.getDefaultState();
+			fillerBlock = BlockCoarseSandyDirtBlack.block.getDefaultState();
 			decorator.treesPerChunk = 0;
 			decorator.flowersPerChunk = 0;
 			decorator.grassPerChunk = 0;
@@ -103,8 +103,8 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 		@Override
 		public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
 		{
-			this.topBlock = BlockPrehistoricGroundBasic.block.getDefaultState();
-			this.fillerBlock = BlockCoarseSandyDirtRed.block.getDefaultState();
+			this.topBlock = BlockPrehistoricGroundHorsetail.block.getDefaultState();
+			this.fillerBlock = BlockCoarseSandyDirtBlack.block.getDefaultState();
 
 			if ((noiseVal < -1.0D || noiseVal > 2.0D))
 			{
@@ -228,7 +228,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if (net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 16; ++i) {
+				for (int i = 0; i < 14; ++i) {
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
@@ -245,7 +245,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 4; ++i)
+				for (int i = 0; i < 1; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -254,7 +254,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 2; ++i)
+				for (int i = 0; i < 1; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -263,7 +263,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 58; ++i)
+				for (int i = 0; i < 48; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -272,7 +272,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 18; ++i)
+				for (int i = 0; i < 3; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -281,12 +281,30 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 18; ++i)
+				for (int i = 0; i < 28; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					EQUISETITES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
+					EQUISETITES_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
+				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 36; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					PLANT_GENERATOR.generate(BlockAridHorsetail.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
+				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 48; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					PLANT_GENERATOR.generate(BlockTussockHorsetail.block.getDefaultState(), worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
@@ -299,7 +317,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 16; ++i)
+				for (int i = 0; i < 12; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -317,7 +335,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 26; ++i)
+				for (int i = 0; i < 36; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -327,7 +345,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 
 			DOUBLE_PLANT_GENERATOR.setPlantType(BlockDoublePlant.EnumPlantType.FERN);
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i1 = 0; i1 < 32; ++i1)
+				for (int i1 = 0; i1 < 20; ++i1)
 				{
 					int j1 = rand.nextInt(16) + 8;
 					int k1 = rand.nextInt(16) + 8;
@@ -336,7 +354,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 64; ++i)
+				for (int i = 0; i < 52; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -345,7 +363,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 40; ++i)
+				for (int i = 0; i < 64; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -354,7 +372,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 64; ++i)
+				for (int i = 0; i < 56; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -390,7 +408,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 32; ++i)
+				for (int i = 0; i < 38; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
@@ -399,7 +417,7 @@ public class BiomeTriassicHorsetails extends ElementsLepidodendronMod.ModElement
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 32; ++i)
+				for (int i = 0; i < 38; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;

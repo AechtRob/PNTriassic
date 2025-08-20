@@ -5,22 +5,21 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import net.pntriassic.world.biome.triassic.BiomeTriassicWarmVolcanicHills;
-import net.pntriassic.world.biome.triassic.BiomeTriassicWoodlandField;
 
 public class GenLayerTriassicVolcanicValley extends GenLayer {
 
-    public Biome TRIASSIC_WOODLAND = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills"));
-    public int TRIASSIC_WOODLAND_ID =  Biome.getIdForBiome(TRIASSIC_WOODLAND);
-    public Biome TRIASSIC_POLJE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills_valley"));
-    public int TRIASSIC_POLJE_ID =  Biome.getIdForBiome(TRIASSIC_POLJE);
+    public Biome TRIASSIC_VOLCANIC_HILLS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills"));
+    public int TRIASSIC_VOLCANIC_HILLS_ID =  Biome.getIdForBiome(TRIASSIC_VOLCANIC_HILLS);
+    public Biome TRIASSIC_VALLEY = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_warm_volcanic_hills_valley"));
+    public int TRIASSIC_VALLEY_ID =  Biome.getIdForBiome(TRIASSIC_VALLEY);
 
-    private final int WoodlandBiomes[] = new int[] {
-            TRIASSIC_POLJE_ID,
-            TRIASSIC_POLJE_ID,
-            TRIASSIC_POLJE_ID,
-            TRIASSIC_POLJE_ID,
-            TRIASSIC_POLJE_ID,
-            TRIASSIC_WOODLAND_ID
+    private final int ValleysBiomes[] = new int[] {
+            TRIASSIC_VALLEY_ID,
+            TRIASSIC_VALLEY_ID,
+            TRIASSIC_VALLEY_ID,
+            TRIASSIC_VALLEY_ID,
+            TRIASSIC_VALLEY_ID,
+            TRIASSIC_VOLCANIC_HILLS_ID
     };
 
     public GenLayerTriassicVolcanicValley(long seed, GenLayer genlayer) {
@@ -44,7 +43,7 @@ public class GenLayerTriassicVolcanicValley extends GenLayer {
                 initChunkSeed(xOut + x, zOut + z);
                 if (nextInt(2) == 0) {
                     if (Biome.getBiome(center) == BiomeTriassicWarmVolcanicHills.biome) {
-                        output[i] = WoodlandBiomes[nextInt(WoodlandBiomes.length)];
+                        output[i] = ValleysBiomes[nextInt(ValleysBiomes.length)];
                     }
                     else output[i] = center;
                 } else output[i] = center;
