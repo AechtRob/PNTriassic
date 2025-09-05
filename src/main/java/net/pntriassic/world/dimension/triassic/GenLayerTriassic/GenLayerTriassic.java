@@ -148,14 +148,29 @@ public class GenLayerTriassic {
         GenLayer genlayerdeltacreek6 = new GenLayerSmooth(2000L, genlayerdeltacreek5);
         GenLayer genlayerdeltacreekfinal = new GenLayerTriassicRiverMixDeltaSpecial(200L, genlayercreekfinal, genlayerdeltacreek6);
 
-        GenLayer genlayerdeltacreekB = new GenLayerRiverInit(300L, biomes);
-        GenLayer genlayerdeltacreekB2 = GenLayerZoom.magnify(3000L, genlayerdeltacreekB, 2);
-        GenLayer genlayerdeltacreekB3 = GenLayerZoom.magnify(3000L, genlayerdeltacreekB2, 2);
-        GenLayer genlayerdeltacreekB4 = GenLayerZoom.magnify(3000L, genlayerdeltacreekB3, 2);
-        GenLayer genlayerdeltacreekB5 = new GenLayerRiver(3L, genlayerdeltacreekB4);
-        GenLayer genlayerdeltacreekB6 = new GenLayerSmooth(3000L, genlayerdeltacreekB5);
-        GenLayer genlayerdeltacreekBfinal = new GenLayerTriassicRiverMixDeltaSpecial(300L, genlayerdeltacreekfinal, genlayerdeltacreekB6);
+        GenLayer genlayerdeltacreekB = new GenLayerRiverInit(500L, biomes);
+        GenLayer genlayerdeltacreekB2 = GenLayerZoom.magnify(5000L, genlayerdeltacreekB, 2);
+        GenLayer genlayerdeltacreekB3 = GenLayerZoom.magnify(5000L, genlayerdeltacreekB2, 2);
+        GenLayer genlayerdeltacreekB4 = GenLayerZoom.magnify(5000L, genlayerdeltacreekB3, 2);
+        GenLayer genlayerdeltacreekB5 = new GenLayerRiver(5L, genlayerdeltacreekB4);
+        GenLayer genlayerdeltacreekB6 = new GenLayerSmooth(5000L, genlayerdeltacreekB5);
+        GenLayer genlayerdeltacreekBfinal = new GenLayerTriassicRiverMixDeltaSpecial(500L, genlayerdeltacreekfinal, genlayerdeltacreekB6);
 
+        GenLayer genlayerdeltamounds = new GenLayerRiverInit(700L, biomes);
+        GenLayer genlayerdeltamounds1 = GenLayerZoom.magnify(7000L, genlayerdeltamounds, 7);
+        GenLayer genlayerdeltamounds2 = GenLayerZoom.magnify(7000L, genlayerdeltamounds1, 7);
+        GenLayer genlayerdeltamounds3 = GenLayerZoom.magnify(7000L, genlayerdeltamounds2, 7);
+        GenLayer genlayerdeltamounds4 = new GenLayerRiver(7L, genlayerdeltamounds3);
+        GenLayer genlayerdeltamounds5 = new GenLayerSmooth(7000L, genlayerdeltamounds4);
+        GenLayer genlayerdeltamoundsfinal = new GenLayerTriassicRiverMixDeltaLand(700L, genlayerdeltacreekBfinal, genlayerdeltamounds5);
+
+        GenLayer genlayerdeltamoundsB = new GenLayerRiverInit(300L, biomes);
+        GenLayer genlayerdeltamoundsB2 = GenLayerZoom.magnify(3000L, genlayerdeltamoundsB, 2);
+        GenLayer genlayerdeltamoundsB3 = GenLayerZoom.magnify(3000L, genlayerdeltamoundsB2, 2);
+        GenLayer genlayerdeltamoundsB4 = GenLayerZoom.magnify(3000L, genlayerdeltamoundsB3, 2);
+        GenLayer genlayerdeltamoundsB5 = new GenLayerRiver(3L, genlayerdeltamoundsB4);
+        GenLayer genlayerdeltamoundsB6 = new GenLayerSmooth(3000L, genlayerdeltamoundsB5);
+        GenLayer genlayerdeltamoundsBfinal = new GenLayerTriassicRiverMixDeltaLand(300L, genlayerdeltamoundsfinal, genlayerdeltamoundsB6);
 
         GenLayer genlayerbayou = new GenLayerRiverInit(120L, biomes);
         genlayerbayou = new GenLayerRiverInit(140L, genlayerbayou);
@@ -169,7 +184,7 @@ public class GenLayerTriassic {
         genlayerbayou6 = new GenLayerZoom(1678L, genlayerbayou6);
         genlayerbayou6 = new GenLayerZoom(1680L, genlayerbayou6);
         genlayerbayou6 = new GenLayerSmooth(1681L, genlayerbayou6);
-        GenLayer genlayerbayoufinal = new GenLayerTriassicDryBayou(1200L, genlayerdeltacreekBfinal, genlayerbayou6);
+        GenLayer genlayerbayoufinal = new GenLayerTriassicDryBayou(1200L, genlayerdeltamoundsBfinal, genlayerbayou6);
 
         GenLayer genlayer2bayou = new GenLayerRiverInit(130L, biomes);
         genlayer2bayou = new GenLayerRiverInit(150L, genlayer2bayou);
