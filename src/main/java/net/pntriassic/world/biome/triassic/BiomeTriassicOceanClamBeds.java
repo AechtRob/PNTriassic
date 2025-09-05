@@ -41,7 +41,7 @@ public class BiomeTriassicOceanClamBeds extends ElementsLepidodendronMod.ModElem
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Clam Beds").setRainfall(0.5F).setBaseHeight(-0.425F).setHeightVariation(0.00F));
+			super(new BiomeProperties("Triassic Clam Beds").setRainfall(0.5F).setBaseHeight(-0.725F).setHeightVariation(0.10F));
 			setRegistryName("lepidodendron:triassic_ocean_clam_beds");
 
 			topBlock = BlockSandWhiteWavy.block.getDefaultState();
