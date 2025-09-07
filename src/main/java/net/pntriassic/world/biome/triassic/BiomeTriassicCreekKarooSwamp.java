@@ -86,6 +86,7 @@ public class BiomeTriassicCreekKarooSwamp extends ElementsLepidodendronMod.ModEl
 		protected static final WorldGenSelaginella SELAGINELLA_GENERATOR = new WorldGenSelaginella();
 		protected static final WorldGenWaterHorsetail WATER_HORSETAIL_GENERATOR = new WorldGenWaterHorsetail();
 		protected static final WorldGenSwampHorsetail SWAMP_HORSETAIL_GENERATOR = new WorldGenSwampHorsetail();
+		protected static final WorldGenMarginalHorsetail MARGINAL_HORSETAIL_GENERATOR = new WorldGenMarginalHorsetail();
 		protected static final WorldGenEquisetites EQUISETITES_GENERATOR = new WorldGenEquisetites();
 
 		protected static final WorldGenCobble COBBLE_GENERATOR = new WorldGenCobble();
@@ -478,6 +479,15 @@ public class BiomeTriassicCreekKarooSwamp extends ElementsLepidodendronMod.ModEl
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 					SWAMP_HORSETAIL_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
+				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 28; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					MARGINAL_HORSETAIL_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))

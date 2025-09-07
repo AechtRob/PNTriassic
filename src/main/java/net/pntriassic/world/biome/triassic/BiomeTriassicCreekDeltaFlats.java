@@ -118,7 +118,7 @@ public class BiomeTriassicCreekDeltaFlats extends ElementsLepidodendronMod.ModEl
 		protected static final WorldGenPterophyllum PTEROPHYLLUM_GENERATOR = new WorldGenPterophyllum();
 		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
 		protected static final WorldGenCaytoniales CAYTONIALES_GENERATOR = new WorldGenCaytoniales();
-		protected static final WorldGenIrania IRANIA_GENERATOR = new WorldGenIrania();
+		protected static final WorldGenMarginalHorsetail MARGINAL_HORSETAIL_GENERATOR = new WorldGenMarginalHorsetail();
 		protected static final WorldGenPleuromeia PLEUROMEIA_GENERATOR = new WorldGenPleuromeia();
 
 		protected static final WorldGenWaterHorsetail WATER_HORSETAIL_GENERATOR = new WorldGenWaterHorsetail();
@@ -385,6 +385,15 @@ public class BiomeTriassicCreekDeltaFlats extends ElementsLepidodendronMod.ModEl
 					int k = rand.nextInt(16) + 8;
 					int l = Functions.getAdjustedSeaLevel(worldIn, pos);
 					WATER_HORSETAIL_GENERATOR.generate(worldIn, rand, new BlockPos(pos.getX() + j, l, pos.getZ() + k));
+				}
+
+			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
+				for (int i = 0; i < 86; ++i)
+				{
+					int j = rand.nextInt(16) + 8;
+					int k = rand.nextInt(16) + 8;
+					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
+					MARGINAL_HORSETAIL_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), DecorateBiomeEvent.Decorate.EventType.GRASS))
