@@ -99,6 +99,8 @@ public class GenLayerTriassicRiverMix extends GenLayer
     public int TRIASSIC_CHINA_SWAMP_ID = Biome.getIdForBiome(TRIASSIC_CHINA_SWAMP);
     public Biome RIASSIC_CHINA_LAKES = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_china_lakes"));
     public int TRIASSIC_CHINA_LAKES_ID = Biome.getIdForBiome(RIASSIC_CHINA_LAKES);
+    public Biome TRIASSIC_XERIC_LAKE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_creek_xerictriassic_xeric_scrubland_lakes"));
+    public int TRIASSIC_XERIC_LAKE_ID = Biome.getIdForBiome(TRIASSIC_XERIC_LAKE);
 
     public GenLayerTriassicRiverMix(long p_i2129_1_, GenLayer p_i2129_3_, GenLayer p_i2129_4_)
     {
@@ -139,6 +141,7 @@ public class GenLayerTriassicRiverMix extends GenLayer
                         || aint[i] == TRIASSIC_CHINA_SWAMP_ID
                         || aint[i] == TRIASSIC_CHINA_TREES_ID
                         || aint[i] == TRIASSIC_CHINA_LAKES_ID
+                        || aint[i] == TRIASSIC_XERIC_LAKE_ID
                 )
                 {
                     aint2[i] = aint[i];

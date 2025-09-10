@@ -20,10 +20,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import java.util.Random;
 
 @ElementsLepidodendronMod.ModElement.Tag
-public class BiomeTriassicXericScrubland extends ElementsLepidodendronMod.ModElement {
-	@GameRegistry.ObjectHolder("lepidodendron:triassic_xeric_scrubland")
+public class BiomeTriassicXericLakes extends ElementsLepidodendronMod.ModElement {
+	@GameRegistry.ObjectHolder("lepidodendron:triassic_xeric_scrubland_lakes")
 	public static final BiomeGenCustom biome = null;
-	public BiomeTriassicXericScrubland(ElementsLepidodendronMod instance) {
+	public BiomeTriassicXericLakes(ElementsLepidodendronMod instance) {
 		super(instance, 1589);
 	}
 
@@ -41,8 +41,8 @@ public class BiomeTriassicXericScrubland extends ElementsLepidodendronMod.ModEle
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
 			//super(new BiomeProperties("Permian Desert").setRainfall(0.0F).setBaseHeight(0.18F).setHeightVariation(0.17F).setTemperature(2.2F).setRainDisabled().setWaterColor(10990706));
-			super(new BiomeProperties("Triassic Southern Xeric Scrubby Forest").setRainfall(0.0F).setBaseHeight(0.24F).setHeightVariation(0.14F).setTemperature(1.5F).setRainDisabled().setWaterColor(-6056935));
-			setRegistryName("lepidodendron:triassic_xeric_scrubland");
+			super(new BiomeProperties("Triassic Southern Xeric Scrubby Forest").setRainfall(0.0F).setBaseHeight(-1.0F).setHeightVariation(0.17F).setTemperature(1.5F).setRainDisabled().setWaterColor(-6056935));
+			setRegistryName("lepidodendron:triassic_xeric_scrubland_lakes");
 			topBlock = Blocks.SAND.getStateFromMeta(1);
 			fillerBlock = Blocks.SAND.getStateFromMeta(1);
 			decorator.treesPerChunk = 16;
@@ -334,12 +334,12 @@ public class BiomeTriassicXericScrubland extends ElementsLepidodendronMod.ModEle
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))
-				for (int i = 0; i < 24; ++i)
+				for (int i = 0; i < 34; ++i)
 				{
 					int j = rand.nextInt(16) + 8;
 					int k = rand.nextInt(16) + 8;
 					int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
-					SCHIZONEURA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), true);
+					SCHIZONEURA_GENERATOR.generate(worldIn, rand, pos.add(j, l, k), false);
 				}
 
 			if(net.minecraftforge.event.terraingen.TerrainGen.decorate(worldIn, rand, new net.minecraft.util.math.ChunkPos(pos), net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.GRASS))

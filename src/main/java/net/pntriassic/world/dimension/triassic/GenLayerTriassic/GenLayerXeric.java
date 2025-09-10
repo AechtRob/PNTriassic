@@ -13,6 +13,8 @@ public class GenLayerXeric extends GenLayer {
     public int TRIASSIC_XERIC_SCRUBLAND_ID =  Biome.getIdForBiome(TRIASSIC_XERIC_SCRUBLAND);
     public Biome TRIASSIC_MOUNTAINS = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_mountains"));
     public int TRIASSIC_MOUNTAINS_ID =  Biome.getIdForBiome(TRIASSIC_MOUNTAINS);
+    public Biome TRIASSIC_XERIC_LAKE = Biome.REGISTRY.getObject(new ResourceLocation("lepidodendron:triassic_xeric_scrubland_lakes"));
+    public int TRIASSIC_XERIC_LAKE_ID =  Biome.getIdForBiome(TRIASSIC_XERIC_LAKE);
 
 
     private final int BiomesXeric[] = new int[]{
@@ -22,7 +24,10 @@ public class GenLayerXeric extends GenLayer {
             TRIASSIC_XERIC_SCRUBLAND_ID,
             TRIASSIC_MOUNTAINS_ID,
             TRIASSIC_MOUNTAINS_ID,
-            TRIASSIC_MOUNTAINS_ID
+            TRIASSIC_MOUNTAINS_ID,
+            TRIASSIC_XERIC_LAKE_ID,
+            TRIASSIC_XERIC_LAKE_ID,
+            TRIASSIC_XERIC_LAKE_ID
     };
 
     public GenLayerXeric(long seed, GenLayer genlayer) {
@@ -72,7 +77,8 @@ public class GenLayerXeric extends GenLayer {
 
     private boolean isXeric(int biomeID) {
         if (
-                biomeID == TRIASSIC_XERIC_FOREST_ID) {
+                biomeID == TRIASSIC_XERIC_FOREST_ID
+                || biomeID == TRIASSIC_XERIC_SCRUBLAND_ID) {
             return true;
         }
         return false;

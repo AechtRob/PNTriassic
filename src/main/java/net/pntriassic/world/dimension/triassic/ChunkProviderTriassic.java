@@ -296,7 +296,11 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                 (new WorldGenCausticMudLake(BlockToxicMud.block)).generate(this.world, this.random, blockpos.add(i1, j1, k1));
             }
 
-        if (this.random.nextInt(4) == 0 && biome != BiomeTriassicDesertPleuromeiaBeds.biome && biome != BiomeTriassicDesertRocky.biome && biome != BiomeTriassicDesertPlateau.biome && biome != BiomeTriassicDesertPlateauBroken.biome && biome != BiomeTriassicDesertPlateauCanyons.biome && biome != BiomeTriassicDesertSandy.biome && biome != BiomeTriassicOceanShore.biome)
+        if (this.random.nextInt(4) == 0 && biome != BiomeTriassicDesertPleuromeiaBeds.biome
+                && biome != BiomeTriassicDesertRocky.biome && biome != BiomeTriassicDesertPlateau.biome
+                && biome != BiomeTriassicDesertPlateauBroken.biome && biome != BiomeTriassicDesertPlateauCanyons.biome
+                && biome != BiomeTriassicDesertSandy.biome && biome != BiomeTriassicOceanShore.biome
+                && biome != BiomeTriassicXericScrubland.biome && biome != BiomeTriassicXericForest.biome)
             if (net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.random, x, z, false,
                     net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE)) {
                 int i1 = this.random.nextInt(16) + 8;

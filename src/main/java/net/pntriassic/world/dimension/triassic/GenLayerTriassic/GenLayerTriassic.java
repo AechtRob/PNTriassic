@@ -32,7 +32,7 @@ public class GenLayerTriassic {
         biomes = new GenLayerTriassicChinleFlats(983L, biomes);
         biomes = new GenLayerTriassicEuropeOffshore(684L, biomes);
         biomes = new GenLayerDiversifyTriassic2(1001L, biomes);
-        biomes = new GenLayerXeric(723L, biomes);
+        //biomes = new GenLayerXeric(723L, biomes);
         biomes = new GenLayerSmooth(502L, biomes); //new
         biomes = new GenLayerTriassicDeepOcean(1100L, biomes);
         biomes = new GenLayerTriassicShallowOcean(1300L, biomes);
@@ -40,6 +40,7 @@ public class GenLayerTriassic {
         biomes = new GenLayerZoom(1003L, biomes);
 
         biomes = new GenLayerDiversifyTriassicKarooSwamp(3236L, biomes);
+        biomes = new GenLayerXeric(723L, biomes);
         biomes = new GenLayerChinaIslands(9L, biomes);
         biomes = new GenLayerTriassicEuropeOffshore2(484L, biomes);
         biomes = new GenLayerSmooth(700L, biomes);
