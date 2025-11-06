@@ -48,7 +48,7 @@ public class BiomeTriassicGondwananForestDryBayou extends ElementsLepidodendronM
 			super(new BiomeProperties("Triassic Southern Seasonal Bayou").setTemperature(0.75F).setRainfall(0.8F).setBaseHeight(-0.1F).setHeightVariation(0.00F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_gondwanan_forest_dry_bayou");
 			topBlock = Blocks.SAND.getStateFromMeta(1);
-			fillerBlock = Blocks.SANDSTONE.getStateFromMeta(1);
+			fillerBlock = Blocks.RED_SANDSTONE.getDefaultState();
 			decorator.treesPerChunk = 3;
 			decorator.flowersPerChunk = 0;
 			decorator.grassPerChunk = 0;
