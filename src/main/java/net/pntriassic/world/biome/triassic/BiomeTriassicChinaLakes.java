@@ -96,6 +96,7 @@ public class BiomeTriassicChinaLakes extends ElementsLepidodendronMod.ModElement
 		protected static final WorldGenPrehistoricGroundCoverSandy PREHISTORIC_GROUND_GENERATOR = new WorldGenPrehistoricGroundCoverSandy();
 		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
 		protected static final WorldGenWaterSalt WATERSIDE_SALT_GENERATOR = new WorldGenWaterSalt();
+		protected static final WorldGenSingleStaticInWaterUpwards STATIC_GENERATOR = new WorldGenSingleStaticInWaterUpwards();
 		protected static final WorldGenSingleStaticInWaterRotational STATIC_ROTATIONAL_GENERATOR = new WorldGenSingleStaticInWaterRotational();
 		protected static final WorldGenSingleStaticInWaterSideways STATIC_SIDEWAYS_GENERATOR = new WorldGenSingleStaticInWaterSideways();
 		protected static final WorldGenSingleStaticInWaterColumn STATIC_COLUMN_GENERATOR = new WorldGenSingleStaticInWaterColumn();
