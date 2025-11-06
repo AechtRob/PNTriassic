@@ -73,6 +73,14 @@ public class BiomeTriassicDesertPlateauCanyons extends ElementsLepidodendronMod.
 		protected static final WorldGenIsoetes ISOETES_GENERATOR = new WorldGenIsoetes();
 
 		protected static final WorldGenSand PANGAEAN_SAND_GENERATOR = new WorldGenSand(BlockSandPangaean.block, 7);
+		protected static final WorldGenSingleStaticInWaterRotational STATIC_ROTATIONAL_GENERATOR = new WorldGenSingleStaticInWaterRotational();
+		protected static final WorldGenSingleStaticInWaterSideways STATIC_SIDEWAYS_GENERATOR = new WorldGenSingleStaticInWaterSideways();
+		protected static final WorldGenSingleStaticInWaterColumn STATIC_COLUMN_GENERATOR = new WorldGenSingleStaticInWaterColumn();
+		protected static final WorldGenSingleAnemoneSea ANEMONE_GENERATOR = new WorldGenSingleAnemoneSea();
+		protected static final WorldGenSingleSponge SPONGE_GENERATOR = new WorldGenSingleSponge();
+		protected static final WorldGenSingleSpongeSideways SPONGE_SIDEWAYS_GENERATOR = new WorldGenSingleSpongeSideways();
+		protected static final WorldGenSingleFenestella FENESTELLA_GENERATOR = new WorldGenSingleFenestella();
+		protected static final WorldGenSingleFenestellaSideways FENESTELLA_SIDEWAYS_GENERATOR = new WorldGenSingleFenestellaSideways();
 
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)

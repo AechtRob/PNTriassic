@@ -44,7 +44,7 @@ public class BiomeTriassicWarmVolcanicHills extends ElementsLepidodendronMod.Mod
 
 	static class BiomeGenCustom extends BiomeTriassic {
 		public BiomeGenCustom() {
-			super(new BiomeProperties("Triassic Warm Swampy Valleys").setTemperature(3.00F).setRainfall(0.8F).setBaseHeight(1.1F).setHeightVariation(0.52F).setWaterColor(-5317633));
+			super(new BiomeProperties("Triassic Warm Volcanic Lakeland").setTemperature(3.00F).setRainfall(0.8F).setBaseHeight(1.1F).setHeightVariation(0.52F).setWaterColor(-5317633));
 			setRegistryName("lepidodendron:triassic_warm_volcanic_hills");
 			topBlock = BlockPrehistoricGroundBasic.block.getDefaultState();
 			fillerBlock = Blocks.DIRT.getStateFromMeta(1);
@@ -99,6 +99,14 @@ public class BiomeTriassicWarmVolcanicHills extends ElementsLepidodendronMod.Mod
 		protected static final WorldGenStone STONE_GENERATOR = new WorldGenStone();
 		protected static final WorldGenSinglePlantOptionalWater PLANT_GENERATOR = new WorldGenSinglePlantOptionalWater();
 		protected static final WorldGenLeafblock LEAFBLOCK_GENERATOR = new WorldGenLeafblock();
+		protected static final WorldGenSingleStaticInWaterRotational STATIC_ROTATIONAL_GENERATOR = new WorldGenSingleStaticInWaterRotational();
+		protected static final WorldGenSingleStaticInWaterSideways STATIC_SIDEWAYS_GENERATOR = new WorldGenSingleStaticInWaterSideways();
+		protected static final WorldGenSingleStaticInWaterColumn STATIC_COLUMN_GENERATOR = new WorldGenSingleStaticInWaterColumn();
+		protected static final WorldGenSingleAnemoneSea ANEMONE_GENERATOR = new WorldGenSingleAnemoneSea();
+		protected static final WorldGenSingleSponge SPONGE_GENERATOR = new WorldGenSingleSponge();
+		protected static final WorldGenSingleSpongeSideways SPONGE_SIDEWAYS_GENERATOR = new WorldGenSingleSpongeSideways();
+		protected static final WorldGenSingleFenestella FENESTELLA_GENERATOR = new WorldGenSingleFenestella();
+		protected static final WorldGenSingleFenestellaSideways FENESTELLA_SIDEWAYS_GENERATOR = new WorldGenSingleFenestellaSideways();
 
 		public WorldGenAbstractTree getRandomTreeFeature(Random rand)
 		{

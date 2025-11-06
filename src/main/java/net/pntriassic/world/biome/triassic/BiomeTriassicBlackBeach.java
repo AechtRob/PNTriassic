@@ -6,10 +6,7 @@ import net.lepidodendron.block.BlockAlgalReef;
 import net.lepidodendron.block.BlockCoral;
 import net.lepidodendron.util.EnumBiomeTypeTriassic;
 import net.lepidodendron.world.biome.triassic.BiomeTriassic;
-import net.lepidodendron.world.gen.WorldGenBlackSand;
-import net.lepidodendron.world.gen.WorldGenBrachyphyllumTree;
-import net.lepidodendron.world.gen.WorldGenNullTree;
-import net.lepidodendron.world.gen.WorldGenReef;
+import net.lepidodendron.world.gen.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -93,6 +90,14 @@ public class BiomeTriassicBlackBeach extends ElementsLepidodendronMod.ModElement
 		protected static final WorldGenNullTree NULL_TREE = new WorldGenNullTree(false);
 
 		protected static final WorldGenBlackSand DIRT_GENERATOR = new WorldGenBlackSand();
+		protected static final WorldGenSingleStaticInWaterRotational STATIC_ROTATIONAL_GENERATOR = new WorldGenSingleStaticInWaterRotational();
+		protected static final WorldGenSingleStaticInWaterSideways STATIC_SIDEWAYS_GENERATOR = new WorldGenSingleStaticInWaterSideways();
+		protected static final WorldGenSingleStaticInWaterColumn STATIC_COLUMN_GENERATOR = new WorldGenSingleStaticInWaterColumn();
+		protected static final WorldGenSingleAnemoneSea ANEMONE_GENERATOR = new WorldGenSingleAnemoneSea();
+		protected static final WorldGenSingleSponge SPONGE_GENERATOR = new WorldGenSingleSponge();
+		protected static final WorldGenSingleSpongeSideways SPONGE_SIDEWAYS_GENERATOR = new WorldGenSingleSpongeSideways();
+		protected static final WorldGenSingleFenestella FENESTELLA_GENERATOR = new WorldGenSingleFenestella();
+		protected static final WorldGenSingleFenestellaSideways FENESTELLA_SIDEWAYS_GENERATOR = new WorldGenSingleFenestellaSideways();
 
 		protected static final WorldGenReef REEF_GENERATOR = new WorldGenReef();
 
