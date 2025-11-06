@@ -673,7 +673,12 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                         iblockstate1 = BlockCoral.block.getDefaultState();
                                     }
                                     if (worldIn.rand.nextInt(lv + 12) <= 4) {
-                                        iblockstate1 = BlockSpongeReef.block.getDefaultState();
+                                        if (worldIn.rand.nextInt(6) == 0){
+                                            iblockstate1 = BlockSpongeReef.block.getDefaultState();
+                                        }
+                                        else {
+                                            iblockstate1 = Blocks.SPONGE.getStateFromMeta(1);
+                                        }
                                     }
                                     if (worldIn.rand.nextInt(lv + 12) <= 2) {
                                         iblockstate1 = BlockAlgalReef.block.getDefaultState();
@@ -1624,7 +1629,12 @@ public class ChunkProviderTriassic implements IChunkGenerator {
                                         chunkPrimerIn.setBlockState(i1, j1, l, BlockCoral.block.getDefaultState());
                                     }
                                     if (worldIn.rand.nextInt(lv + 22) <= 4) {
-                                        chunkPrimerIn.setBlockState(i1, j1, l, BlockSpongeReef.block.getDefaultState());
+                                        if (worldIn.rand.nextInt(6) == 0){
+                                            chunkPrimerIn.setBlockState(i1, j1, l, BlockSpongeReef.block.getDefaultState());
+                                        }
+                                        else {
+                                            chunkPrimerIn.setBlockState(i1, j1, l, Blocks.SPONGE.getStateFromMeta(1));
+                                        }
                                     }
                                     if (worldIn.rand.nextInt(lv + 22) <= 2) {
                                         chunkPrimerIn.setBlockState(i1, j1, l, BlockAlgalReef.block.getDefaultState());
